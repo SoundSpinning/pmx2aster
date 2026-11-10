@@ -1,0 +1,55 @@
+##
+##    PrePoMax --> code_aster from "pmx2aster.py" V0.1.4 | [ 01-Oct-2025 ] 
+##    Made by Sound Spinning | soundspinning@hotmail.com
+##    Meant to be run from a terminal with `run_aster *.export` instead of with `as_run`
+##
+
+ #  "forced_X_R3_assy_8bolts.inp" model HEADING:
+ # Hash: 3QCKejya, Date: 10/29/2025, Unit system: MM_TON_S_C
+ # forced_X_R3_assy_8bolts.pmx
+ # FORCED Response:
+ # shock wave - modal dynamics
+ # RESTART off modal run from global model
+ # 
+ # GLOBAL:
+ # Bolt pretension + tied contacts
+ # Cold Assy (bolt load), Unit loads & 
+ # modal check (with and without constraints).
+ # [ See hand edits in deck ]
+ # - statics: Tied contacts only in normal direction (DX) in step#1.
+ #            Lock bolts in Step#2; i.e. switch to `tied2` pairs on all DoF.
+ # - modal: `Tied_mod` contacts in all 3 DoF, avoid RBModes.
+ # --------------------------------
+
+### RAM in MB - Since V16.7 the solver grabs 90% of this input
+P memory_limit 64000
+P ncpus 1
+### max solve time in seconds ==> 4e5s = 4.63days 
+P time_limit 400000.0
+
+## Input deck
+F comm forced_X_R3_assy_8bolts.comm D  1
+
+## Input mesh - ASTER format
+F mesh forced_X_R3_assy_8bolts.msh D  21
+
+## Output message file
+F mesg forced_X_R3_assy_8bolts.msg R  6
+
+## Output text results file
+F data forced_X_R3_assy_8bolts.dat R  8
+
+## MED results file#1
+F rmed forced_X_R3_assy_8bolts.rmed R  80
+## MED results file#2
+F rmed forced_X_R3_assy_8bolts_points_springs.rmed R  81
+
+## Output FOLDER for global restart files, also useful for Sub-modelling
+## When reading the `base` in a restart run, change RC --> DC
+## R base forced_X_R3_assy_8bolts RC 0
+
+## Output local temp FOLDER (if needed) for solver temp (.med) files
+## R repe TMP R  0
+
+## RESTART reads global results folder
+R base global_R3_assy_8bolts DC 0

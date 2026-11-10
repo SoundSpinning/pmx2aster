@@ -1,0 +1,456 @@
+##
+##    PrePoMax --> code_aster from "pmx2aster.py" V0.1.4 | [ 01-Oct-2025 ] 
+##    Made by Sound Spinning | soundspinning@hotmail.com
+##    Meant to be run from a terminal with `run_aster *.export` instead of with `as_run`
+##
+
+ #  "Forced_Z_R3_assy_8bolts.inp" model HEADING:
+ # Hash: 3QCKejya, Date: 10/29/2025, Unit system: MM_TON_S_C
+ # Forced_Z_R3_assy_8bolts.pmx
+ # FORCED Response:
+ # shock wave - modal dynamics
+ # RESTART off modal run from global model
+ # 
+ # GLOBAL:
+ # Bolt pretension + tied contacts
+ # Cold Assy (bolt load), Unit loads & 
+ # modal check (with and without constraints).
+ # [ See hand edits in deck ]
+ # - statics: Tied contacts only in normal direction (DX) in step#1.
+ #            Lock bolts in Step#2; i.e. switch to `tied2` pairs on all DoF.
+ # - modal: `Tied_mod` contacts in all 3 DoF, avoid RBModes.
+ # --------------------------------
+
+##                       -------
+## This model setup is a RESTART job, and runs off a global model folder.
+##                       -------
+## Pls make sure you have restart files from the global model, `base` folder.
+## All mesh and model setup skipped, as reusing global one.
+##
+
+# =====
+# START of the ASTER input deck
+# =====
+POURSUITE();
+
+
+# -----------------------
+# STEP_1: Modal Dynamics
+# -----------------------
+
+###
+# Transient FORCED response INPUT: e.g. amplitude curve for a half-sine shock event.
+###
+shock_time = 33 * 1e-3  ## half-sine wave period (s)
+res_points = 12
+## del_T = time stepping, should be fine enough to capture highest freq of interest:
+#  in time domain input and/or modal natural freqs used.
+del_T = shock_time / res_points
+freq = 1 / (shock_time*2)
+n_points = round(shock_time / del_T)
+# G = 1 * 9810.0   ## mm/s**2
+G = 1e4    ## mm/s**2
+
+# build INPUT amplitude curve
+str_table = ()
+w = 2*pi*freq
+for i in range(0, n_points+1):
+   if i*del_T < shock_time:
+      amp = sin(w * i*del_T) * G
+   else:
+      amp = 0.0
+   str_table += i*del_T, amp, 
+
+print(f"""
+   Shock Wave (transient) Input Summary:
+   ====================================
+   time period = {shock_time*1e3}ms                 ## typically for a half-sine wave
+   FEA fixed time increment = {"{:.3f}".format(del_T*1e3)}ms    ## make sure this gives enough resolution for the highest frequency of interest
+   Lowest Frequency of input = {"{:.2f}".format(freq)}Hz
+   Number of points in INPUT table = {n_points+1}
+   See `forced_incs` below for final FEA solving time increments.
+   """);
+
+# code_aster amplitude table
+input_G_Z = DEFI_FONCTION (
+    TITRE = 'Shock Input - G',
+    NOM_PARA = "INST",
+    VALE = (
+        str_table
+    ),
+    PROL_GAUCHE = 'CONSTANT',
+    PROL_DROITE = 'CONSTANT',
+    INFO = 2,
+);
+
+# Transient FORCED response time increments
+T = shock_time*2   ### time period for one shock: 2 x half-sine period
+inc = del_T        ### time increment size
+n_T = 3            ### number of consequtive events (waves)
+
+forced_incs = DEFI_LIST_REEL (
+    TITRE = 'forced_incs',
+    DEBUT = 0,
+    INTERVALLE = 
+        _F(
+            JUSQU_A = (T*n_T) , ## time period
+            PAS = inc,          ## time increment
+        ),
+    INFO = 2,
+);
+
+base_motion = CALC_CHAR_SEISME(
+    MATR_MASS = MASS,
+    DIRECTION = (0, 0, 1),
+    MONO_APPUI = "OUI",
+);
+
+PROJ_BASE(
+    BASE = modes,
+    # NB_VECT = nbvect ,   ## number of vectors (modes) if not all
+    MATR_ASSE_GENE = (
+        _F(MATRICE=CO('MASSgen'), MATR_ASSE = MASS),
+        _F(MATRICE=CO('RIGIgen'), MATR_ASSE = RIGI),
+        # _F(MATRICE=CO('DAMPgen'), MATR_ASSE = DAMP),
+    ),
+    VECT_ASSE_GENE = 
+        _F(
+            VECTEUR = CO('LOADSgen'),
+            VECT_ASSE = base_motion,
+            TYPE_VECT = "FORC",
+        ),
+);
+
+Forced_Z = DYNA_VIBRA(
+    TITRE = 'Forced_Z',
+    TYPE_CALCUL = 'TRAN', BASE_CALCUL = 'GENE',
+    # SCHEMA_TEMPS = _F(SCHEMA = 'RUNGE_KUTTA_32',),  ## default, but not fixed stepping
+    SCHEMA_TEMPS = _F(SCHEMA = 'NEWMARK',),           ## fixed stepping
+    MATR_RIGI = RIGIgen, MATR_MASS = MASSgen,
+    # MATR_AMOR = DAMP,                               ## damping matrix if required
+    AMOR_MODAL = _F(AMOR_REDUIT = 0.03, ),        ## modal damping: value(s) or a list
+    INCREMENT = _F(LIST_INST = forced_incs),
+    EXCIT = _F(VECT_ASSE_GENE = LOADSgen, FONC_MULT = input_G_Z, ),
+    SOLVEUR = _F(
+        RESI_RELA = -1, NB_RHS = 10,
+        METHODE='MUMPS', GESTION_MEMOIRE = 'AUTO', PCENT_PIVOT = 10, 
+    ),
+);
+
+Forced_Z_Phy = REST_GENE_PHYS(
+    RESU_GENE = Forced_Z,
+    NUME_DDL = numdof,
+    LIST_INST = forced_incs,
+    INTERPOL = "LIN",
+    TOUT_CHAM = "OUI",
+);
+
+# User results added + disps by default:  [ rmed binary rslts file ]:
+Forced_Z_Phy = CALC_CHAMP(
+    reuse = Forced_Z_Phy,
+    RESULTAT = Forced_Z_Phy,
+    #   GROUP_MA = assy_els ,  ## default: write all
+    ### OUTPUT types in code_aster: ('*_ELNO', '*_NOEU', '*_ELGA')
+    # Use *_NOEU, so it works in Paraview.
+    # Nodal stress / forces at nodes
+    CONTRAINTE=('SIEF_NOEU'),            ### add 'SIGM_ELNO' if SHELLS
+    ## Nodal stress invariants: von Mises, etc.
+    CRITERES=('SIEQ_NOEU', ),            ### add 'SIEQ_ELNO' if SHELLS
+    # Nodal reaction / forces
+    FORCE=('REAC_NODA', 'FORC_NODA'),
+    # ENERGIE = ('ENEL_ELEM', 'ENEL_NOEU', 'ETOT_NOEU'),
+    # Last 2 are SE densities at nodes, so it plots in ParaView.
+    # Uncomment below if energies required.
+    # ENERGIE = ('ENEL_NOEU', ),
+);
+
+
+# -------------
+# EXPORT TABLES in results text (.dat) file some results (variable/field labels).
+# -------------
+# Make sure in advance (with a small model) that you get what you need.
+# Comment out the line below to list all variables requested in the analysis, 
+# useful for initial checks on outputs.
+# If the model is large, consider doing all post-processing in a restart deck off a global `base`.
+
+# INFO_RESU(RESULTAT = Forced_Z_Phy)
+
+#           ------
+# Calculate TOTALs: 
+#           ------
+# Mass/Inertia & Total Strain Energy (TSE) at assembly level per part (elem_sets).
+# These to go into (.dat) text results file, see further down for tables output.
+
+# Mass / Inertia breakdown in assembly, per component (elem sets).
+## check run time for large models b4 switching this on for many elem_sets; ALL option is faster.
+total_mass = POST_ELEM(
+    MASS_INER = ( _F( GROUP_MA = assy_mass, ), ),
+    RESULTAT = Forced_Z_Phy,
+    CHAM_MATER = materials,
+    CARA_ELEM = element_props,
+);
+
+# Total Strain Energy (TSE) breakdown in assembly, per component (elem sets), and per loadcase.
+## check run time for large models b4 switching this on.
+assy_total_SE = POST_ELEM(
+    ENER_POT = _F( TOUT = "OUI", ),
+    RESULTAT = Forced_Z_Phy,
+    CHAM_MATER = materials,
+    CARA_ELEM = element_props,
+);
+
+total_SE = POST_ELEM(
+    ENER_POT = _F( GROUP_MA = assy_ener, ),
+    RESULTAT = Forced_Z_Phy,
+    CHAM_MATER = materials,
+    CARA_ELEM = element_props,
+);
+
+# This is just a test on all nodes in model, since sometimes the sum on node sets doesn't make sense.
+## check run time for large models b4 switching this on.
+all_sum_reactions = POST_RELEVE_T(
+    ACTION=_F(
+        INTITULE = 'ALL TOTAL RF & RM',
+        GROUP_NO = 'all_nodes',
+        RESULTAT = Forced_Z_Phy,
+        NOM_CHAM = 'REAC_NODA',
+        TOUT_ORDRE = 'OUI',
+        RESULTANTE = dof_3,
+        MOMENT = ('DRX' ,'DRY' ,'DRZ' , ),
+        ## Location wrt which the moments are calculated
+        POINT = ( 0 , 0 , 0 , ),
+        OPERATION = 'EXTRACTION',
+    ),
+);
+
+# -------------
+# TABLES export
+# -------------
+# CHECK that all units make sense vs expected Mass/Inertias
+IMPR_TABLE (
+    TABLE = total_mass,
+    NOM_PARA = table_mass,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Total Mass / Inertia (ALL)
+            ==========================\n""",
+    UNITE = 8, 
+);
+
+IMPR_TABLE (
+    TABLE = assy_total_SE,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            ASSY - Total Strain Energy - Statics (TSE)
+            ==========================================\n""",
+    UNITE = 8, 
+);
+
+IMPR_TABLE (
+    TABLE = total_SE,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Total Strain Energy - Statics (TSE - ALL)
+            =========================================\n""",
+    UNITE = 8, 
+);
+
+# CHECK on loads over full model being reacted properly:
+IMPR_TABLE (
+    TABLE = all_sum_reactions,
+    NOM_PARA = table_sums_6,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            ALL nodes, Total Sum of Reactions: Forces & Moments
+            ===================================================\n""",
+    UNITE = 8, 
+);
+
+# SUM of ALL input forces/moments per DoF.
+sum_loads = POST_RELEVE_T(
+    ACTION=_F(
+        INTITULE = 'TOTAL F & M',
+        GROUP_NO = load_all,
+        RESULTAT = Forced_Z_Phy,
+        NOM_CHAM = 'FORC_NODA',
+        TOUT_ORDRE = 'OUI',
+        RESULTANTE = dof_3,
+        MOMENT = ('DRX' ,'DRY' ,'DRZ' , ),
+        ## Location wrt which the moments are calculated
+        POINT = ( 0 , 0 , 0 , ),
+        OPERATION = 'EXTRACTION',
+    ),
+);
+
+load_disp = POST_RELEVE_T(
+    ACTION=_F(
+        INTITULE = 'Disps / Rots',
+        GROUP_NO = load_sets,
+        RESULTAT = Forced_Z_Phy,
+        NOM_CHAM = 'DEPL',
+        NOM_CMP = dof_6,
+        OPERATION = 'EXTRACTION',
+    ),
+);
+
+# -------------
+# TABLES export
+# -------------
+# FEA models should be loaded via reference nodes on couplings, when aplicable,
+# so one ref node per load location; i.e. small tables.
+# Handy for quick stiffness hand calcs at loaded nodes.
+IMPR_TABLE (
+    TABLE = load_disp,
+    NOM_PARA = table_dof_6,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Displacements (mm) & Rotations (rad) @ load node(s)
+            ===================================================\n""",
+    UNITE = 8, 
+);
+
+# CHECK on sum of input Loads vs Reactions table:
+IMPR_TABLE (
+    TABLE = sum_loads,
+    NOM_PARA = table_sums_6,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Total Sum: Input Forces & Moments
+            =================================\n""",
+    UNITE = 8, 
+);
+
+# SUM of ALL reaction forces/moments for all node sets constrained and per DoF.
+sum_reactions = POST_RELEVE_T(
+    ACTION=_F(
+        INTITULE = 'TOTAL RF & RM',
+        GROUP_NO = fix_all,
+        RESULTAT = Forced_Z_Phy,
+        NOM_CHAM = 'REAC_NODA',
+        TOUT_ORDRE = 'OUI',
+        RESULTANTE = dof_3,
+        MOMENT = ('DRX' ,'DRY' ,'DRZ' , ),
+        ## Location wrt which the moments are calculated
+        POINT = ( 0 , 0 , 0 , ),
+        OPERATION = 'EXTRACTION',
+    ),
+);
+
+# -------------
+# TABLES export
+# -------------
+# CHECK on loads being reacted properly in Statics:
+IMPR_TABLE (
+    TABLE = sum_reactions,
+    NOM_PARA = table_sums_6,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Total Sum of Reactions on sets: Forces & Moments
+            ================================================\n""",
+    UNITE = 8, 
+);
+
+
+# 
+# Post results HACK (very ugly!) 
+# MED --> PV results so that deformed shapes + any results on assemblies can be plotted.
+# 
+all_steps = Forced_Z_Phy.LIST_PARA()['NUME_ORDRE'];
+print(all_steps);
+time_steps = Forced_Z_Phy.LIST_PARA()['INST'];
+print(time_steps);
+
+# Combine all stresses into a single field, 
+# so that Paraview can plot deformed shapes + any Stress variable.
+#                      ---------------------------------
+asse_list = []
+
+# for inc in range(len(all_steps)):
+for inc in all_steps:
+    # time = time_steps[inc-1] ##  for MECA_STATIQUE steps
+    # time = time_steps[inc]   ##  for STAT_NON_LIN steps; dunno why, but code_aster changes loadcase ID integers!
+    time = time_steps[inc-1]
+    try:
+        ## Extract stress tensor & elem forces at all nodes
+        sief = Forced_Z_Phy.getField('SIEF_NOEU', inc)
+        ## Extract von Mises, etc stress fields - some nodes
+        sieq = Forced_Z_Phy.getField('SIEQ_NOEU', inc)
+        ## Extract shells stress fields
+        # s_sief = sh_sief.getField('SIGM_NOEU', inc)
+        # s_sieq = sh_sieq.getField('SIEQ_NOEU', inc)
+        
+        # Combine all stress vars into one field
+        s_all = CREA_CHAMP(
+            OPERATION = 'ASSE',
+            TYPE_CHAM = 'NOEU_SIEF_R',
+            MAILLAGE = mesh,
+            ASSE=(
+                _F(CHAM_GD = sief, TOUT = 'OUI', CUMUL='OUI', COEF_R=1.0, ),  
+                _F(CHAM_GD = sieq, TOUT = 'OUI', CUMUL='OUI', COEF_R=1.0, ),
+                ## SHELLS
+                # _F(CHAM_GD = s_sief, TOUT = 'OUI', CUMUL='OUI', COEF_R=1.0, ),
+                # _F(CHAM_GD = s_sieq, TOUT = 'OUI', CUMUL='OUI', COEF_R=1.0, ),
+            ),
+        );
+        # Add to ASSE list
+        asse_list.append(_F(CHAM_GD = s_all, INST = time, MODELE = model_assy, ))
+    except Exception as e:
+        print(f'Error at step {time}: {e}')
+        continue
+
+# Merge results
+Forced_Z_Phy = CREA_RESU(
+    reuse = Forced_Z_Phy,
+    RESULTAT = Forced_Z_Phy,
+    OPERATION = 'AFFE',
+    TYPE_RESU = 'EVOL_NOLI',
+    NOM_CHAM = "SIEF_NOEU",
+    AFFE = tuple(asse_list),
+);
+
+# Results variable names:
+s_vars2 = ('SIXX', 'SIYY', 'SIZZ', 'SIXY', 'SIXZ', 'SIYZ', 'VMIS', 'VMIS_SG', );    
+      ## ('TRESCA', 'PRIN_1', 'PRIN_2', 'PRIN_3', );
+
+# ------
+# EXPORT STATIC (MED) results --> binary (.rmed) file, reads in Paraview.
+# ------
+IMPR_RESU(
+    FORMAT = "MED",
+    UNITE = 80,
+    RESU = (
+        _F( RESULTAT = Forced_Z_Phy, 
+            NOM_RESU_MED = '1_Stat',
+            NOM_CHAM = ('DEPL', ),
+            # NOM_CHAM = ('DEPL', 'REAC_NODA', 'FORC_NODA', ),
+          ),
+        _F( RESULTAT = Forced_Z_Phy, 
+            NOM_RESU_MED = '1_Stat',
+            NOM_CHAM = ('SIEF_NOEU'),
+            NOM_CMP = nvh_vars
+          ),
+    ),
+);
+
+# not needed in the 'base' results, so delete.
+DETRUIRE(NOM = (Forced_Z_Phy, s_all, sief, sieq));
+
+
+# ===
+# END of the input deck
+# ===
+FIN();

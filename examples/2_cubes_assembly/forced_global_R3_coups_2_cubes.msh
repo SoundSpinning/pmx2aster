@@ -1,0 +1,18 @@
+%%
+%%    PrePoMax --> code_aster from "pmx2aster.py" V0.1.4 | [ 01-Oct-2025 ] 
+%%    Made by Sound Spinning | soundspinning@hotmail.com
+%%    Meant to be run from a terminal with `run_aster *.export` instead of with `as_run`
+%%
+ TITRE
+
+ #  "forced_global_R3_coups_2_cubes.inp" model HEADING:
+ # Hash: xfrezGit, Date: 10/28/2025, Unit system: MM_TON_S_C
+ # # forced_global_R3_coups_2_cubes.pmx
+ # # 2-cube assembly + (soft) couplings + TIED contact constraint
+ # # ------------------------------------------------------------
+ # # Forced response (Modal Dynamics - shock wave) as a restart from modal results
+ # ---------------------------------
+ # 
+ FINSF
+ %
+ FIN

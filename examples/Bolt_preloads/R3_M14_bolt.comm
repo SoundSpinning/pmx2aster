@@ -1,0 +1,1482 @@
+##
+##    PrePoMax --> code_aster from "pmx2aster.py" V0.1.4 | [ 01-Oct-2025 ] 
+##    Made by Sound Spinning | soundspinning@hotmail.com
+##    Meant to be run from a terminal with `run_aster *.export` instead of with `as_run`
+##
+
+ #  "R3_M14_bolt.inp" model HEADING:
+ # Hash: AL8G1aNc, Date: 11/03/2025, Unit system: MM_TON_S_C
+ # R3_M14_bolt.pmx
+ # M14 Bolt preload tests: 4 Static steps
+ # 1.- Cold Assy with bolt preload.
+ # 2.- Relax bolt load via Y ext load.
+ # 3.- Bring ext load to zero (back to preload only).
+ # 4.- Increase bolt load via Y ext load.
+ # 5.- Bring ext load to zero (back to preload only).
+ # 6.- Relax bolt load via closing the yoke.
+ # 7.- Increase bolt load via opening the yoke.
+ # -----------------------------------
+
+# =====
+# START of the ASTER input deck
+# =====
+DEBUT(LANG = 'EN');
+
+#             ----------
+# Reading the INPUT MESH
+#             ----------
+# Reading the mesh in ASTER (ascii) format (logical unit 21).
+# ASCII format preferred for the input mesh to allow quick hand edits on sets, etc in a text editor.
+# 
+mesh = LIRE_MAILLAGE ( 
+    FORMAT = "ASTER", 
+    INFO = 1,
+    UNITE = 21 ,
+);
+
+#        --------
+# Create NEW SETS:
+#        --------
+DEFI_GROUP(
+    reuse = mesh, MAILLAGE = mesh,
+    CREA_GROUP_MA = (
+        _F(
+            NOM = 'tetra10_els', 
+            TOUT = "OUI", 
+            TYPE_MAILLE = "TETRA10",
+        ),
+        _F(# TIED #1 elem set off a Master Surface
+            NOM = 'Tie_bolt_splits_mst_els', 
+            UNION = ('Tie_bolt_splits_mst_S1', 'Tie_bolt_splits_mst_S2', 'Tie_bolt_splits_mst_S4', 'Tie_bolt_splits_mst_S3'),
+        ),
+        _F(# TIED #1 elem set off a Slave Surface
+            NOM = 'Tie_bolt_splits_slv_els', 
+            UNION = ('Tie_bolt_splits_slv_S2', 'Tie_bolt_splits_slv_S4', 'Tie_bolt_splits_slv_S3', 'Tie_bolt_splits_slv_S1'),
+        ),
+        _F(# TIED #2 elem set off a Master Surface
+            NOM = 'Tie_bolt_head_mst_els', 
+            UNION = ('Tie_bolt_head_mst_S4', 'Tie_bolt_head_mst_S1', 'Tie_bolt_head_mst_S2', 'Tie_bolt_head_mst_S3'),
+        ),
+        _F(# TIED #2 elem set off a Slave Surface
+            NOM = 'Tie_bolt_head_slv_els', 
+            UNION = ('Tie_bolt_head_slv_S2', 'Tie_bolt_head_slv_S4', 'Tie_bolt_head_slv_S3', 'Tie_bolt_head_slv_S1'),
+        ),
+        _F(# TIED #3 elem set off a Master Surface
+            NOM = 'Tie_bolt_thread_mst_els', 
+            UNION = ('Tie_bolt_thread_mst_S3', 'Tie_bolt_thread_mst_S4', 'Tie_bolt_thread_mst_S1', 'Tie_bolt_thread_mst_S2'),
+        ),
+        _F(# TIED #3 elem set off a Slave Surface
+            NOM = 'Tie_bolt_thread_slv_els', 
+            UNION = ('Tie_bolt_thread_slv_S1', 'Tie_bolt_thread_slv_S2', 'Tie_bolt_thread_slv_S4', 'Tie_bolt_thread_slv_S3'),
+        ),
+        _F(# TIED #4 elem set off a Master Surface
+            NOM = 'Tie_bolt_nut_mst_els', 
+            UNION = ('Tie_bolt_nut_mst_S3', 'Tie_bolt_nut_mst_S4', 'Tie_bolt_nut_mst_S2', 'Tie_bolt_nut_mst_S1'),
+        ),
+        _F(# TIED #4 elem set off a Slave Surface
+            NOM = 'Tie_bolt_nut_slv_els', 
+            UNION = ('Tie_bolt_nut_slv_S2', 'Tie_bolt_nut_slv_S1', 'Tie_bolt_nut_slv_S3', 'Tie_bolt_nut_slv_S4'),
+        ),
+    ),
+);
+
+#        --------------
+# Create NEW Slave SETS for TIED contacts:
+#        --------------
+DEFI_GROUP(
+    reuse = mesh, MAILLAGE = mesh,
+    CREA_GROUP_NO = (
+        _F(# TIED #1: Find tied nodes contained inside the topology Master elem_set
+            OPTION = "INCLUSION" ,
+            CAS_FIGURE = "3D",
+            NOM = 'sm_Tie_bolt_splits_slv',
+            GROUP_MA = 'Tie_bolt_splits_slv_els',
+            GROUP_MA_INCL = 'Tie_bolt_splits_mst_els', 
+            # DISTANCE_MAX = 0.05,  ## gap + 0.1mm if required
+        ),
+        _F(# TIED #2: Find tied nodes contained inside the topology Master elem_set
+            OPTION = "INCLUSION" ,
+            CAS_FIGURE = "3D",
+            NOM = 'sm_Tie_bolt_head_slv',
+            GROUP_MA = 'Tie_bolt_head_slv_els',
+            GROUP_MA_INCL = 'Tie_bolt_head_mst_els', 
+            # DISTANCE_MAX = 0.05,  ## gap + 0.1mm if required
+        ),
+        _F(# TIED #3: Find tied nodes contained inside the topology Master elem_set
+            OPTION = "INCLUSION" ,
+            CAS_FIGURE = "3D",
+            NOM = 'sm_Tie_bolt_thread_slv',
+            GROUP_MA = 'Tie_bolt_thread_slv_els',
+            GROUP_MA_INCL = 'Tie_bolt_thread_mst_els', 
+            # DISTANCE_MAX = 0.05,  ## gap + 0.1mm if required
+        ),
+        _F(# TIED #4: Find tied nodes contained inside the topology Master elem_set
+            OPTION = "INCLUSION" ,
+            CAS_FIGURE = "3D",
+            NOM = 'sm_Tie_bolt_nut_slv',
+            GROUP_MA = 'Tie_bolt_nut_slv_els',
+            GROUP_MA_INCL = 'Tie_bolt_nut_mst_els', 
+            # DISTANCE_MAX = 0.05,  ## gap + 0.1mm if required
+        ),
+    ),
+);
+
+# Generate a POI1 (point) element per ref_node in couplings;
+# code_aster request, but unnecessary, since we should only need the nodes with 6DoF each...
+mesh = CREA_MAILLAGE(
+    MAILLAGE = mesh,
+    CREA_POI1 = (
+        _F(
+            NOM_GROUP_MA = 'RP_N87784', 
+            GROUP_NO = 'N87784', 
+        ),
+        _F(
+            NOM_GROUP_MA = 'RP_N87786', 
+            GROUP_NO = 'N87786', 
+        ),
+        _F(
+            NOM_GROUP_MA = 'RP_N87788', 
+            GROUP_NO = 'N87788', 
+        ),
+        _F(
+            NOM_GROUP_MA = 'RP_N87790', 
+            GROUP_NO = 'N87790', 
+        ),
+        _F(
+            NOM_GROUP_MA = 'RP_N87792', 
+            GROUP_NO = 'N87792', 
+        ),
+    ),
+);
+
+# Generate node and elem (2 x) sets for the complete assembly
+DEFI_GROUP(
+    reuse = mesh, MAILLAGE = mesh,
+    CREA_GROUP_MA = (
+        _F(
+            NOM = 'all_els', 
+            TOUT = "OUI", 
+        ),
+    ),
+    CREA_GROUP_NO = (
+        _F(
+            NOM = 'all_nodes',
+            GROUP_MA = 'all_els', 
+        ),
+    ),
+);
+
+#                    ---------------------
+# Auto-build generic SETS to form TEMPLATEs in input decks
+#                    ---------------------
+# add all point MASS elem sets, careful if only mass (DIS_T) and/or inertia(s) required (DIS_TR).
+##  ( 0 ) sets
+mass_els = ();
+
+# add all SHELL element sets
+##  ( 0 ) sets
+shell_els = ();
+
+# add all SPRINGs (DIS_TR) elem sets, careful if only to-ground (K_TR_D_N) or between 2 nodes (K_TR_D_L)
+## ( 0 ) springs-to-ground
+spr_1_els = ();  
+## ( 0 ) 2-Node springs
+spr_2_els = ();  
+
+# add all element sets by COMPONENTs here, useful for output tables into (.dat) text file for assemblies.
+# e.g. mass / inertia breakdowns, and Total Strain Energy (TSE) contributions per part.
+## all structural elements: ( 3 ) sets
+assy_els = ('yoke_els', 'bolt_els', 'nut_els'); 
+## all mass / inertia elements: ( 3 ) sets
+assy_mass = ('yoke_els', 'bolt_els', 'nut_els');  
+## all structural elements for total_SE calcs: ( 3 ) sets
+assy_ener = ('yoke_els', 'bolt_els', 'nut_els');  
+
+# Add CONSTRAINED sets here, so that total REACTION(s) output always works in a generic form.
+# NOTE that for couplings (_RBE3 & _SOLIDE) sums don't work in tables, all zero values;
+# we need to use the node_sets in surfaces involved, another code_aster mistery ...
+##  ( 1 ) sets
+fix_sets = ('N87784');
+fix_surfs = ('DC_fix');
+# If SUBMODELLING, we add the cut node sets being 'driven' by the global model to `fix_all`, 
+# in order to get the SUM of reactions correct with the local models.
+fix_all = ('N87784', 'DC_fix');
+
+# Add LOADING sets here, so that force / moments may be applied in a generic form.
+# Also, for SUMs of input force / moment tables for sanity checks. See above for couplings.
+##  ( 4 ) sets
+load_sets = ('N87786', 'N87788', 'N87792', 'N87790');
+load_surfs = ('DC_M14_bolt_1', 'DC_M14_thread_1', 'DC_load_mY', 'DC_load_pY');
+load_all = ('N87786', 'N87788', 'N87792', 'N87790', 'DC_M14_bolt_1', 'DC_M14_thread_1', 'DC_load_mY', 'DC_load_pY');
+
+# list COUPLING sets ([surf_set, ref_node_set]) if any involved, just for reference and sanity checks:
+##  ( 0 ) rigid couplings
+pairs_rigid_coups = [];
+##  ( 5 ) soft couplings
+pairs_soft_coups = [['DC_fix', 'N87784'], ['DC_M14_bolt_1', 'N87786'], ['DC_M14_thread_1', 'N87788'], ['DC_load_pY', 'N87790'], ['DC_load_mY', 'N87792']];
+##  ( 5 ) couplings ref RP elem_sets
+ref_RP_sets = ('RP_N87784', 'RP_N87786', 'RP_N87788', 'RP_N87790', 'RP_N87792');
+
+# list BOLT PRELOAD sets (*_head, *_thread) if any involved, 
+# so that the bolt load feature can be written:
+##  ( 1 ) total bolts found with the following load types:
+bolt_types = ['M14'];
+## below are the sets lists required to build each bolt preload feature in the deck:
+bolt_RP_head_sets = ('M14_bolt_RP_1');
+bolt_RP_thread_sets = ('M14_bolt_RP_thread_1');
+bolt_srf_head_sets = ('DC_M14_bolt_1');
+bolt_srf_thread_sets = ('DC_M14_thread_1');
+
+#        --------
+# Create NEW SETS: for bolt preloads
+#        --------
+DEFI_GROUP(
+    reuse = mesh, MAILLAGE = mesh,
+    CREA_GROUP_NO = (
+        _F(# all bolt head nodes for pretension loads
+            NOM = 'bolt_RP_head_sets', 
+            UNION = bolt_RP_head_sets,
+        ),
+        _F(# all bolt thread nodes for pretension loads
+            NOM = 'bolt_RP_thread_sets', 
+            UNION = bolt_RP_thread_sets,
+        ),
+    ),
+);
+
+#                      ------------------
+# Generic (structural) OUTPUTS and/or DoF used throughout the input deck:
+#                      ------------------
+dof_6 =        ('DX' ,'DY' ,'DZ', 'DRX' ,'DRY' ,'DRZ' , );
+dof_3 =        ('DX' ,'DY' ,'DZ', );
+
+coup_dof_3 =   ('DX-DY-DZ', );
+coup_dof_6 =   ('DX-DY-DZ-DRX-DRY-DRZ', );
+
+table_mass =   ('LIEU', 'CDG_X', 'CDG_Y', 'CDG_Z', 'MASSE', 'IX_G', 'IY_G', 'IZ_G');
+
+table_dof_3 =  ('NOEUD', 'NUME_ORDRE', 'DX' ,'DY' ,'DZ' , );
+table_dof_6 =  ('NOEUD', 'NUME_ORDRE', 'DX' ,'DY' ,'DZ' , 'DRX' ,'DRY' ,'DRZ' , );
+
+table_sums_3 = ('NUME_ORDRE', 'NOM_CHAM', 'RESULT_X', 'RESULT_Y', 'RESULT_Z', );
+table_sums_6 = ('NUME_ORDRE', 'NOM_CHAM', 'RESULT_X', 'RESULT_Y', 'RESULT_Z', \
+                'MOMENT_X', 'MOMENT_Y', 'MOMENT_Z', );
+
+# modal info to write to (.dat) text results file:
+table_modal_out = ('FREQ', 'FACT_PARTICI_DX', 'FACT_PARTICI_DY', 'FACT_PARTICI_DZ', \
+                           'MASS_EFFE_DX', 'MASS_EFFE_DY', 'MASS_EFFE_DZ', \
+                           'MASS_GENE', 'RIGI_GENE', );
+
+
+# Print in (*.msg) file ALL node/elem sets in the model (set_name, n_items) for sanity checks.
+print(f"""
+ALL Node_sets:
+=============
+{mesh.LIST_GROUP_NO()}
+
+ALL Element_sets:
+================
+{mesh.LIST_GROUP_MA()}
+""");
+
+
+# -----------
+# MODEL SETUP: assign domain types by auto-generic sets
+# -----------
+model_assy = AFFE_MODELE(
+    MAILLAGE = mesh,
+    AFFE = (
+        _F( # SOLID parts
+            GROUP_MA = assy_els,
+            PHENOMENE = "MECANIQUE",
+            MODELISATION = "3D", 
+        ),
+
+        _F( # dummy point elems on couplings ref_nodes to get 6 DoF active on each
+            GROUP_MA = ref_RP_sets,
+            PHENOMENE = "MECANIQUE",
+            MODELISATION = "DIS_TR", 
+        ),
+   ),
+);
+    
+# ---------
+# MATERIALS:
+# ---------
+Aluminium = DEFI_MATERIAU(
+    ELAS = 
+        _F(
+            E = 70000,
+            NU = 0.33, 
+            RHO = 2.7E-09,
+            ALPHA = 0,
+        ),
+);
+
+Steel = DEFI_MATERIAU(
+    ELAS = 
+        _F(
+            E = 200000,
+            NU = 0.29, 
+            RHO = 7.8E-09,
+            ALPHA = 0,
+        ),
+);
+
+# ----------
+# ASSIGNMENT of materials:
+# ----------
+materials = AFFE_MATERIAU(
+    MAILLAGE = mesh,
+    AFFE = (
+        _F( # SOLID part materials
+            GROUP_MA = 'yoke_els',
+            MATER = Aluminium, 
+        ),
+        _F( # SOLID part materials
+            GROUP_MA = 'bolt_els',
+            MATER = Steel, 
+        ),
+        _F( # SOLID part materials
+            GROUP_MA = 'nut_els',
+            MATER = Steel, 
+        ),
+    ),
+);
+
+#        ------        ------------                   -----
+# Assign SPRING and/or MASS-inertia properties and/or SHELL thickness:
+#        ------        ------------                   -----
+element_props = AFFE_CARA_ELEM(MODELE = model_assy,
+    DISCRET = (
+        _F( # dummy point mass/inertia on couplings ref_nodes for solver not to crash;
+            # (no need for statics, but there you go, a mistery!).
+            GROUP_MA = ref_RP_sets,
+            CARA='M_TR_D_N',
+            VALE=(0, \
+                  0, 0, 0, \
+                  0, 0, 0, 0, 0, 0, ), 
+        ),
+    ),
+);
+
+# ---------
+# COUPLINGS:
+# ---------
+# 
+# Definition of (soft) couplings: RBE3 (Nastran), or distributing (Abaqus) ones.
+# NOTE the pairing of surf_nodes (*_ESCL) + single reference_node (*_MAIT) per coupling.
+# 
+soft_coups = AFFE_CHAR_MECA(
+    MODELE = model_assy,
+    LIAISON_RBE3 = (
+        _F( # soft COUPLING #1
+            GROUP_NO_MAIT = 'N87784',
+            DDL_MAIT = dof_6,
+            GROUP_NO_ESCL = 'DC_fix',
+            DDL_ESCL = coup_dof_3, 
+            COEF_ESCL = 1.0,
+        ),
+        _F( # soft COUPLING #2
+            GROUP_NO_MAIT = 'N87786',
+            DDL_MAIT = dof_6,
+            GROUP_NO_ESCL = 'DC_M14_bolt_1',
+            DDL_ESCL = coup_dof_3, 
+            COEF_ESCL = 1.0,
+        ),
+        _F( # soft COUPLING #3
+            GROUP_NO_MAIT = 'N87788',
+            DDL_MAIT = dof_6,
+            GROUP_NO_ESCL = 'DC_M14_thread_1',
+            DDL_ESCL = coup_dof_3, 
+            COEF_ESCL = 1.0,
+        ),
+        _F( # soft COUPLING #4
+            GROUP_NO_MAIT = 'N87790',
+            DDL_MAIT = dof_6,
+            GROUP_NO_ESCL = 'DC_load_pY',
+            DDL_ESCL = coup_dof_3, 
+            COEF_ESCL = 1.0,
+        ),
+        _F( # soft COUPLING #5
+            GROUP_NO_MAIT = 'N87792',
+            DDL_MAIT = dof_6,
+            GROUP_NO_ESCL = 'DC_load_mY',
+            DDL_ESCL = coup_dof_3, 
+            COEF_ESCL = 1.0,
+        ),
+    ),
+);
+
+# ------------------------
+# TIED Contact Constraints:
+# ------------------------
+# Definition of ( 4 ) TIED Contact pair(s) across solid (tets) parts in the assembly.
+# NOTE the pairing of surf_nodes (*_ESCL) : (*_MAIT) per TIED contact.
+#
+tied = AFFE_CHAR_MECA(
+    MODELE = model_assy,
+    LIAISON_MAIL = (
+        _F( # TIED pair #1
+            GROUP_MA_MAIT = 'Tie_bolt_splits_mst_els',
+            GROUP_NO_ESCL = 'sm_Tie_bolt_splits_slv',
+            TYPE_RACCORD = "MASSIF",
+            DDL = ('DX', 'DZ', ), 
+            # DDL = dof_3, 
+            # DISTANCE_MAX = 0.05,  ## only use for edge cases
+        ),
+        _F( # TIED pair #2
+            GROUP_MA_MAIT = 'Tie_bolt_head_mst_els',
+            GROUP_NO_ESCL = 'sm_Tie_bolt_head_slv',
+            TYPE_RACCORD = "MASSIF",
+            DDL = dof_3, 
+            # DISTANCE_MAX = 0.05,  ## only use for edge cases
+        ),
+        _F( # TIED pair #3
+            GROUP_MA_MAIT = 'Tie_bolt_thread_mst_els',
+            GROUP_NO_ESCL = 'sm_Tie_bolt_thread_slv',
+            TYPE_RACCORD = "MASSIF",
+            DDL = dof_3, 
+            # DISTANCE_MAX = 0.05,  ## only use for edge cases
+        ),
+        _F( # TIED pair #4
+            GROUP_MA_MAIT = 'Tie_bolt_nut_mst_els',
+            GROUP_NO_ESCL = 'sm_Tie_bolt_nut_slv',
+            TYPE_RACCORD = "MASSIF",
+            DDL = dof_3, 
+            # DISTANCE_MAX = 0.05,  ## only use for edge cases
+        ),
+    ),
+);
+
+tied2 = AFFE_CHAR_MECA(
+    MODELE = model_assy,
+    LIAISON_MAIL = (
+        _F( # TIED pair #1
+            GROUP_MA_MAIT = 'Tie_bolt_splits_mst_els',
+            GROUP_NO_ESCL = 'sm_Tie_bolt_splits_slv',
+            TYPE_RACCORD = "MASSIF",
+            DDL = dof_3, 
+            # DISTANCE_MAX = 0.05,  ## only use for edge cases
+        ),
+        _F( # TIED pair #2
+            GROUP_MA_MAIT = 'Tie_bolt_head_mst_els',
+            GROUP_NO_ESCL = 'sm_Tie_bolt_head_slv',
+            TYPE_RACCORD = "MASSIF",
+            DDL = dof_3, 
+            # DISTANCE_MAX = 0.05,  ## only use for edge cases
+        ),
+        _F( # TIED pair #3
+            GROUP_MA_MAIT = 'Tie_bolt_thread_mst_els',
+            GROUP_NO_ESCL = 'sm_Tie_bolt_thread_slv',
+            TYPE_RACCORD = "MASSIF",
+            DDL = dof_3, 
+            # DISTANCE_MAX = 0.05,  ## only use for edge cases
+        ),
+        _F( # TIED pair #4
+            GROUP_MA_MAIT = 'Tie_bolt_nut_mst_els',
+            GROUP_NO_ESCL = 'sm_Tie_bolt_nut_slv',
+            TYPE_RACCORD = "MASSIF",
+            DDL = dof_3, 
+            # DISTANCE_MAX = 0.05,  ## only use for edge cases
+        ),
+    ),
+);
+
+# -----------
+# CONSTRAINTS: 
+# -----------
+fix_STEP_1 = AFFE_CHAR_MECA(
+    MODELE = model_assy,
+    DDL_IMPO = (
+        _F(
+            GROUP_NO = 'N87784',
+            DX = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DY = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DZ = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRX = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRY = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRZ = 0,
+        ),
+    ),
+);
+
+fix_STEP_2 = AFFE_CHAR_MECA(
+    MODELE = model_assy,
+    DDL_IMPO = (
+        _F(
+            GROUP_NO = 'N87784',
+            DX = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DY = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DZ = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRX = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRY = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRZ = 0,
+        ),
+    ),
+);
+
+fix_STEP_3 = AFFE_CHAR_MECA(
+    MODELE = model_assy,
+    DDL_IMPO = (
+        _F(
+            GROUP_NO = 'N87784',
+            DX = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DY = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DZ = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRX = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRY = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRZ = 0,
+        ),
+    ),
+);
+
+fix_STEP_4 = AFFE_CHAR_MECA(
+    MODELE = model_assy,
+    DDL_IMPO = (
+        _F(
+            GROUP_NO = 'N87784',
+            DX = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DY = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DZ = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRX = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRY = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRZ = 0,
+        ),
+    ),
+);
+
+fix_STEP_5 = AFFE_CHAR_MECA(
+    MODELE = model_assy,
+    DDL_IMPO = (
+        _F(
+            GROUP_NO = 'N87784',
+            DX = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DY = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DZ = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRX = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRY = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRZ = 0,
+        ),
+    ),
+);
+
+fix_STEP_6 = AFFE_CHAR_MECA(
+    MODELE = model_assy,
+    DDL_IMPO = (
+        _F(
+            GROUP_NO = 'N87784',
+            DX = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DY = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DZ = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRX = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRY = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRZ = 0,
+        ),
+    ),
+);
+
+fix_STEP_7 = AFFE_CHAR_MECA(
+    MODELE = model_assy,
+    DDL_IMPO = (
+        _F(
+            GROUP_NO = 'N87784',
+            DX = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DY = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DZ = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRX = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRY = 0,
+        ),
+        _F(
+            GROUP_NO = 'N87784',
+            DRZ = 0,
+        ),
+    ),
+);
+
+# -----
+# LOADS: 
+# -----
+load_STEP_1 = AFFE_CHAR_MECA(
+    MODELE = model_assy,
+    FORCE_NODALE = (
+        _F(
+            GROUP_NO = 'N87786',
+            FY = -10000,
+        ),
+        _F(
+            GROUP_NO = 'N87788',
+            FY = 10000,
+        ),
+    ),
+);
+
+load_STEP_2 = AFFE_CHAR_MECA(
+    MODELE = model_assy,
+    FORCE_NODALE = (
+        _F(
+            GROUP_NO = 'N87792',
+            FY = 10000,
+        ),
+    ),
+);
+
+load_STEP_3 = AFFE_CHAR_MECA(
+    MODELE = model_assy,
+    FORCE_NODALE = (
+        _F(
+            GROUP_NO = 'N87792',
+            FY = 1E-06,
+        ),
+    ),
+);
+
+load_STEP_4 = AFFE_CHAR_MECA(
+    MODELE = model_assy,
+    FORCE_NODALE = (
+        _F(
+            GROUP_NO = 'N87792',
+            FY = -10000,
+        ),
+    ),
+);
+
+load_STEP_5 = AFFE_CHAR_MECA(
+    MODELE = model_assy,
+    FORCE_NODALE = (
+        _F(
+            GROUP_NO = 'N87792',
+            FY = 1E-06,
+        ),
+    ),
+);
+
+load_STEP_6 = AFFE_CHAR_MECA(
+    MODELE = model_assy,
+    FORCE_NODALE = (
+        _F(
+            GROUP_NO = 'N87792',
+            FY = 20000,
+        ),
+        _F(
+            GROUP_NO = 'N87790',
+            FY = -20000,
+        ),
+    ),
+);
+
+load_STEP_7 = AFFE_CHAR_MECA(
+    MODELE = model_assy,
+    FORCE_NODALE = (
+        _F(
+            GROUP_NO = 'N87792',
+            FY = -20000,
+        ),
+        _F(
+            GROUP_NO = 'N87790',
+            FY = 20000,
+        ),
+    ),
+);
+
+ 
+# --------------------------------------
+# STEP_1: Linear Statics - 7 x loadcases
+# --------------------------------------
+#
+# [ K ] matrix re-use when using a single set of constraints; i.e. fast linear solving.
+#
+# setup AMPLITUDE curves (tables) for solve time increments, period and each of the loadcases
+#             -------------
+# Setup solve time stepping (increments):
+#             -------------
+step_incs = DEFI_LIST_REEL (
+    TITRE = 'step_incs',
+    DEBUT = 0,
+    INTERVALLE = 
+        _F(
+            JUSQU_A = 7 , ## time period
+            PAS = 1,   ## time increment
+        ),
+    INFO = 2,
+);
+
+# ----------------
+# AMPLITUDE curves for each load vs step_incs:
+# ----------------
+amp_load_STEP_1 = DEFI_FONCTION (
+    TITRE = 'load_STEP_1',
+    NOM_PARA = "INST",
+    VALE = (
+        0, 0,
+        1, 1,
+        2, 0,
+    ),
+    PROL_GAUCHE = "CONSTANT",
+    PROL_DROITE = "CONSTANT",
+    INFO = 2,
+);
+
+amp_load_STEP_2 = DEFI_FONCTION (
+    TITRE = 'load_STEP_2',
+    NOM_PARA = "INST",
+    VALE = (
+        1, 0,
+        2, 1,
+        3, 0,
+    ),
+    PROL_GAUCHE = "CONSTANT",
+    PROL_DROITE = "CONSTANT",
+    INFO = 2,
+);
+
+amp_load_STEP_3 = DEFI_FONCTION (
+    TITRE = 'load_STEP_3',
+    NOM_PARA = "INST",
+    VALE = (
+        2, 0,
+        3, 1,
+        4, 0,
+    ),
+    PROL_GAUCHE = "CONSTANT",
+    PROL_DROITE = "CONSTANT",
+    INFO = 2,
+);
+
+amp_load_STEP_4 = DEFI_FONCTION (
+    TITRE = 'load_STEP_4',
+    NOM_PARA = "INST",
+    VALE = (
+        3, 0,
+        4, 1,
+        5, 0,
+    ),
+    PROL_GAUCHE = "CONSTANT",
+    PROL_DROITE = "CONSTANT",
+    INFO = 2,
+);
+
+amp_load_STEP_5 = DEFI_FONCTION (
+    TITRE = 'load_STEP_5',
+    NOM_PARA = "INST",
+    VALE = (
+        4, 0,
+        5, 1,
+        6, 0,
+    ),
+    PROL_GAUCHE = "CONSTANT",
+    PROL_DROITE = "CONSTANT",
+    INFO = 2,
+);
+
+amp_load_STEP_6 = DEFI_FONCTION (
+    TITRE = 'load_STEP_6',
+    NOM_PARA = "INST",
+    VALE = (
+        5, 0,
+        6, 1,
+        7, 0,
+    ),
+    PROL_GAUCHE = "CONSTANT",
+    PROL_DROITE = "CONSTANT",
+    INFO = 2,
+);
+
+amp_load_STEP_7 = DEFI_FONCTION (
+    TITRE = 'load_STEP_7',
+    NOM_PARA = "INST",
+    VALE = (
+        6, 0,
+        7, 1,
+        8, 0,
+    ),
+    PROL_GAUCHE = "CONSTANT",
+    PROL_DROITE = "CONSTANT",
+    INFO = 2,
+);
+
+
+# -------                                     -------------
+# Statics - Step#1: bolt pretension loads via STAT_NON_LINE
+# -------                                     -------------
+multi_LC = STAT_NON_LINE(
+    MODELE = model_assy,
+    CHAM_MATER = materials,
+    CARA_ELEM = element_props,     ### add springs, mass/inertia elements and/or SHELL thickness
+    EXCIT = (
+        _F(CHARGE = fix_STEP_1,),  ### add constraints
+        _F(CHARGE = soft_coups,),  ### add soft couplings
+        _F(CHARGE = tied,),        ### add TIED contact constraints
+        _F(CHARGE = load_STEP_1, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_1),
+    ),
+    INCREMENT = _F(LIST_INST = step_incs, INST_FIN = 1),   ### time stepping, n_LCs to solve
+    NEWTON = _F(
+        # make it linear at 1st
+        MATRICE = 'ELASTIQUE',
+        MATR_RIGI_SYME = 'OUI',
+        PREDICTION = 'ELASTIQUE',
+        REAC_INCR = 0,         ### K matrix update freq per time inc: 1=each inc; 0=none
+        REAC_ITER = 0,         ### K matrix update freq per Newton iteration: 1=each iter; 0=none
+    ),
+    SOLVEUR = _F( 
+        RESI_RELA = -1, STOP_SINGULIER = 'NON',
+        METHODE='MUMPS', GESTION_MEMOIRE = 'AUTO',
+        PCENT_PIVOT = 10, NPREC = 8,   ### default: NPREC=8 | it handles duplicate constraints!
+    ),
+    TITRE = 'Cold_Assy',
+);
+
+# -------                                   -------------
+# Statics - Step#2: [ K ] matrix re-use via STAT_NON_LINE
+# -------                                   -------------
+# This step reads the previous 'state' (ETAT_INIT + DIDI) with cold_assy bolt preloads + 
+# `locks` the bolts to take operating loadcases correctly.
+multi_LC = STAT_NON_LINE(
+    reuse = multi_LC,
+    RESULTAT = multi_LC,
+    ETAT_INIT = _F(EVOL_NOLI = multi_LC, INST = 1),
+    MODELE = model_assy,
+    CHAM_MATER = materials,
+    CARA_ELEM = element_props,     ### add springs, mass/inertia elements and/or SHELL thickness
+    EXCIT = (
+        _F(CHARGE = fix_STEP_1,),  ### add constraints
+        _F(CHARGE = soft_coups,),  ### add soft couplings
+        _F(CHARGE = tied2, TYPE_CHARGE = 'DIDI'),  ### add new TIED contact constraints to `lock` bolts
+        _F(CHARGE = load_STEP_2, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_2),
+        _F(CHARGE = load_STEP_3, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_3),
+        _F(CHARGE = load_STEP_4, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_4),
+        _F(CHARGE = load_STEP_5, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_5),
+        _F(CHARGE = load_STEP_6, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_6),
+        _F(CHARGE = load_STEP_7, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_7),
+    ),
+    INCREMENT = _F(LIST_INST = step_incs, INST_INIT = 1),   ### time stepping, n_LCs to solve
+    NEWTON = _F(
+        # make it linear at 1st
+        MATRICE = 'ELASTIQUE',
+        MATR_RIGI_SYME = 'OUI',
+        PREDICTION = 'ELASTIQUE',
+        REAC_INCR = 0,         ### K matrix update freq per time inc: 1=each inc; 0=none
+        REAC_ITER = 0,         ### K matrix update freq per Newton iteration: 1=each iter; 0=none
+    ),
+    SOLVEUR = _F( 
+        RESI_RELA = -1, STOP_SINGULIER = 'NON',
+        METHODE='MUMPS', GESTION_MEMOIRE = 'AUTO',
+        PCENT_PIVOT = 10, NPREC = 8,   ### default: NPREC=8 | it handles duplicate constraints!
+    ),
+    TITRE = 'multi_LCs',
+);
+
+# User results added + disps by default:  [ rmed binary rslts file ]:
+multi_LC = CALC_CHAMP(
+    reuse = multi_LC,
+    RESULTAT = multi_LC,
+    #   GROUP_MA = assy_els ,  ## default write all
+    ### OUTPUT types in code_aster: ('*_ELNO', '*_NOEU', '*_ELGA')
+    # Use *_NOEU, so it works in Paraview.
+    # Nodal stress / forces at nodes
+    CONTRAINTE = ('SIEF_NOEU'),            ### add 'SIGM_ELNO' if SHELLS
+    ## Nodal stress invariants: von Mises, etc.
+    CRITERES = ('SIEQ_NOEU', ),            ### add 'SIEQ_ELNO' if SHELLS
+    # Nodal reactions / forces
+    FORCE = ('REAC_NODA', 'FORC_NODA'),
+    ## 
+    ## for strains; if needed.
+    # DEFORMATION = ('EPSI_ELGA', 'EPSI_ELNO', ),
+    # for PLASTIC strains.
+    # EPSP_ELGA and EPSP_ELNO
+    ## for energies; if needed.
+    # ENERGIE = ('ENEL_ELEM', 'ENEL_NOEU', 'ETOT_NOEU'),
+    # Last 2 are SE densities at nodes, so it plots in ParaView.
+    # Uncomment below if energies required.
+    # ENERGIE = ('ENEL_NOEU', ),
+);
+
+
+# -------------
+# EXPORT TABLES in results text (.dat) file some results (variable/field labels).
+# -------------
+# Make sure in advance (with a small model) that you get what you need.
+# Comment out the line below to list all variables requested in the analysis, 
+# useful for initial checks on outputs.
+# If the model is large, consider doing all post-processing in a restart deck off a global `base`.
+
+# INFO_RESU(RESULTAT = multi_LC)
+
+#           ------
+# Calculate TOTALs: 
+#           ------
+# Mass/Inertia & Total Strain Energy (TSE) at assembly level per part (elem_sets).
+# These to go into (.dat) text results file, see further down for tables output.
+
+# Mass / Inertia breakdown in assembly, per component (elem sets).
+## check run time for large models b4 switching this on for many elem_sets; ALL option is faster.
+total_mass = POST_ELEM(
+    MASS_INER = ( _F( GROUP_MA = assy_mass, ), ),
+    RESULTAT = multi_LC,
+    CHAM_MATER = materials,
+    CARA_ELEM = element_props,
+);
+
+# Total Strain Energy (TSE) breakdown in assembly, per component (elem sets), and per loadcase.
+## check run time for large models b4 switching this on.
+assy_total_SE = POST_ELEM(
+    ENER_POT = _F( TOUT = "OUI", ),
+    RESULTAT = multi_LC,
+    CHAM_MATER = materials,
+    CARA_ELEM = element_props,
+);
+
+total_SE = POST_ELEM(
+    ENER_POT = _F( GROUP_MA = assy_ener, ),
+    RESULTAT = multi_LC,
+    CHAM_MATER = materials,
+    CARA_ELEM = element_props,
+);
+
+# This is just a test on all nodes in model, since sometimes the sum on node sets doesn't make sense.
+## check run time for large models b4 switching this on.
+all_sum_reactions = POST_RELEVE_T(
+    ACTION=_F(
+        INTITULE = 'ALL TOTAL RF & RM',
+        GROUP_NO = 'all_nodes',
+        RESULTAT = multi_LC,
+        NOM_CHAM = 'REAC_NODA',
+        TOUT_ORDRE = 'OUI',
+        RESULTANTE = dof_3,
+        MOMENT = ('DRX' ,'DRY' ,'DRZ' , ),
+        ## Location wrt which the moments are calculated
+        POINT = ( 0 , 0 , 0 , ),
+        OPERATION = 'EXTRACTION',
+    ),
+);
+
+# -------------
+# TABLES export
+# -------------
+# CHECK that all units make sense vs expected Mass/Inertias
+IMPR_TABLE (
+    TABLE = total_mass,
+    NOM_PARA = table_mass,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Total Mass / Inertia (ALL)
+            ==========================\n""",
+    UNITE = 8, 
+);
+
+IMPR_TABLE (
+    TABLE = assy_total_SE,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            ASSY - Total Strain Energy - Statics (TSE)
+            ==========================================\n""",
+    UNITE = 8, 
+);
+
+IMPR_TABLE (
+    TABLE = total_SE,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Total Strain Energy - Statics (TSE - ALL)
+            =========================================\n""",
+    UNITE = 8, 
+);
+
+# CHECK on loads over full model being reacted properly:
+IMPR_TABLE (
+    TABLE = all_sum_reactions,
+    NOM_PARA = table_sums_6,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            ALL nodes, Total Sum of Reactions: Forces & Moments
+            ===================================================\n""",
+    UNITE = 8, 
+);
+
+# SUM of ALL input forces/moments per DoF.
+sum_loads = POST_RELEVE_T(
+    ACTION=_F(
+        INTITULE = 'TOTAL F & M',
+        GROUP_NO = load_all,
+        RESULTAT = multi_LC,
+        NOM_CHAM = 'FORC_NODA',
+        TOUT_ORDRE = 'OUI',
+        RESULTANTE = dof_3,
+        MOMENT = ('DRX' ,'DRY' ,'DRZ' , ),
+        ## Location wrt which the moments are calculated
+        POINT = ( 0 , 0 , 0 , ),
+        OPERATION = 'EXTRACTION',
+    ),
+);
+
+load_disp = POST_RELEVE_T(
+    ACTION=_F(
+        INTITULE = 'Disps / Rots',
+        GROUP_NO = load_sets,
+        RESULTAT = multi_LC,
+        NOM_CHAM = 'DEPL',
+        NOM_CMP = dof_6,
+        OPERATION = 'EXTRACTION',
+    ),
+);
+
+# -------------
+# TABLES export
+# -------------
+# FEA models should be loaded via reference nodes on couplings, when aplicable,
+# so one ref node per load location; i.e. small tables.
+# Handy for quick stiffness hand calcs at loaded nodes.
+IMPR_TABLE (
+    TABLE = load_disp,
+    NOM_PARA = table_dof_6,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Displacements (mm) & Rotations (rad) @ load node(s)
+            ===================================================\n""",
+    UNITE = 8, 
+);
+
+# CHECK on sum of input Loads vs Reactions table:
+IMPR_TABLE (
+    TABLE = sum_loads,
+    NOM_PARA = table_sums_6,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Total Sum: Input Forces & Moments
+            =================================\n""",
+    UNITE = 8, 
+);
+
+# SUM of ALL reaction forces/moments for all node sets constrained and per DoF.
+sum_reactions = POST_RELEVE_T(
+    ACTION=_F(
+        INTITULE = 'TOTAL RF & RM',
+        GROUP_NO = fix_all,
+        RESULTAT = multi_LC,
+        NOM_CHAM = 'REAC_NODA',
+        TOUT_ORDRE = 'OUI',
+        RESULTANTE = dof_3,
+        MOMENT = ('DRX' ,'DRY' ,'DRZ' , ),
+        ## Location wrt which the moments are calculated
+        POINT = ( 0 , 0 , 0 , ),
+        OPERATION = 'EXTRACTION',
+    ),
+);
+
+# -------------
+# TABLES export
+# -------------
+# CHECK on loads being reacted properly in Statics:
+IMPR_TABLE (
+    TABLE = sum_reactions,
+    NOM_PARA = table_sums_6,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Total Sum of Reactions on sets: Forces & Moments
+            ================================================\n""",
+    UNITE = 8, 
+);
+
+sum_forces_Tie_bolt_splits = POST_RELEVE_T(
+    ACTION=_F(
+        INTITULE = 'TOTAL Force/Moment on tied pair Tie_bolt_splits',
+        GROUP_NO = 'sm_Tie_bolt_splits_slv',
+        RESULTAT = multi_LC,
+        NOM_CHAM = 'FORC_NODA',
+        TOUT_ORDRE = 'OUI',
+        RESULTANTE = ('DX' ,'DY' ,'DZ' , ),
+        MOMENT = ('DRX' ,'DRY' ,'DRZ' , ),
+        POINT = ( 0., 0., 0., ),   ## wrt which the moments are calculated
+        OPERATION = 'EXTRACTION',
+    ),
+);
+
+# CHECK on sum of TIED loads on Tie_bolt_splits:
+IMPR_TABLE (
+    TABLE = sum_forces_Tie_bolt_splits ,
+    NOM_PARA = table_sums_6,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Total Sum: TIED Forces & Moments: pair Tie_bolt_splits
+            ================================\n""",
+    UNITE = 8, 
+);
+
+sum_forces_Tie_bolt_head = POST_RELEVE_T(
+    ACTION=_F(
+        INTITULE = 'TOTAL Force/Moment on tied pair Tie_bolt_head',
+        GROUP_NO = 'sm_Tie_bolt_head_slv',
+        RESULTAT = multi_LC,
+        NOM_CHAM = 'FORC_NODA',
+        TOUT_ORDRE = 'OUI',
+        RESULTANTE = ('DX' ,'DY' ,'DZ' , ),
+        MOMENT = ('DRX' ,'DRY' ,'DRZ' , ),
+        POINT = ( 0., 0., 0., ),   ## wrt which the moments are calculated
+        OPERATION = 'EXTRACTION',
+    ),
+);
+
+# CHECK on sum of TIED loads on Tie_bolt_head:
+IMPR_TABLE (
+    TABLE = sum_forces_Tie_bolt_head ,
+    NOM_PARA = table_sums_6,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Total Sum: TIED Forces & Moments: pair Tie_bolt_head
+            ================================\n""",
+    UNITE = 8, 
+);
+
+sum_forces_Tie_bolt_thread = POST_RELEVE_T(
+    ACTION=_F(
+        INTITULE = 'TOTAL Force/Moment on tied pair Tie_bolt_thread',
+        GROUP_NO = 'sm_Tie_bolt_thread_slv',
+        RESULTAT = multi_LC,
+        NOM_CHAM = 'FORC_NODA',
+        TOUT_ORDRE = 'OUI',
+        RESULTANTE = ('DX' ,'DY' ,'DZ' , ),
+        MOMENT = ('DRX' ,'DRY' ,'DRZ' , ),
+        POINT = ( 0., 0., 0., ),   ## wrt which the moments are calculated
+        OPERATION = 'EXTRACTION',
+    ),
+);
+
+# CHECK on sum of TIED loads on Tie_bolt_thread:
+IMPR_TABLE (
+    TABLE = sum_forces_Tie_bolt_thread ,
+    NOM_PARA = table_sums_6,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Total Sum: TIED Forces & Moments: pair Tie_bolt_thread
+            ================================\n""",
+    UNITE = 8, 
+);
+
+sum_forces_Tie_bolt_nut = POST_RELEVE_T(
+    ACTION=_F(
+        INTITULE = 'TOTAL Force/Moment on tied pair Tie_bolt_nut',
+        GROUP_NO = 'sm_Tie_bolt_nut_slv',
+        RESULTAT = multi_LC,
+        NOM_CHAM = 'FORC_NODA',
+        TOUT_ORDRE = 'OUI',
+        RESULTANTE = ('DX' ,'DY' ,'DZ' , ),
+        MOMENT = ('DRX' ,'DRY' ,'DRZ' , ),
+        POINT = ( 0., 0., 0., ),   ## wrt which the moments are calculated
+        OPERATION = 'EXTRACTION',
+    ),
+);
+
+# CHECK on sum of TIED loads on Tie_bolt_nut:
+IMPR_TABLE (
+    TABLE = sum_forces_Tie_bolt_nut ,
+    NOM_PARA = table_sums_6,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Total Sum: TIED Forces & Moments: pair Tie_bolt_nut
+            ================================\n""",
+    UNITE = 8, 
+);
+
+# -----
+# BOLTS: 
+# -----
+# ( 1 ) bolt(s) loads tables: head & thread sides.
+bolt_forces = POST_RELEVE_T(
+    ACTION=_F(
+        INTITULE = 'TOTAL BOLTs F & M',
+        GROUP_NO = bolt_srf_head_sets,
+        RESULTAT = multi_LC,
+        NOM_CHAM = 'FORC_NODA',
+        TOUT_ORDRE = 'OUI',
+        RESULTANTE = dof_3,
+        MOMENT = ('DRX' ,'DRY' ,'DRZ' , ),
+        ## Location wrt which the moments are calculated
+        POINT = ( 0 , 0 , 0 , ),
+        OPERATION = 'EXTRACTION',
+    ),
+);
+
+thread_forces = POST_RELEVE_T(
+    ACTION=_F(
+        INTITULE = 'TOTAL THREADs F & M',
+        GROUP_NO = bolt_srf_thread_sets,
+        RESULTAT = multi_LC,
+        NOM_CHAM = 'FORC_NODA',
+        TOUT_ORDRE = 'OUI',
+        RESULTANTE = dof_3,
+        MOMENT = ('DRX' ,'DRY' ,'DRZ' , ),
+        ## Location wrt which the moments are calculated
+        POINT = ( 0 , 0 , 0 , ),
+        OPERATION = 'EXTRACTION',
+    ),
+);
+
+# -------------
+# TABLES export
+# -------------
+# CHECK on sum of ( 1 ) BOLT loads:
+# bolt head side
+IMPR_TABLE (
+    TABLE = bolt_forces,
+    NOM_PARA = table_sums_6,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA ="""
+            Total Sum: ( 1 ) BOLTs Head Forces & Moments
+            ===========================================\n""",
+    UNITE = 8, 
+);
+
+# bolt thread side
+IMPR_TABLE (
+    TABLE = thread_forces,
+    NOM_PARA = table_sums_6,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Total Sum: ( 1 ) THREADs Forces & Moments
+            ========================================\n""",
+    UNITE = 8, 
+);
+
+
+# 
+# Post results HACK (very ugly!) 
+# MED --> PV results so that deformed shapes + any results on assemblies can be plotted.
+# 
+all_steps = multi_LC.LIST_PARA()['NUME_ORDRE'];
+print(all_steps);
+time_steps = multi_LC.LIST_PARA()['INST'];
+print(time_steps);
+
+# Combine all stresses into a single field, 
+# so that Paraview can plot deformed shapes + any Stress variable.
+#                      ---------------------------------
+asse_list = []
+
+# for inc in range(len(all_steps)):
+for inc in all_steps:
+    # time = time_steps[inc-1] ##  for MECA_STATIQUE steps
+    # time = time_steps[inc]   ##  for STAT_NON_LIN steps; dunno why, but code_aster changes loadcase ID integers!
+    time = time_steps[inc]
+    try:
+        ## Extract stress tensor & elem forces at all nodes
+        sief = multi_LC.getField('SIEF_NOEU', inc)
+        ## Extract von Mises, etc stress fields - some nodes
+        sieq = multi_LC.getField('SIEQ_NOEU', inc)
+        ## Extract shells stress fields
+        # s_sief = sh_sief.getField('SIGM_NOEU', inc)
+        # s_sieq = sh_sieq.getField('SIEQ_NOEU', inc)
+        
+        # Combine all stress vars into one field
+        s_all = CREA_CHAMP(
+            OPERATION = 'ASSE',
+            TYPE_CHAM = 'NOEU_SIEF_R',
+            MAILLAGE = mesh,
+            ASSE=(
+                _F(CHAM_GD = sief, TOUT = 'OUI', CUMUL='OUI', COEF_R=1.0, ),  
+                _F(CHAM_GD = sieq, TOUT = 'OUI', CUMUL='OUI', COEF_R=1.0, ),
+                ## SHELLS
+                # _F(CHAM_GD = s_sief, TOUT = 'OUI', CUMUL='OUI', COEF_R=1.0, ),
+                # _F(CHAM_GD = s_sieq, TOUT = 'OUI', CUMUL='OUI', COEF_R=1.0, ),
+            ),
+        );
+        # Add to ASSE list
+        asse_list.append(_F(CHAM_GD = s_all, INST = time, MODELE = model_assy, ))
+    except Exception as e:
+        print(f'Error at step {time}: {e}')
+        continue
+
+# the copy of the results concept is required if we need a 'base' for restarts.
+# if we leave the post calcs below inside `multi_LC`, any restart after will crash.
+# there you go, the fun of working with code_aster, crazy ...
+post_multi_LC = COPIER (CONCEPT = multi_LC);
+
+# Merge results
+post_multi_LC = CREA_RESU(
+    reuse = post_multi_LC,
+    RESULTAT = post_multi_LC,
+    OPERATION = 'AFFE',
+    TYPE_RESU = 'EVOL_NOLI',
+    NOM_CHAM = "SIEF_NOEU",
+    AFFE = tuple(asse_list),
+);
+
+# Results variable names:
+s_vars = ('SIXX', 'SIYY', 'SIZZ', 'SIXY', 'SIXZ', 'SIYZ', 'N', 'VY', 'VZ', 'MT', 'MFY', 'MFZ', \
+          'VMIS', 'VMIS_SG', );    ## ('TRESCA', 'PRIN_1', 'PRIN_2', 'PRIN_3', );
+nvh_vars = ('N', 'VY', 'VZ', 'MT', 'MFY', 'MFZ', 'VMIS', 'VMIS_SG', );
+spr_vars = ('N', 'VY', 'VZ', 'MT', 'MFY', 'MFZ',)
+
+# ------
+# EXPORT STATIC (MED) results --> binary (.rmed) file, reads in Paraview.
+# ------
+IMPR_RESU(
+    FORMAT = "MED",
+    UNITE = 80,
+    RESU = (
+        _F( RESULTAT = post_multi_LC, 
+            NOM_RESU_MED = '1_Stat',
+            NOM_CHAM = ('DEPL', ),
+            # NOM_CHAM = ('DEPL', 'REAC_NODA', 'FORC_NODA', ),
+          ),
+        _F( RESULTAT = post_multi_LC, 
+            NOM_RESU_MED = '1_Stat',
+            NOM_CHAM = ('SIEF_NOEU'),
+            NOM_CMP = s_vars
+          ),
+    ),
+);
+
+# Nodal results at couplings, masses & springs to plot force/reaction vectors
+IMPR_RESU(
+    FORMAT = "MED",
+    UNITE = 81,
+    RESU = (
+        _F( RESULTAT = post_multi_LC, 
+            GROUP_MA =  ref_RP_sets,
+            NOM_RESU_MED = '1_Stat',
+            NOM_CHAM = ('DEPL', 'REAC_NODA', 'FORC_NODA', ),
+          ),
+        _F( RESULTAT = post_multi_LC, 
+            GROUP_MA =  ref_RP_sets,
+            NOM_RESU_MED = '1_Stat',
+            NOM_CHAM = ('SIEF_NOEU'),
+            NOM_CMP = spr_vars
+          ),
+    ),
+);
+# not needed in the 'base' results, so delete.
+DETRUIRE(NOM = (post_multi_LC, s_all, sief, sieq));
+
+
+# ===
+# END of the input deck
+# ===
+FIN();

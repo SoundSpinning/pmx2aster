@@ -1,0 +1,45 @@
+##
+##    PrePoMax --> code_aster from "pmx2aster.py" V0.1.4 | [ 01-Oct-2025 ] 
+##    Made by Sound Spinning | soundspinning@hotmail.com
+##    Meant to be run from a terminal with `run_aster *.export` instead of with `as_run`
+##
+
+ #  "sub_R3_shaft_bear.inp" model HEADING:
+ # Hash: n0jAYaVu, Date: 10/28/2025, Unit system: MM_TON_S_C
+ # sub_R3_shaft_bear.pmx
+ # Shaft & bearing SUBMODEL:
+ # Submodel on fillet off the global model.
+ # ------------------
+
+### RAM in MB - Since V16.7 the solver grabs 90% of this input
+P memory_limit 64000
+P ncpus 1
+### max solve time in seconds ==> 4e5s = 4.63days 
+P time_limit 400000.0
+
+## Input deck
+F comm sub_R3_shaft_bear.comm D  1
+
+## Input mesh - ASTER format
+F mesh sub_R3_shaft_bear.msh D  21
+
+## Output message file
+F mesg sub_R3_shaft_bear.msg R  6
+
+## Output text results file
+F data sub_R3_shaft_bear.dat R  8
+
+## MED results file#1
+F rmed sub_R3_shaft_bear.rmed R  80
+## MED results file#2
+F rmed sub_R3_shaft_bear_points_springs.rmed R  81
+
+## Output FOLDER for global restart files, also useful for Sub-modelling
+## When reading the `base` in a restart run, change RC --> DC
+## R base sub_R3_shaft_bear RC 0
+
+## Output local temp FOLDER (if needed) for solver temp (.med) files
+## R repe TMP R  0
+
+## SUBMODEL reads global results folder
+R base global_R3_shaft_bear DC 0

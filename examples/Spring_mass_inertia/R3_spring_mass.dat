@@ -1,0 +1,147 @@
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 000001d2 CALCULE LE 23/11/2025 A 10:57:01 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            Total Mass / Inertia (ALL)
+            ==========================
+LIEU                    , CDG_X       , CDG_Y       , CDG_Z       , MASSE       , IX_G        , IY_G        , IZ_G        
+Point_Mass_1_RP_RP_2    ,            0,            0,          100,        0.001,            1,          0.2,         0.03
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 000001d3 CALCULE LE 23/11/2025 A 10:57:01 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            ASSY - Total Strain Energy - Statics (TSE)
+            ==========================================
+NUME_ORDRE  , INST        , LIEU                    , ENTITE  , TOTALE      , POUR_CENT   
+           1,            1, 00000001                , TOUT    ,         1000,          100
+           2,            2, 00000001                , TOUT    ,          250,          100
+           3,            3, 00000001                , TOUT    ,         62.5,          100
+           4,            4, 00000001                , TOUT    ,         1000,          100
+           5,            5, 00000001                , TOUT    ,         1000,          100
+           6,            6, 00000001                , TOUT    ,         1000,          100
+           7,            7, 00000001                , TOUT    ,         1250,          100
+           8,            8, 00000001                , TOUT    ,        312.5,          100
+           9,            9, 00000001                , TOUT    ,       78.125,          100
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 000001d4 CALCULE LE 23/11/2025 A 10:57:01 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            Total Strain Energy - Statics (TSE - ALL)
+            =========================================
+NUME_ORDRE  , INST        , LIEU                    , ENTITE  , TOTALE      , POUR_CENT   
+           1,            1, Set_spr                 , GROUP_MA,         1000,          100
+           2,            2, Set_spr                 , GROUP_MA,          250,          100
+           3,            3, Set_spr                 , GROUP_MA,         62.5,          100
+           4,            4, Set_spr                 , GROUP_MA,         1000,          100
+           5,            5, Set_spr                 , GROUP_MA,         1000,          100
+           6,            6, Set_spr                 , GROUP_MA,         1000,          100
+           7,            7, Set_spr                 , GROUP_MA,         1250,          100
+           8,            8, Set_spr                 , GROUP_MA,        312.5,          100
+           9,            9, Set_spr                 , GROUP_MA,       78.125,          100
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 000001d5 CALCULE LE 23/11/2025 A 10:57:01 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            ALL nodes, Total Sum of Reactions: Forces & Moments
+            ===================================================
+NUME_ORDRE  , NOM_CHAM        , RESULT_X    , RESULT_Y    , RESULT_Z    , MOMENT_X    , MOMENT_Y    , MOMENT_Z    
+           1, REAC_NODA       ,      -44.721,            0,            0,            0,       2236.1,            0
+           2, REAC_NODA       ,            0,      -44.721,            0,      -2236.1,            0,            0
+           3, REAC_NODA       ,            0,            0,      -44.721,            0,            0,            0
+           4, REAC_NODA       ,            0,            0,            0,      -447.21,            0,            0
+           5, REAC_NODA       ,            0,            0,            0,            0,      -447.21,            0
+           6, REAC_NODA       ,            0,            0,            0,            0,            0,      -447.21
+           7, REAC_NODA       ,          -50,            0,            0,            0,         2500,            0
+           8, REAC_NODA       ,            0,          -50,            0,        -2500,            0,            0
+           9, REAC_NODA       ,            0,            0,          -50,            0,            0,            0
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 000001d7 CALCULE LE 23/11/2025 A 10:57:01 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            Displacements (mm) & Rotations (rad) @ load node(s)
+            ===================================================
+NOEUD   , NUME_ORDRE  , DX          , DY          , DZ          , DRX         , DRY         , DRZ         
+N3      ,            1,       44.721,            0,            0,            0,            0,            0
+N3      ,            2,            0,        11.18,            0,            0,            0,            0
+N3      ,            3,            0,            0,       2.7951,            0,            0,            0
+N3      ,            4,            0,            0,            0,       4.4721,            0,            0
+N3      ,            5,            0,            0,            0,            0,       4.4721,            0
+N3      ,            6,            0,            0,            0,            0,            0,       4.4721
+N3      ,            7,           50,            0,            0,            0,            0,            0
+N3      ,            8,            0,         12.5,            0,            0,            0,            0
+N3      ,            9,            0,            0,        3.125,            0,            0,            0
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 000001d6 CALCULE LE 23/11/2025 A 10:57:01 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            Total Sum: Input Forces & Moments
+            =================================
+NUME_ORDRE  , NOM_CHAM        , RESULT_X    , RESULT_Y    , RESULT_Z    , MOMENT_X    , MOMENT_Y    , MOMENT_Z    
+           1, FORC_NODA       ,       44.721,            0,   1.1833E-30,            0,       2236.1,            0
+           2, FORC_NODA       ,            0,       44.721,            0,      -2236.1,            0,            0
+           3, FORC_NODA       ,            0,            0,       44.721,            0,            0,            0
+           4, FORC_NODA       ,            0,            0,            0,       447.21,            0,   3.1554E-30
+           5, FORC_NODA       ,            0,            0,            0,            0,       447.21,            0
+           6, FORC_NODA       ,            0,            0,            0,  -3.1554E-30,            0,       447.21
+           7, FORC_NODA       ,           50,            0,   3.9443E-31,            0,         2500,            0
+           8, FORC_NODA       ,            0,           50,            0,        -2500,            0,            0
+           9, FORC_NODA       ,            0,            0,           50,            0,            0,            0
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 000001d8 CALCULE LE 23/11/2025 A 10:57:01 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            Total Sum of Reactions on sets: Forces & Moments
+            ================================================
+NUME_ORDRE  , NOM_CHAM        , RESULT_X    , RESULT_Y    , RESULT_Z    , MOMENT_X    , MOMENT_Y    , MOMENT_Z    
+           1, REAC_NODA       ,      -44.721,            0,  -1.1833E-30,            0,       2236.1,            0
+           2, REAC_NODA       ,            0,      -44.721,            0,      -2236.1,            0,            0
+           3, REAC_NODA       ,            0,            0,      -44.721,            0,            0,            0
+           4, REAC_NODA       ,            0,            0,            0,      -447.21,            0,  -3.1554E-30
+           5, REAC_NODA       ,            0,            0,            0,            0,      -447.21,            0
+           6, REAC_NODA       ,            0,            0,            0,   3.1554E-30,            0,      -447.21
+           7, REAC_NODA       ,          -50,            0,  -3.9443E-31,            0,         2500,            0
+           8, REAC_NODA       ,            0,          -50,            0,        -2500,            0,            0
+           9, REAC_NODA       ,            0,            0,          -50,            0,            0,            0
+
+
+--------------------------------------------------------------------------------
+Modal Results Table                                                             
+
+    Modal (Freqs(Hz), Participation Factors, Effective Mass)
+    ========================================================
+NUME_ORDRE  , FREQ        , FACT_PARTICI_DX, FACT_PARTICI_DY, FACT_PARTICI_DZ, MASS_EFFE_DX, MASS_EFFE_DY, MASS_EFFE_DZ, MASS_GENE   , RIGI_GENE   
+           1,       1.5915,      1.4327E-19,      2.8654E-19,     -2.3879E-20,   2.0527E-38,   8.2107E-38,   5.7019E-40,            1,          100
+           2,       3.5588,      2.6034E-18,      9.5515E-19,      2.3879E-19,   1.3555E-36,   1.8246E-37,   1.1404E-38,          0.2,          100
+           3,       5.0329,               1,     -1.1103E-16,      6.9396E-17,        0.001,   1.2328E-35,   4.8158E-36,        0.001,            1
+           4,       9.1888,      2.7758E-17,      4.6651E-17,      -1.446E-17,   2.3116E-35,   6.5288E-35,   6.2727E-36,         0.03,          100
+           5,       10.066,      1.1103E-16,               1,       -1.39E-16,   1.2328E-35,        0.001,    1.932E-35,        0.001,            4
+           6,       20.132,     -6.9396E-17,        1.39E-16,               1,   4.8158E-36,    1.932E-35,        0.001,        0.001,           16
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 000001f7 CALCULE LE 23/11/2025 A 10:57:02 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            Total Strain Energy - Modal (TSE - ALL)
+            =======================================
+NUME_ORDRE  , FREQ        , LIEU                    , ENTITE  , TOTALE      , POUR_CENT   
+           1,       1.5915, Set_spr                 , GROUP_MA,           50,          100
+           2,       3.5588, Set_spr                 , GROUP_MA,           50,          100
+           3,       5.0329, Set_spr                 , GROUP_MA,          0.5,          100
+           4,       9.1888, Set_spr                 , GROUP_MA,           50,          100
+           5,       10.066, Set_spr                 , GROUP_MA,            2,          100
+           6,       20.132, Set_spr                 , GROUP_MA,            8,          100
+

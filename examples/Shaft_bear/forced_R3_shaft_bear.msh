@@ -1,0 +1,19 @@
+%%
+%%    PrePoMax --> code_aster from "pmx2aster.py" V0.1.4 | [ 01-Oct-2025 ] 
+%%    Made by Sound Spinning | soundspinning@hotmail.com
+%%    Meant to be run from a terminal with `run_aster *.export` instead of with `as_run`
+%%
+ TITRE
+
+ #  "forced_R3_shaft_bear.inp" model HEADING:
+ # Hash: n0jAYaVu, Date: 10/28/2025, Unit system: MM_TON_S_C
+ # forced_R3_shaft_bear.pmx
+ # Shaft & bearing assembly:
+ # All soft couplings for fix, load and bearing races &
+ # a spring_6 with 6K values to represent the bearing elements stiffness.
+ # 
+ # Forced response as a restart from a Global run
+ # ----------------------------
+ FINSF
+ %
+ FIN

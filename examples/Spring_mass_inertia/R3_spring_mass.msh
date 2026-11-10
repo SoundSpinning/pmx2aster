@@ -1,0 +1,73 @@
+%%
+%%    PrePoMax --> code_aster from "pmx2aster.py" V0.1.4 | [ 01-Oct-2025 ] 
+%%    Made by Sound Spinning | soundspinning@hotmail.com
+%%    Meant to be run from a terminal with `run_aster *.export` instead of with `as_run`
+%%
+ TITRE
+
+ #  "R3_spring_mass.inp" model HEADING:
+ # Hash: dgY1c8w8, Date: 10/28/2025, Unit system: MM_TON_S_C
+ # R3_spring_mass.pmx
+ # 9 unit like static loads: 3 forces, 3 moments 3 ACC
+ # +
+ # Modal analysis - 6 modes
+ # ------------------------
+ FINSF
+ %
+ COOR_3D
+ N1  0.00000000E+000  0.00000000E+000  0.00000000E+000
+ N2  0.00000000E+000  0.00000000E+000  0.00000000E+000
+ N3  0.00000000E+000  0.00000000E+000  1.00000000E+002
+ N4  0.00000000E+000  0.00000000E+000  1.00000000E+002
+ FINSF
+ %
+ POI1
+ M1 N3
+ FINSF
+ %
+ SEG2
+ M2 N1 N3
+ FINSF
+ %
+ %
+ GROUP_MA
+ Point_Mass_1_RP_RP_2
+ M1
+ FINSF
+ %
+ GROUP_NO
+ RP_1_Ref_01
+ N1
+ FINSF
+ %
+ GROUP_NO
+ RP_1_Rot_02
+ N2
+ FINSF
+ %
+ GROUP_NO
+ RP_2_Ref_21
+ N3
+ FINSF
+ %
+ GROUP_NO
+ RP_2_Rot_22
+ N4
+ FINSF
+ %
+ GROUP_MA
+ Set_spr
+ M2
+ FINSF
+ %
+ GROUP_NO
+ N1
+ N1
+ FINSF
+ %
+ GROUP_NO
+ N3
+ N3
+ FINSF
+ %
+ FIN

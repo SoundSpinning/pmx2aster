@@ -1,0 +1,26 @@
+%%
+%%    PrePoMax --> code_aster from "pmx2aster.py" V0.1.4 | [ 01-Oct-2025 ] 
+%%    Made by Sound Spinning | soundspinning@hotmail.com
+%%    Meant to be run from a terminal with `run_aster *.export` instead of with `as_run`
+%%
+ TITRE
+
+ #  "forced_X_R3_assy_8bolts.inp" model HEADING:
+ # Hash: 3QCKejya, Date: 10/29/2025, Unit system: MM_TON_S_C
+ # forced_X_R3_assy_8bolts.pmx
+ # FORCED Response:
+ # shock wave - modal dynamics
+ # RESTART off modal run from global model
+ # 
+ # GLOBAL:
+ # Bolt pretension + tied contacts
+ # Cold Assy (bolt load), Unit loads & 
+ # modal check (with and without constraints).
+ # [ See hand edits in deck ]
+ # - statics: Tied contacts only in normal direction (DX) in step#1.
+ #            Lock bolts in Step#2; i.e. switch to `tied2` pairs on all DoF.
+ # - modal: `Tied_mod` contacts in all 3 DoF, avoid RBModes.
+ # --------------------------------
+ FINSF
+ %
+ FIN

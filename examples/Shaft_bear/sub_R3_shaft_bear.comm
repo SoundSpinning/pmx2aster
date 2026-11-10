@@ -1,0 +1,905 @@
+##
+##    PrePoMax --> code_aster from "pmx2aster.py" V0.1.4 | [ 01-Oct-2025 ] 
+##    Made by Sound Spinning | soundspinning@hotmail.com
+##    Meant to be run from a terminal with `run_aster *.export` instead of with `as_run`
+##
+
+ #  "sub_R3_shaft_bear.inp" model HEADING:
+ # Hash: n0jAYaVu, Date: 10/28/2025, Unit system: MM_TON_S_C
+ # sub_R3_shaft_bear.pmx
+ # Shaft & bearing SUBMODEL:
+ # Submodel on fillet off the global model.
+ # ------------------
+
+##                       --------
+## This model setup is a SUBMODEL, and runs as a restart from a global model
+##                       --------
+## Pls make sure you have all loads and/or constraints applicable to the local mesh(es),
+## AND that you have restart files from the global model, `base` folder.
+##
+
+# =====
+# START of the ASTER input deck
+# =====
+POURSUITE();
+
+#             ----------
+# Reading the INPUT MESH
+#             ----------
+# Reading the mesh in ASTER (ascii) format (logical unit 21).
+# ASCII format preferred for the input mesh to allow quick hand edits on sets, etc in a text editor.
+# 
+mesh = LIRE_MAILLAGE ( 
+    FORMAT = "ASTER", 
+    INFO = 1,
+    UNITE = 21 ,
+);
+
+#        --------
+# Create NEW SETS:
+#        --------
+DEFI_GROUP(
+    reuse = mesh, MAILLAGE = mesh,
+    CREA_GROUP_MA = (
+        _F(
+            NOM = 'tetra10_els', 
+            TOUT = "OUI", 
+            TYPE_MAILLE = "TETRA10",
+        ),
+    ),
+);
+
+# Generate node and elem (2 x) sets for the complete assembly
+DEFI_GROUP(
+    reuse = mesh, MAILLAGE = mesh,
+    CREA_GROUP_MA = (
+        _F(
+            NOM = 'all_els', 
+            TOUT = "OUI", 
+        ),
+    ),
+    CREA_GROUP_NO = (
+        _F(
+            NOM = 'all_nodes',
+            GROUP_MA = 'all_els', 
+        ),
+    ),
+);
+
+#                    ---------------------
+# Auto-build generic SETS to form TEMPLATEs in input decks
+#                    ---------------------
+# add all point MASS elem sets, careful if only mass (DIS_T) and/or inertia(s) required (DIS_TR).
+##  ( 0 ) sets
+mass_els = ();
+
+# add all SHELL element sets
+##  ( 0 ) sets
+shell_els = ();
+
+# add all SPRINGs (DIS_TR) elem sets, careful if only to-ground (K_TR_D_N) or between 2 nodes (K_TR_D_L)
+## ( 0 ) springs-to-ground
+spr_1_els = ();  
+## ( 0 ) 2-Node springs
+spr_2_els = ();  
+
+# add all element sets by COMPONENTs here, useful for output tables into (.dat) text file for assemblies.
+# e.g. mass / inertia breakdowns, and Total Strain Energy (TSE) contributions per part.
+## all structural elements: ( 1 ) sets
+assy_els = ('sub_els'); 
+## all mass / inertia elements: ( 1 ) sets
+assy_mass = ('sub_els');  
+## all structural elements for total_SE calcs: ( 1 ) sets
+assy_ener = ('sub_els');  
+
+# Add CONSTRAINED sets here, so that total REACTION(s) output always works in a generic form.
+# NOTE that for couplings (_RBE3 & _SOLIDE) sums don't work in tables, all zero values;
+# we need to use the node_sets in surfaces involved, another code_aster mistery ...
+##  ( 0 ) sets
+fix_sets = ();
+fix_surfs = ();
+# If SUBMODELLING, we add the cut node sets being 'driven' by the global model to `fix_all`, 
+# in order to get the SUM of reactions correct with the local models.
+fix_all = ('cuts_sub');
+
+# Add LOADING sets here, so that force / moments may be applied in a generic form.
+# Also, for SUMs of input force / moment tables for sanity checks. See above for couplings.
+##  ( 0 ) sets
+load_sets = ();
+load_surfs = ();
+load_all = ();
+
+# list COUPLING sets ([surf_set, ref_node_set]) if any involved, just for reference and sanity checks:
+##  ( 0 ) rigid couplings
+pairs_rigid_coups = [];
+##  ( 0 ) soft couplings
+pairs_soft_coups = [];
+##  ( 0 ) couplings ref RP elem_sets
+ref_RP_sets = ();
+
+#                      ------------------
+# Generic (structural) OUTPUTS and/or DoF used throughout the input deck:
+#                      ------------------
+dof_6 =        ('DX' ,'DY' ,'DZ', 'DRX' ,'DRY' ,'DRZ' , );
+dof_3 =        ('DX' ,'DY' ,'DZ', );
+
+coup_dof_3 =   ('DX-DY-DZ', );
+coup_dof_6 =   ('DX-DY-DZ-DRX-DRY-DRZ', );
+
+table_mass =   ('LIEU', 'CDG_X', 'CDG_Y', 'CDG_Z', 'MASSE', 'IX_G', 'IY_G', 'IZ_G');
+
+table_dof_3 =  ('NOEUD', 'NUME_ORDRE', 'DX' ,'DY' ,'DZ' , );
+table_dof_6 =  ('NOEUD', 'NUME_ORDRE', 'DX' ,'DY' ,'DZ' , 'DRX' ,'DRY' ,'DRZ' , );
+
+table_sums_3 = ('NUME_ORDRE', 'NOM_CHAM', 'RESULT_X', 'RESULT_Y', 'RESULT_Z', );
+table_sums_6 = ('NUME_ORDRE', 'NOM_CHAM', 'RESULT_X', 'RESULT_Y', 'RESULT_Z', \
+                'MOMENT_X', 'MOMENT_Y', 'MOMENT_Z', );
+
+# modal info to write to (.dat) text results file:
+table_modal_out = ('FREQ', 'FACT_PARTICI_DX', 'FACT_PARTICI_DY', 'FACT_PARTICI_DZ', \
+                           'MASS_EFFE_DX', 'MASS_EFFE_DY', 'MASS_EFFE_DZ', \
+                           'MASS_GENE', 'RIGI_GENE', );
+
+
+# Print in (*.msg) file ALL node/elem sets in the model (set_name, n_items) for sanity checks.
+print(f"""
+ALL Node_sets:
+=============
+{mesh.LIST_GROUP_NO()}
+
+ALL Element_sets:
+================
+{mesh.LIST_GROUP_MA()}
+""");
+
+
+# -----------
+# MODEL SETUP: assign domain types by auto-generic sets
+# -----------
+sub_model_assy = AFFE_MODELE(
+    MAILLAGE = mesh,
+    AFFE = (
+        _F( # SOLID parts
+            GROUP_MA = assy_els,
+            PHENOMENE = "MECANIQUE",
+            MODELISATION = "3D", 
+        ),
+   ),
+);
+    
+# ---------
+# MATERIALS:
+# ---------
+Aluminium = DEFI_MATERIAU(
+    ELAS = 
+        _F(
+            E = 70000,
+            NU = 0.33, 
+            RHO = 2.7E-09,
+            ALPHA = 0,
+        ),
+);
+
+# ----------
+# ASSIGNMENT of materials:
+# ----------
+materials = AFFE_MATERIAU(
+    MAILLAGE = mesh,
+    AFFE = (
+        _F( # SOLID part materials
+            GROUP_MA = 'sub_els',
+            MATER = Aluminium, 
+        ),
+    ),
+);
+
+# -----------
+# CONSTRAINTS: 
+# -----------
+# !!!!!!!!!!!!!!!!
+#   NO constraints found; pls check you have spring(s)-to-ground to hold the FEA assembly up.
+# !!!!!!!!!!!!!!!!
+                 
+# If this is a Submodel, make sure you have all loads and/or constraints applicable 
+# to the local mesh, on top of the submodel BCs in the step definition(s).
+
+# -----
+# LOADS: 
+# -----
+load_STEP_7 = AFFE_CHAR_MECA(
+    MODELE = sub_model_assy,
+    PESANTEUR = _F(
+        # GROUP_MA = elem_set,  ## default: apply to all, inc. point-masses
+        GRAVITE = 10000,
+        DIRECTION = (1, 0, 0),
+    ),
+);
+
+load_STEP_8 = AFFE_CHAR_MECA(
+    MODELE = sub_model_assy,
+    PESANTEUR = _F(
+        # GROUP_MA = elem_set,  ## default: apply to all, inc. point-masses
+        GRAVITE = 10000,
+        DIRECTION = (0, 1, 0),
+    ),
+);
+
+load_STEP_9 = AFFE_CHAR_MECA(
+    MODELE = sub_model_assy,
+    PESANTEUR = _F(
+        # GROUP_MA = elem_set,  ## default: apply to all, inc. point-masses
+        GRAVITE = 10000,
+        DIRECTION = (0, 0, 1),
+    ),
+);
+
+ 
+# --------------------------------------
+# STEP_1 to STEP_9: Linear Statics - 9 x loadcases
+# --------------------------------------
+#
+# [ K ] matrix re-use when using a single set of constraints; i.e. fast linear solving.
+#
+# setup AMPLITUDE curves (tables) for solve time increments, period and each of the loadcases
+#             -------------
+# Setup solve time stepping (increments):
+#             -------------
+step_incs = DEFI_LIST_REEL (
+    TITRE = 'step_incs',
+    DEBUT = 1,
+    INTERVALLE = 
+        _F(
+            JUSQU_A = 9 , ## time period
+            PAS = 1,   ## time increment
+        ),
+    INFO = 2,
+);
+
+# ----------------
+# AMPLITUDE curves for each load vs step_incs:
+# ----------------
+amp_load_STEP_1 = DEFI_FONCTION (
+    TITRE = 'load_STEP_1',
+    NOM_PARA = "INST",
+    VALE = (
+        0, 0,
+        1, 1,
+        2, 0,
+    ),
+    PROL_GAUCHE = "CONSTANT",
+    PROL_DROITE = "CONSTANT",
+    INFO = 2,
+);
+
+amp_load_STEP_2 = DEFI_FONCTION (
+    TITRE = 'load_STEP_2',
+    NOM_PARA = "INST",
+    VALE = (
+        1, 0,
+        2, 1,
+        3, 0,
+    ),
+    PROL_GAUCHE = "CONSTANT",
+    PROL_DROITE = "CONSTANT",
+    INFO = 2,
+);
+
+amp_load_STEP_3 = DEFI_FONCTION (
+    TITRE = 'load_STEP_3',
+    NOM_PARA = "INST",
+    VALE = (
+        2, 0,
+        3, 1,
+        4, 0,
+    ),
+    PROL_GAUCHE = "CONSTANT",
+    PROL_DROITE = "CONSTANT",
+    INFO = 2,
+);
+
+amp_load_STEP_4 = DEFI_FONCTION (
+    TITRE = 'load_STEP_4',
+    NOM_PARA = "INST",
+    VALE = (
+        3, 0,
+        4, 1,
+        5, 0,
+    ),
+    PROL_GAUCHE = "CONSTANT",
+    PROL_DROITE = "CONSTANT",
+    INFO = 2,
+);
+
+amp_load_STEP_5 = DEFI_FONCTION (
+    TITRE = 'load_STEP_5',
+    NOM_PARA = "INST",
+    VALE = (
+        4, 0,
+        5, 1,
+        6, 0,
+    ),
+    PROL_GAUCHE = "CONSTANT",
+    PROL_DROITE = "CONSTANT",
+    INFO = 2,
+);
+
+amp_load_STEP_6 = DEFI_FONCTION (
+    TITRE = 'load_STEP_6',
+    NOM_PARA = "INST",
+    VALE = (
+        5, 0,
+        6, 1,
+        7, 0,
+    ),
+    PROL_GAUCHE = "CONSTANT",
+    PROL_DROITE = "CONSTANT",
+    INFO = 2,
+);
+
+amp_load_STEP_7 = DEFI_FONCTION (
+    TITRE = 'load_STEP_7',
+    NOM_PARA = "INST",
+    VALE = (
+        6, 0,
+        7, 1,
+        8, 0,
+    ),
+    PROL_GAUCHE = "CONSTANT",
+    PROL_DROITE = "CONSTANT",
+    INFO = 2,
+);
+
+amp_load_STEP_8 = DEFI_FONCTION (
+    TITRE = 'load_STEP_8',
+    NOM_PARA = "INST",
+    VALE = (
+        7, 0,
+        8, 1,
+        9, 0,
+    ),
+    PROL_GAUCHE = "CONSTANT",
+    PROL_DROITE = "CONSTANT",
+    INFO = 2,
+);
+
+amp_load_STEP_9 = DEFI_FONCTION (
+    TITRE = 'load_STEP_9',
+    NOM_PARA = "INST",
+    VALE = (
+        8, 0,
+        9, 1,
+        10, 0,
+    ),
+    PROL_GAUCHE = "CONSTANT",
+    PROL_DROITE = "CONSTANT",
+    INFO = 2,
+);
+
+
+## --------
+## SUBMODEL setup
+## --------
+
+# Global to Submodel interpolation
+sub_disp = PROJ_CHAMP(
+    METHODE = "COLLOCATION",
+    RESULTAT = multi_LC,      ### results from `base` global model
+    MODELE_1 = model_assy,
+    MODELE_2 = sub_model_assy,
+    NOM_CHAM = ("DEPL"),
+    VIS_A_VIS = (
+        _F(GROUP_MA_1 = 'all_els', GROUP_NO_2 = 'cuts_sub'),
+    ),
+);
+
+# -------                     -------------
+# Statics: Submodel solve via MECA_STATIQUE
+# -------                     -------------
+# Generation of submodel BCs and solving steps for ( 9 ) LCs: 
+
+# Loadcase # 1:
+# Submodel disps
+sub_disp_1 = CREA_CHAMP(
+    TYPE_CHAM = "NOEU_DEPL_R", OPERATION = "EXTR", RESULTAT = sub_disp, NOM_CHAM = "DEPL", NUME_ORDRE = 1,);
+
+# Generate Submodel constraints
+sub_fix_1 = AFFE_CHAR_MECA(MODELE = sub_model_assy, CHAMNO_IMPO = _F(CHAM_NO = sub_disp_1, COEF_IMPO = 1.0),);
+    
+multi_LC = MECA_STATIQUE( 
+    MODELE = sub_model_assy,
+    CHAM_MATER = materials,
+    EXCIT = (
+        _F(CHARGE = sub_fix_1, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_1),
+    ),
+    INST = 1,         ### time step, i.e. LC to solve
+    OPTION = 'SANS',    ### turn off gaussian points results, see CALC_CHAMP
+    ### turn off auto checks, get results for debugging
+    SOLVEUR = _F( 
+        RESI_RELA = -1, STOP_SINGULIER = 'NON',
+        METHODE='MUMPS', GESTION_MEMOIRE = 'AUTO',
+        PCENT_PIVOT = 10, NPREC = 8,   ### default: NPREC=8 | it handles duplicate constraints!
+    ),
+    TITRE = 'multi_LCs',
+);
+
+# Loadcase # 2:
+# Submodel disps
+sub_disp_2 = CREA_CHAMP(
+    TYPE_CHAM = "NOEU_DEPL_R", OPERATION = "EXTR", RESULTAT = sub_disp, NOM_CHAM = "DEPL", NUME_ORDRE = 2,);
+
+# Generate Submodel constraints
+sub_fix_2 = AFFE_CHAR_MECA(MODELE = sub_model_assy, CHAMNO_IMPO = _F(CHAM_NO = sub_disp_2, COEF_IMPO = 1.0),);
+    
+multi_LC = MECA_STATIQUE( 
+    reuse = multi_LC,
+    RESULTAT = multi_LC,
+    MODELE = sub_model_assy,
+    CHAM_MATER = materials,
+    EXCIT = (
+        _F(CHARGE = sub_fix_2, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_2),
+    ),
+    INST = 2,         ### time step, i.e. LC to solve
+    OPTION = 'SANS',    ### turn off gaussian points results, see CALC_CHAMP
+    ### turn off auto checks, get results for debugging
+    SOLVEUR = _F( 
+        RESI_RELA = -1, STOP_SINGULIER = 'NON',
+        METHODE='MUMPS', GESTION_MEMOIRE = 'AUTO',
+        PCENT_PIVOT = 10, NPREC = 8,   ### default: NPREC=8 | it handles duplicate constraints!
+    ),
+    TITRE = 'multi_LCs',
+);
+
+# Loadcase # 3:
+# Submodel disps
+sub_disp_3 = CREA_CHAMP(
+    TYPE_CHAM = "NOEU_DEPL_R", OPERATION = "EXTR", RESULTAT = sub_disp, NOM_CHAM = "DEPL", NUME_ORDRE = 3,);
+
+# Generate Submodel constraints
+sub_fix_3 = AFFE_CHAR_MECA(MODELE = sub_model_assy, CHAMNO_IMPO = _F(CHAM_NO = sub_disp_3, COEF_IMPO = 1.0),);
+    
+multi_LC = MECA_STATIQUE( 
+    reuse = multi_LC,
+    RESULTAT = multi_LC,
+    MODELE = sub_model_assy,
+    CHAM_MATER = materials,
+    EXCIT = (
+        _F(CHARGE = sub_fix_3, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_3),
+    ),
+    INST = 3,         ### time step, i.e. LC to solve
+    OPTION = 'SANS',    ### turn off gaussian points results, see CALC_CHAMP
+    ### turn off auto checks, get results for debugging
+    SOLVEUR = _F( 
+        RESI_RELA = -1, STOP_SINGULIER = 'NON',
+        METHODE='MUMPS', GESTION_MEMOIRE = 'AUTO',
+        PCENT_PIVOT = 10, NPREC = 8,   ### default: NPREC=8 | it handles duplicate constraints!
+    ),
+    TITRE = 'multi_LCs',
+);
+
+# Loadcase # 4:
+# Submodel disps
+sub_disp_4 = CREA_CHAMP(
+    TYPE_CHAM = "NOEU_DEPL_R", OPERATION = "EXTR", RESULTAT = sub_disp, NOM_CHAM = "DEPL", NUME_ORDRE = 4,);
+
+# Generate Submodel constraints
+sub_fix_4 = AFFE_CHAR_MECA(MODELE = sub_model_assy, CHAMNO_IMPO = _F(CHAM_NO = sub_disp_4, COEF_IMPO = 1.0),);
+    
+multi_LC = MECA_STATIQUE( 
+    reuse = multi_LC,
+    RESULTAT = multi_LC,
+    MODELE = sub_model_assy,
+    CHAM_MATER = materials,
+    EXCIT = (
+        _F(CHARGE = sub_fix_4, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_4),
+    ),
+    INST = 4,         ### time step, i.e. LC to solve
+    OPTION = 'SANS',    ### turn off gaussian points results, see CALC_CHAMP
+    ### turn off auto checks, get results for debugging
+    SOLVEUR = _F( 
+        RESI_RELA = -1, STOP_SINGULIER = 'NON',
+        METHODE='MUMPS', GESTION_MEMOIRE = 'AUTO',
+        PCENT_PIVOT = 10, NPREC = 8,   ### default: NPREC=8 | it handles duplicate constraints!
+    ),
+    TITRE = 'multi_LCs',
+);
+
+# Loadcase # 5:
+# Submodel disps
+sub_disp_5 = CREA_CHAMP(
+    TYPE_CHAM = "NOEU_DEPL_R", OPERATION = "EXTR", RESULTAT = sub_disp, NOM_CHAM = "DEPL", NUME_ORDRE = 5,);
+
+# Generate Submodel constraints
+sub_fix_5 = AFFE_CHAR_MECA(MODELE = sub_model_assy, CHAMNO_IMPO = _F(CHAM_NO = sub_disp_5, COEF_IMPO = 1.0),);
+    
+multi_LC = MECA_STATIQUE( 
+    reuse = multi_LC,
+    RESULTAT = multi_LC,
+    MODELE = sub_model_assy,
+    CHAM_MATER = materials,
+    EXCIT = (
+        _F(CHARGE = sub_fix_5, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_5),
+    ),
+    INST = 5,         ### time step, i.e. LC to solve
+    OPTION = 'SANS',    ### turn off gaussian points results, see CALC_CHAMP
+    ### turn off auto checks, get results for debugging
+    SOLVEUR = _F( 
+        RESI_RELA = -1, STOP_SINGULIER = 'NON',
+        METHODE='MUMPS', GESTION_MEMOIRE = 'AUTO',
+        PCENT_PIVOT = 10, NPREC = 8,   ### default: NPREC=8 | it handles duplicate constraints!
+    ),
+    TITRE = 'multi_LCs',
+);
+
+# Loadcase # 6:
+# Submodel disps
+sub_disp_6 = CREA_CHAMP(
+    TYPE_CHAM = "NOEU_DEPL_R", OPERATION = "EXTR", RESULTAT = sub_disp, NOM_CHAM = "DEPL", NUME_ORDRE = 6,);
+
+# Generate Submodel constraints
+sub_fix_6 = AFFE_CHAR_MECA(MODELE = sub_model_assy, CHAMNO_IMPO = _F(CHAM_NO = sub_disp_6, COEF_IMPO = 1.0),);
+    
+multi_LC = MECA_STATIQUE( 
+    reuse = multi_LC,
+    RESULTAT = multi_LC,
+    MODELE = sub_model_assy,
+    CHAM_MATER = materials,
+    EXCIT = (
+        _F(CHARGE = sub_fix_6, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_6),
+    ),
+    INST = 6,         ### time step, i.e. LC to solve
+    OPTION = 'SANS',    ### turn off gaussian points results, see CALC_CHAMP
+    ### turn off auto checks, get results for debugging
+    SOLVEUR = _F( 
+        RESI_RELA = -1, STOP_SINGULIER = 'NON',
+        METHODE='MUMPS', GESTION_MEMOIRE = 'AUTO',
+        PCENT_PIVOT = 10, NPREC = 8,   ### default: NPREC=8 | it handles duplicate constraints!
+    ),
+    TITRE = 'multi_LCs',
+);
+
+# Loadcase # 7:
+# Submodel disps
+sub_disp_7 = CREA_CHAMP(
+    TYPE_CHAM = "NOEU_DEPL_R", OPERATION = "EXTR", RESULTAT = sub_disp, NOM_CHAM = "DEPL", NUME_ORDRE = 7,);
+
+# Generate Submodel constraints
+sub_fix_7 = AFFE_CHAR_MECA(MODELE = sub_model_assy, CHAMNO_IMPO = _F(CHAM_NO = sub_disp_7, COEF_IMPO = 1.0),);
+    
+multi_LC = MECA_STATIQUE( 
+    reuse = multi_LC,
+    RESULTAT = multi_LC,
+    MODELE = sub_model_assy,
+    CHAM_MATER = materials,
+    EXCIT = (
+        _F(CHARGE = sub_fix_7, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_7),
+        _F(CHARGE = load_STEP_7, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_7),
+    ),
+    INST = 7,         ### time step, i.e. LC to solve
+    OPTION = 'SANS',    ### turn off gaussian points results, see CALC_CHAMP
+    ### turn off auto checks, get results for debugging
+    SOLVEUR = _F( 
+        RESI_RELA = -1, STOP_SINGULIER = 'NON',
+        METHODE='MUMPS', GESTION_MEMOIRE = 'AUTO',
+        PCENT_PIVOT = 10, NPREC = 8,   ### default: NPREC=8 | it handles duplicate constraints!
+    ),
+    TITRE = 'multi_LCs',
+);
+
+# Loadcase # 8:
+# Submodel disps
+sub_disp_8 = CREA_CHAMP(
+    TYPE_CHAM = "NOEU_DEPL_R", OPERATION = "EXTR", RESULTAT = sub_disp, NOM_CHAM = "DEPL", NUME_ORDRE = 8,);
+
+# Generate Submodel constraints
+sub_fix_8 = AFFE_CHAR_MECA(MODELE = sub_model_assy, CHAMNO_IMPO = _F(CHAM_NO = sub_disp_8, COEF_IMPO = 1.0),);
+    
+multi_LC = MECA_STATIQUE( 
+    reuse = multi_LC,
+    RESULTAT = multi_LC,
+    MODELE = sub_model_assy,
+    CHAM_MATER = materials,
+    EXCIT = (
+        _F(CHARGE = sub_fix_8, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_8),
+        _F(CHARGE = load_STEP_8, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_8),
+    ),
+    INST = 8,         ### time step, i.e. LC to solve
+    OPTION = 'SANS',    ### turn off gaussian points results, see CALC_CHAMP
+    ### turn off auto checks, get results for debugging
+    SOLVEUR = _F( 
+        RESI_RELA = -1, STOP_SINGULIER = 'NON',
+        METHODE='MUMPS', GESTION_MEMOIRE = 'AUTO',
+        PCENT_PIVOT = 10, NPREC = 8,   ### default: NPREC=8 | it handles duplicate constraints!
+    ),
+    TITRE = 'multi_LCs',
+);
+
+# Loadcase # 9:
+# Submodel disps
+sub_disp_9 = CREA_CHAMP(
+    TYPE_CHAM = "NOEU_DEPL_R", OPERATION = "EXTR", RESULTAT = sub_disp, NOM_CHAM = "DEPL", NUME_ORDRE = 9,);
+
+# Generate Submodel constraints
+sub_fix_9 = AFFE_CHAR_MECA(MODELE = sub_model_assy, CHAMNO_IMPO = _F(CHAM_NO = sub_disp_9, COEF_IMPO = 1.0),);
+    
+multi_LC = MECA_STATIQUE( 
+    reuse = multi_LC,
+    RESULTAT = multi_LC,
+    MODELE = sub_model_assy,
+    CHAM_MATER = materials,
+    EXCIT = (
+        _F(CHARGE = sub_fix_9, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_9),
+        _F(CHARGE = load_STEP_9, TYPE_CHARGE = 'FIXE_CSTE', FONC_MULT = amp_load_STEP_9),
+    ),
+    INST = 9,         ### time step, i.e. LC to solve
+    OPTION = 'SANS',    ### turn off gaussian points results, see CALC_CHAMP
+    ### turn off auto checks, get results for debugging
+    SOLVEUR = _F( 
+        RESI_RELA = -1, STOP_SINGULIER = 'NON',
+        METHODE='MUMPS', GESTION_MEMOIRE = 'AUTO',
+        PCENT_PIVOT = 10, NPREC = 8,   ### default: NPREC=8 | it handles duplicate constraints!
+    ),
+    TITRE = 'multi_LCs',
+);
+
+# User results added + disps by default:  [ rmed binary rslts file ]:
+multi_LC = CALC_CHAMP(
+    reuse = multi_LC,
+    RESULTAT = multi_LC,
+    #   GROUP_MA = assy_els ,  ## default write all
+    ### OUTPUT types in code_aster: ('*_ELNO', '*_NOEU', '*_ELGA')
+    # Use *_NOEU, so it works in Paraview.
+    # Nodal stress / forces at nodes
+    CONTRAINTE = ('SIEF_NOEU'),            ### add 'SIGM_ELNO' if SHELLS
+    ## Nodal stress invariants: von Mises, etc.
+    CRITERES = ('SIEQ_NOEU', ),            ### add 'SIEQ_ELNO' if SHELLS
+    # Nodal reactions / forces
+    FORCE = ('REAC_NODA', 'FORC_NODA'),
+    ## 
+    ## for strains; if needed.
+    # DEFORMATION = ('EPSI_ELGA', 'EPSI_ELNO', ),
+    # for PLASTIC strains.
+    # EPSP_ELGA and EPSP_ELNO
+    ## for energies; if needed.
+    # ENERGIE = ('ENEL_ELEM', 'ENEL_NOEU', 'ETOT_NOEU'),
+    # Last 2 are SE densities at nodes, so it plots in ParaView.
+    # Uncomment below if energies required.
+    # ENERGIE = ('ENEL_NOEU', ),
+);
+
+
+# -------------
+# EXPORT TABLES in results text (.dat) file some results (variable/field labels).
+# -------------
+# Make sure in advance (with a small model) that you get what you need.
+# Comment out the line below to list all variables requested in the analysis, 
+# useful for initial checks on outputs.
+# If the model is large, consider doing all post-processing in a restart deck off a global `base`.
+
+# INFO_RESU(RESULTAT = multi_LC)
+
+#           ------
+# Calculate TOTALs: 
+#           ------
+# Mass/Inertia & Total Strain Energy (TSE) at assembly level per part (elem_sets).
+# These to go into (.dat) text results file, see further down for tables output.
+
+# Mass / Inertia breakdown in assembly, per component (elem sets).
+## check run time for large models b4 switching this on for many elem_sets; ALL option is faster.
+total_mass = POST_ELEM(
+    MASS_INER = ( _F( GROUP_MA = assy_mass, ), ),
+    RESULTAT = multi_LC,
+    CHAM_MATER = materials,
+    CARA_ELEM = element_props,
+);
+
+# Total Strain Energy (TSE) breakdown in assembly, per component (elem sets), and per loadcase.
+## check run time for large models b4 switching this on.
+assy_total_SE = POST_ELEM(
+    ENER_POT = _F( TOUT = "OUI", ),
+    RESULTAT = multi_LC,
+    CHAM_MATER = materials,
+    CARA_ELEM = element_props,
+);
+
+total_SE = POST_ELEM(
+    ENER_POT = _F( GROUP_MA = assy_ener, ),
+    RESULTAT = multi_LC,
+    CHAM_MATER = materials,
+    CARA_ELEM = element_props,
+);
+
+# This is just a test on all nodes in model, since sometimes the sum on node sets doesn't make sense.
+## check run time for large models b4 switching this on.
+all_sum_reactions = POST_RELEVE_T(
+    ACTION=_F(
+        INTITULE = 'ALL TOTAL RF & RM',
+        GROUP_NO = 'all_nodes',
+        RESULTAT = multi_LC,
+        NOM_CHAM = 'REAC_NODA',
+        TOUT_ORDRE = 'OUI',
+        RESULTANTE = dof_3,
+        MOMENT = ('DRX' ,'DRY' ,'DRZ' , ),
+        ## Location wrt which the moments are calculated
+        POINT = ( 0 , 0 , 0 , ),
+        OPERATION = 'EXTRACTION',
+    ),
+);
+
+# -------------
+# TABLES export
+# -------------
+# CHECK that all units make sense vs expected Mass/Inertias
+IMPR_TABLE (
+    TABLE = total_mass,
+    NOM_PARA = table_mass,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Total Mass / Inertia (ALL)
+            ==========================\n""",
+    UNITE = 8, 
+);
+
+IMPR_TABLE (
+    TABLE = assy_total_SE,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            ASSY - Total Strain Energy - Statics (TSE)
+            ==========================================\n""",
+    UNITE = 8, 
+);
+
+IMPR_TABLE (
+    TABLE = total_SE,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Total Strain Energy - Statics (TSE - ALL)
+            =========================================\n""",
+    UNITE = 8, 
+);
+
+# CHECK on loads over full model being reacted properly:
+IMPR_TABLE (
+    TABLE = all_sum_reactions,
+    NOM_PARA = table_sums_6,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            ALL nodes, Total Sum of Reactions: Forces & Moments
+            ===================================================\n""",
+    UNITE = 8, 
+);
+
+# SUM of ALL reaction forces/moments for all node sets constrained and per DoF.
+sum_reactions = POST_RELEVE_T(
+    ACTION=_F(
+        INTITULE = 'TOTAL RF & RM',
+        GROUP_NO = fix_all,
+        RESULTAT = multi_LC,
+        NOM_CHAM = 'REAC_NODA',
+        TOUT_ORDRE = 'OUI',
+        RESULTANTE = dof_3,
+        MOMENT = ('DRX' ,'DRY' ,'DRZ' , ),
+        ## Location wrt which the moments are calculated
+        POINT = ( 0 , 0 , 0 , ),
+        OPERATION = 'EXTRACTION',
+    ),
+);
+
+# -------------
+# TABLES export
+# -------------
+# CHECK on loads being reacted properly in Statics:
+IMPR_TABLE (
+    TABLE = sum_reactions,
+    NOM_PARA = table_sums_6,
+    FORMAT_R = 'G12.5',
+    SEPARATEUR = ', ',
+    COMMENTAIRE = '',
+    COMM_PARA = """
+            Total Sum of Reactions on sets: Forces & Moments
+            ================================================\n""",
+    UNITE = 8, 
+);
+
+
+# 
+# Post results HACK (very ugly!) 
+# MED --> PV results so that deformed shapes + any results on assemblies can be plotted.
+# 
+all_steps = multi_LC.LIST_PARA()['NUME_ORDRE'];
+print(all_steps);
+time_steps = multi_LC.LIST_PARA()['INST'];
+print(time_steps);
+
+# Combine all stresses into a single field, 
+# so that Paraview can plot deformed shapes + any Stress variable.
+#                      ---------------------------------
+asse_list = []
+
+# for inc in range(len(all_steps)):
+for inc in all_steps:
+    # time = time_steps[inc-1] ##  for MECA_STATIQUE steps
+    # time = time_steps[inc]   ##  for STAT_NON_LIN steps; dunno why, but code_aster changes loadcase ID integers!
+    time = time_steps[inc-1]
+    try:
+        ## Extract stress tensor & elem forces at all nodes
+        sief = multi_LC.getField('SIEF_NOEU', inc)
+        ## Extract von Mises, etc stress fields - some nodes
+        sieq = multi_LC.getField('SIEQ_NOEU', inc)
+        ## Extract shells stress fields
+        # s_sief = sh_sief.getField('SIGM_NOEU', inc)
+        # s_sieq = sh_sieq.getField('SIEQ_NOEU', inc)
+        
+        # Combine all stress vars into one field
+        s_all = CREA_CHAMP(
+            OPERATION = 'ASSE',
+            TYPE_CHAM = 'NOEU_SIEF_R',
+            MAILLAGE = mesh,
+            ASSE=(
+                _F(CHAM_GD = sief, TOUT = 'OUI', CUMUL='OUI', COEF_R=1.0, ),  
+                _F(CHAM_GD = sieq, TOUT = 'OUI', CUMUL='OUI', COEF_R=1.0, ),
+                ## SHELLS
+                # _F(CHAM_GD = s_sief, TOUT = 'OUI', CUMUL='OUI', COEF_R=1.0, ),
+                # _F(CHAM_GD = s_sieq, TOUT = 'OUI', CUMUL='OUI', COEF_R=1.0, ),
+            ),
+        );
+        # Add to ASSE list
+        asse_list.append(_F(CHAM_GD = s_all, INST = time, MODELE = sub_model_assy, ))
+    except Exception as e:
+        print(f'Error at step {time}: {e}')
+        continue
+
+# the copy of the results concept is required if we need a 'base' for restarts.
+# if we leave the post calcs below inside `multi_LC`, any restart after will crash.
+# there you go, the fun of working with code_aster, crazy ...
+post_multi_LC = COPIER (CONCEPT = multi_LC);
+
+# Merge results
+post_multi_LC = CREA_RESU(
+    reuse = post_multi_LC,
+    RESULTAT = post_multi_LC,
+    OPERATION = 'AFFE',
+    TYPE_RESU = 'EVOL_NOLI',
+    NOM_CHAM = "SIEF_NOEU",
+    AFFE = tuple(asse_list),
+);
+
+# Results variable names:
+s_vars = ('SIXX', 'SIYY', 'SIZZ', 'SIXY', 'SIXZ', 'SIYZ', 'VMIS', 'VMIS_SG', );    
+      ## ('TRESCA', 'PRIN_1', 'PRIN_2', 'PRIN_3', );
+
+# ------
+# EXPORT STATIC (MED) results --> binary (.rmed) file, reads in Paraview.
+# ------
+IMPR_RESU(
+    FORMAT = "MED",
+    UNITE = 80,
+    RESU = (
+        _F( RESULTAT = post_multi_LC, 
+            NOM_RESU_MED = '1_Stat',
+            NOM_CHAM = ('DEPL', ),
+            # NOM_CHAM = ('DEPL', 'REAC_NODA', 'FORC_NODA', ),
+          ),
+        _F( RESULTAT = post_multi_LC, 
+            NOM_RESU_MED = '1_Stat',
+            NOM_CHAM = ('SIEF_NOEU'),
+            NOM_CMP = s_vars
+          ),
+    ),
+);
+
+# not needed in the 'base' results, so delete.
+DETRUIRE(NOM = (post_multi_LC, s_all, sief, sieq));
+
+
+# ===
+# END of the input deck
+# ===
+FIN();
