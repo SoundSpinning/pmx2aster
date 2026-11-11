@@ -6,6 +6,8 @@ FEA translator from PrePoMax (`*.inp`) format --> code_aster
 \
 code_aster files generated: `*.export`, `*.msh` (ascii mesh, sets), `*.comm` (input deck)
 
+---
+
 ## 1.- Preamble
 
 This started as a fairly crude python convertor to handle most things from PrePoMax --> code_aster for **linear** structural assemblies: statics & dynamics. As I learnt (very painfully) that code_aster syntax and ways can sometimes change in a cumbersome way, the code slowly became a monolith 'brick'. However, it does work with a general method, as shown in notes and examples provided.
@@ -28,6 +30,8 @@ code_aster = `path-to\v2024\16.7\bin\run_aster.bat`
 
 Download here: [code_aster for Windows V16.7](https://simulease.com/wp-content/uploads/2025/05/code-aster_v2024_std.msi) ; 1CPU windows solver. Any other versions, and I don't know how it'll pan out because of possible syntax changes in CA.
 
+---
+
 ## 2.- Building Blocks for LINEAR FEA Assemblies
 
 There is a well established (over decades within pro FEA teams using commercial solvers) FEA methodology to build LINEAR structural assemblies (statics & dynamics), which rely only on a few key building blocks implemented correctly in a FEM linear solver. This general method not only covers how-to for most complex linear assemblies, but it also works with all commercial solvers I've ever used; i.e. one general method should hit (nearly) all linear applications.
@@ -35,6 +39,8 @@ There is a well established (over decades within pro FEA teams using commercial 
 Understanding a complete linear structural assembly on a Baseline design, specially at design concept stage, is **critical** before turning any non-linear terms on, if applicable/available. I see quite often newcomers starting with non-linear FEA models. I'd say, you need to understand the basic principals first with a linear assembly. Answer all the questions raised by that model, and ONLY start moving into non-linear, after the hard work has been done on linear checks and understanding.
 
 I make the point of using the term `Assembly` in FEA intentionally. The reason is quite simple: I don't know of any relevant complete product, that needs simulation work, that is made up of a single part. FEA in-production is all about understanding assemblies. Single part tutorials/tests are a start, but don't cover anywhere near the complexity of real assemblies. The latter should **allow for fast & informed decision making** on a design.
+
+---
 
 ### **Main linear building blocks**
 
@@ -46,6 +52,8 @@ I make the point of using the term `Assembly` in FEA intentionally. The reason i
 - COUPLINGS, both rigid (kinematic, RBE2, LIAISON_SOLIDE, etc) and soft (distributing, RBE3, interpolation, LIAISON_RBE3, remote load, etc ) ones. These are elements too, as part of the model definition, and are one of the key players for this assembly general method to work correctly. See their section further down, and why they are so relevant.
 - 2-node (or 1-node to-ground) SPRING elements. These are key on this general method for joints and correct local constraints per DoF. They have their own section below.
 - Mass / Inertia point-elements. They must handle 6DoF (to include inertia terms: Ixx, Iyy, Izz) and be applicable to spring nodes and/or couplings' reference nodes.
+
+---
 
 #### 2.2 **COUPLINGS** x 2 types
 
@@ -64,6 +72,8 @@ The moment you apply a rigid condition onto a surface, or group of nodes, that a
 >
 > - use the reference node on a soft coupling to apply force & moments vectors and/or any constraints at a surface (or node set). Then you are dealing only with a single node to dial in the exact load you want, and to output the reactions when constrained, per DoF in order to sanity check your assembly fast.
 
+---
+
 #### 2.3 **SPRINGS** (6K values)
 
 CBUSH (Nastran), connector (cartesian + rotation) in Abaqus, etc.
@@ -78,6 +88,8 @@ Once you have the 'combo' of 2 x soft couplings + 1 6dof_spring, then magically 
 For the high end K values, try not to use artificially high numbers, that local stiffness gradient doesn't exist in real life, and will cause all sort of trouble once you start adding non-linear terms to a sanity checked linear assembly. A good starting set of values for models in mm is: **K x,y,z = 1E+06N/mm & K rx,ry,rz = 1E+08Nmm/rad**. These come from experience.
 
 *NOTE*: in aerospace (and others) it is very common to use beams instead of springs, for very good reasons. However, the thinking behind the building method is the same, rotations/moments must be understood by the solver at both ends of any line elements used, when required/applicable.
+
+---
 
 #### 2.4 **TIED** contact constraints
 
@@ -94,11 +106,15 @@ I see online claims that TIED pairs cannot predict contact separation. Technical
 > \
 > The currency here is degrees-of-freedom (DoF), on loads, constraints and joints. Once that is understood correctly, the imagination is the limit on (most) linear assemblies.
 
+---
+
 #### 2.5 Automated TABLE Outputs for **fast Sanity Checks**
 
 The translator will try to make sense of the assembly setup (to some extent) in terms of loads and constraints, and write code_aster commands in its input deck (`*.comm`) for automated output of useful summary tables into the text results file (`*.dat`). Check the `*.export` file written by the translator to understand input and output files for the code_aster run, also you may need to edit the RAM allocation to your machine spec.
 
 The objective of these tables is to perform instant sanity checks without even having to open the 3D results viewer. Furthermore, the TSE (Total Strain Energy) tables are invaluable towards design recommendations via a fast method. More on that further down.
+
+---
 
 ##### 2.5.1 TABLE breakdown per part of CoG, mass & inertia values
 
@@ -124,6 +140,8 @@ UNION_GROUP_MA          ,       70.322,       1728.9,       141.91,      0.22031
 
 > [!TIP]
 > NOTE the parts' names in tables correspond to PrePoMax element set names per part: `part_name_els`, and when you assign sections in PrePoMax you need to use the previously created element set names, rather than selecting Parts.
+
+---
 
 ##### 2.5.2 TABLE with Sum of reaction forces/moments from all constraints, and per LC
   
@@ -199,6 +217,8 @@ NUME_ORDRE  , FREQ        , FACT_PARTICI_DX, FACT_PARTICI_DY, FACT_PARTICI_DZ, M
 
 This is all about fast checks before one even opens the 3D results viewer, often the tables inspection is enough to go back and fix something in an assembly model. It is also evidence, e.g. in front of a Chief Engineer, that you have performed all the basic checks.
 
+---
+
 ##### 2.5.3 Sum of Total Strain Energy (TSE) on a per part & per LC basis
 
 This is invaluable with assemblies for debugging and to start issuing design recommendations. High TSE on some parts normally means they should be optimised for stiffness. Low TSE contribution, then optimise for light-weighting.
@@ -270,10 +290,14 @@ Example of useful TABLE graphs from `fea2excel.py` on an assembly:
 
 ![Statics TSE table](examples/assets/Example_tables_auto_plots_TSE.png)
 
+---
+
 ## 3.- Some Features & PrePoMax How-To's
 
 As already explained, code_aster UX side of things is quite poor, in my opinion. I'll do my best to summarise what the translator needs; but by far, the best way is to inspect the models and input files provided in each example's folder. It took me a long time to get my head around code_aster ways for assemblies, and as a result it is only by looking at the examples that one can remember what's what...
 That is actually the very reason I started writing this code, because after adding a few features, I couldn't possibly remember CA syntax and quirks, hence automating it via this py.
+
+---
 
 ### 3.0 Getting started with a PrePoMax assembly template
 
@@ -284,9 +308,13 @@ Easiest way is to copy one of the small assy models provided in the examples, wh
 >
 > Furthermore, having sensible names equal in the UI and the solver keeps the source of the truth linked up in debugging and post-processing, plus, again, provides solid methods for colleagues to pick your work up fast when you are not around.
 
+---
+
 ### 3.1 PART (element sets) names and Section Assignment
 
 For the translator to work as intended, create in PrePoMax one element set per part (e.g. `part_name_els`); then use those to assign sections later on. These part names will then appear in the code_aster `*.msh`, `*.msg`, `*.comm` & `*.dat` files; and the legends in excel plots.
+
+---
 
 ### 3.2 COUPLINGS in PrePoMax
 
@@ -297,6 +325,8 @@ I used at the time, the generic *Rigid Body* entity in the UI, just to give me t
 
 All else should be automated from that. For force / moments load vectors and constraints, the translator expects that reference nodes on SOFT (or rigid) couplings are used.
 
+---
+
 ### 3.3 TIED Pairs in PrePoMax
 
 This is business as usual, use the `*Tie` constraint in the UI. You don't need to create surfaces, select them on the fly, the translator should handle the rest and the very long names output by PrePoMax on set names off ties. The translator cleans all those up, so that we keep the source of the truth vs the UI names in tree.
@@ -304,6 +334,8 @@ This is business as usual, use the `*Tie` constraint in the UI. You don't need t
 Also, remember to use the `position tolerance` if/when required, the translator also handles that one. And, don't forget for large assemblies with many parts, to use the great auto-pair finder in PrePoMax.
 
 As already described, the translator will auto-write tables to check on Forces / Moments per DoF, overall sums on each TIED pair, this is key to always check that they make sense.
+
+---
 
 ### 3.4 Point MASS / INERTIA elements
 
@@ -315,6 +347,8 @@ This is done in the keywords editor, reusing the elset from an RP; e.g.:
 *Mass, Elset=Point_Mass-1_RP_RP-2
 0.001, 1., 0.2, 0.03
 ```
+
+---
 
 ### 3.5 SPRING elements
 
@@ -335,6 +369,8 @@ This is quite painful in PrePoMax since it doesn't support line elements between
 This is an area where it pays off to be fussy about set names, it is key. The translator requires custom element types: `spring_6` for a 2-node spring, and `ground_spring_6` for a 1-node spring-to-ground. Then for the stiffness assignment 2 custom commands: `*Spring_6` & `*Ground_spring_6`.
 
 The translator should also support node set names in the spring definition, instead of IDs, BUT PrePoMax doesn't provide from the UI a node set creation from an RP, so back to manual checks, etc... Look in examples for cases on how to do those.
+
+---
 
 ### 3.6 LOADS & CONSTRAINTS
 
@@ -365,15 +401,21 @@ The translator also handles **vector pressure loads and normal pressures** on su
 
 Static **gravity loads** just needs an entry in PrePoMax on any (dummy) element set, and the translator will apply by default the gravity loads over the full assembly, including any mass/inertia point-elements, if present.
 
+---
+
 ### 3.7 Linear STATIC Loadcases
 
 In PrePoMax we need a linear static STEP entry per loadcase, typically common constraints are propagated across them. The translator will 'lump' all static loadcases onto a single code_aster STEP: Multi loadcase via linear MECA_STATIQUE, [K] matrix re-use solver; i.e. fast runs for linear stuff. It assumes you are not switching constraints across linear loadcases; or else you'll need to split them across separate STEPs in CA.
+
+---
 
 ### 3.8 Modal Analysis
 
 This is just a `*Frequency` STEP in PrePoMax. Use number of modes, rather than a freq range. It is quite common on a 1st modal check run on an assembly to get the 1st 6 modes, to make sure all low frequency content makes sense. Use hand calcs when possible using the modal table output information to check on predicted frequencies.
 
 omega = sqrt(K/M); omega = 2PI * Freq(Hz), K = stiffness, M = moving mass in a mode, not the complete assembly mass.
+
+---
 
 ### 3.9 Modal (transient) Forced Response
 
@@ -400,6 +442,8 @@ See example below, note the base motion line from keywords editor. The translato
 *Base motion, Type=Acc, DOF=1, Amplitude=input_G, Shock time=11ms
 **
 ```
+
+---
 
 ### 3.10 SUB-MODELLING Technique
 
@@ -434,6 +478,8 @@ Hash: xfrezGit, Date: 10/28/2025, Unit system: MM_TON_S_C
 *Restart, read, Input="global_R3_coups_2_cubes.rmed"
 ```
 
+---
+
 ### 3.11 BOLT Pre-Tension Loads (cold assembly)
 
 Another syntax nightmare in code_aster as it does not have this as a specific feature/load, but I think I managed to cook an automated recipe that works. It requires the CAD of each bolt split into 2 parts, and meshed as any other part. Add soft couplings at both cut planes following a naming convention. Then it is a one-liner in the keywords editor per bolt type.
@@ -450,6 +496,8 @@ code_aster also allows to use a static preload onto a modal analysis. There is a
 
 It should go without saying by now, that the translator auto-outputs a bolt load history table. You should always check this history on bolts, to make sure that the cold assembly step gets locked properly and operating loads appear doing the correct effects on loading / unloading the axial bolt preload.
 
+---
+
 ## 4.- EXAMPLES
 
 FEA is learnt by doing, and considering the incredibly time consuming task of learning code_aster ways, I've decided to share the test suite of models I built over the years to check on linear solvers (commercial & open-source), including Calculix, which a lot of people seem to rave about. These models all make sense in code_aster linear solve, as far as I could check. So, although one pays a high price on time invested in learning it, its (linear) maths do seem to work well and compare to commercial solvers and measurements, at least with the cases I've been involved in.
@@ -458,11 +506,15 @@ The examples' titles correspond to the sub-folder name for each case under the m
 
 Most of the example models were checked for a number of static loadcases and linear dynamics too with modal and forced response runs where applicable. Best check the PrePoMax models (pmx & inp), or the actual code_aster input file with comments, *.comm.
 
+---
+
 ### 4.1 Spring_mass_inertia
 
 This is a well known test, because you can 100% hand calc the expected results both for statics loadcases and the modal analysis for 6 modes. It's a tiny model with 2 nodes and 2 elements, but e.g. Calculix couldn't do it when I last checked in 2024, hence moving to code_aster, which it does work.
 
 ![Spring_mass_inertia Model](examples/assets/spring_mass_inertia_01.png)
+
+---
 
 ### 4.2 2_cubes_assembly
 
@@ -472,6 +524,8 @@ This case covers multi-loadcase statics, modal & forced response. It also has a 
 
 ![Spring_mass_inertia Model](examples/assets/2_cubes_assembly_01.png)
 
+---
+
 ### 4.3 Shells_bracket
 
 Same setup as the previous assembly but with low order shells.
@@ -480,6 +534,8 @@ This case covers multi-loadcase statics & modal analysis.
 ![Shells_bracket Model](examples/assets/Shells_bracket_01.png)
 
 NOTE: I found shells in general in code_aster a bit of a nightmare, to handle them in the input deck, but also to show results in paraview. The translator does the best it can, and it seems to work with low order TRIAs and QUADs. The high-order ones are very odd in code_aster as they have an additional face mid-node vs traditional ones. There you go ...
+
+---
 
 ### 4.4 Shaft_bear
 
@@ -504,7 +560,9 @@ This case covers multi-loadcase statics, modal & forced response (shock wave ACC
 
 Ignore absolute values shown on stresses, these are driven by unit-like loads to illustrate methods. In linear methods with unit-loads you can also use scale & combine to get the result you need for a given input without having to re-run large models, if that was the case.
 
-### 4.5 Bolt_preloads
+---
+
+### 4.5 Bolt_preloads (& Sub-Modelling)
 
 In this folder there are a number of models as I was implementing the bolt pre-tension load in code_aster.
 
@@ -543,6 +601,8 @@ In this folder there are a number of models as I was implementing the bolt pre-t
 
 ![Bolt_preloads Model](examples/assets/Bolt_preloads_06.png)
 
+The above sub-model mesh is similar to the global model one as a first check on the method, stresses should be very similar on global and local model, before you start refining the mesh on the local model and re-run.
+
 > Sub-Model (coarse) vs Global signed von Mises Stress: check method works, same stresses
 
 ![Bolt_preloads Model](examples/assets/Bolt_preloads_07.png)
@@ -553,4 +613,125 @@ The model above was a check on the sub-modelling method, then you can refine the
 
 ![Bolt_preloads Model](examples/assets/Bolt_preloads_08.png)
 
-Sub-modelling can be used in a creative manner, with local design changes on fillets, as long as the global stiffness doesn't change. The figure above is only a crude example to show a sub-model daisy chain method where we refine the mesh plus we try small changes to the fillets on the fly, without having to re-model and re-run the Global main assembly. These methods should be used with care!
+Sub-modelling can be used in a creative manner, with local design changes on fillets, as long as the global stiffness doesn't change. The figure above is only a crude example to show a sub-model daisy chain method where we refine the mesh plus we try small changes to the fillets on the fly, without having to re-model and re-run the Global main assembly.
+
+> [!WARNING]
+> These creative methods with sub-modelling and daisy channing subs, should be used with care! They are good for fast look/see on design direction for stress hot-spots. However, make sure the global stiffness doesn't change, and always re-run a latest global & sub-model design for final confirmation.
+
+---
+
+### 4.6 Assy_brackets (rigid vs soft couplings)
+
+This hinged assembly is a mock up CAD model I built representing real production failures I've seen with expensive re-design and re-calls of parts. The FEA spec in a company say stated that all needs to be modelled with rigid links and couplings. This has a sensible history behind. For large assemblies, like in a complete vehicle model for linear statics and dynamics (low frequency NVH), rigid links on local areas work. This is because the transmission of local forces is still correct, and the global (very large) model still gives the required answer for overall statics and low freq dynamics, where very local rigid connections do not change the modal behaviour.
+
+**However**, if you just pass that method onto a local sub-assembly for detailed deformations and stress hot-spot prediction, it all falls apart. What it worked great for the very large global model, doesn't represent reality on the local sub-assembly, as these models are highly over-constrained and optimistic.
+
+> Brackets assembly setup: assy_brackets_1.pmx
+
+![BoltBrackets assembly_preloads Model](examples/assets/Assy_brackets_01.png)
+
+The model is driven by 6 (unit-like) loadcases on a remote (RP) coupling reference node on the green part.
+
+> Brackets assembly: signed von Mises Stresses for rigid vs soft couplings variants
+
+The model on the left was built as per spec with rigid couplings. While the model on the right simply had all couplings swapped to soft ones and was re-ran as is.
+
+![Brackets assembly Model](examples/assets/Assy_brackets_02.png)
+
+The difference in results is instantly noticeable. The rigid version missed totally any stress raisers by the bolted base area, while the soft couplings version gives a very different result, which agrees with real failures I was exposed to. Here is a clear example why anything rigid, should be avoided at all costs, as it doesn't represent reality. Switching all models to soft couplings doesn't increase the modelling & run time if done properly.
+
+Note that the stress levels shown above are from unit loads, is the comparison between the 2 models that matters here.
+
+**BUT**, it gets even worse than the above. Now I've done a design iteration in the CAD, based on the results obtained with the rigid version of the assembly, in order to reduce its hot-spot stress levels on the thin vertical member. While the design iteration did its job on the original area of concern, look at the soft couplings version by the bolted area, the reality is that it got worse!
+
+> Iteration 1 - Brackets assembly: signed von Mises Stresses for rigid vs soft couplings variants
+
+The model on the left is with rigid couplings. While the model on the right simply had all couplings swapped to soft ones and was re-ran as is.
+
+![Brackets assembly Model](examples/assets/Assy_brackets_03.png)
+
+This means that, not only using rigid connections will ruin your model, but you cannot even do comparative work, which is one the powers of FEA.
+
+> [!TIP]
+> Avoid rigid connections and use soft links/couplings with some compliance. First check the linear solver handles all those building blocks correctly.
+>
+> It is emphasised that re-designing, re-prototyping and re-calling a production part, is one of the most expensive areas I've seen due to poor FEA implementations and checks. And in many cases, it boils down to abusing the use of rigid members and over-constraining models up.
+
+---
+
+### 4.7 Guitar (truss preload)
+
+Here is a fun example showing how an assembly bolt preload can affect the dynamic (natural frequencies) behaviour. Any decent guitar features a long adjustable truss along the neck/fretboard body. Luthiers carefully adjust the pretension with an allen key, so that the guitar is balanced with the tension imposed by the strings once tuned up.
+
+> Guitar assembly setup: ac_guitar_R3.pmx
+
+![Guitar Model](examples/assets/Guitar_01.png)
+
+> Guitar static assembly signed von Mises
+
+This results figure shows an exaggerated deformed shape plus stresses after the truss preload plus the strings tensile forces (at neck and bridge sides) are applied.
+
+![Guitar Model](examples/assets/Guitar_02.png)
+
+> Guitar Modal Analysis assembly
+
+The figure shows a comparison for the first natural frequency and shape for three different truss assembly preloads. As we increase this preload, we expect the natural frequencies to go up, as stiffer. The predicted results agree with this effect.
+
+![Guitar Model](examples/assets/Guitar_03.png)
+
+> Guitar Modal Analysis assembly
+
+The figure shows a comparison for higher frequencies. This is just to illustrate a method, the understanding of full dynamics is out of the scope of this work. I encourage you to play with the models provided and understand how/why a preload can affect the guitar performance.
+
+![Guitar Model](examples/assets/Guitar_04.png)
+
+The deformed shapes are highly exaggerated to illustrate effects. A modal analysis does not have loads, so it's all relative to each mode.
+
+> Guitar Forced Response Analysis
+
+Then, just for fun, and because we can, I performed a forced response analysis.
+
+The animation shows signed von Mises results from the transient forced response FEA. Note the bending on neck to body transition, makes sense.
+<!-- markdownlint-disable MD033 -->
+<p align="center">
+  <img src="examples/assets/1_forced_Z_ac_guitar_R3.gif" alt="Forced response animation" width="60%" />
+</p>
+<!-- markdownlint-enable MD033 -->
+
+---
+
+### 4.8 Radar
+
+This assembly design represents a very common setup found in moving structures with an **azimuth** and an **elevation** pair of axes. It also features their corresponding bearings modelled as described in the general method above and the `Shaft_bear` example.
+
+> Radar assembly setup: global_R2_radar.pmx
+
+![Radar Model](examples/assets/Radar_01.png)
+
+> Radar assembly static results
+
+![Radar Model](examples/assets/Radar_02.png)
+
+> Radar assembly statics Sub-Modelling
+
+![Radar Model](examples/assets/Radar_03.png)
+![Radar Model](examples/assets/Radar_04.png)
+![Radar Model](examples/assets/Radar_05.png)
+
+> Radar assembly Dynamics - Forced Response - Shock Wave
+
+Three views in one animation.
+<!-- markdownlint-disable MD033 -->
+<p align="center">
+  <img src="examples/assets/3_vids_shock_radar.gif" alt="Forced response animation" width="60%" style="max-size: 480px"/>
+</p>
+<!-- markdownlint-enable MD033 -->
+
+> Radar assembly Dynamics - Sub-Modelling
+
+![Radar Model](examples/assets/Radar_06.png)
+![Radar Model](examples/assets/Radar_07.png)
+![Radar Model](examples/assets/Radar_08.png)
+![Radar Model](examples/assets/Radar_09.png)
+
+---

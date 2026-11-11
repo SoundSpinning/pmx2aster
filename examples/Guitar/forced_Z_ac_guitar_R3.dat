@@ -1,0 +1,1684 @@
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 0000008e CALCULE LE 23/11/2025 A 10:18:37 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            Total Mass / Inertia (ALL)
+            ==========================
+LIEU                    , CDG_X       , CDG_Y       , CDG_Z       , MASSE       , IX_G        , IY_G        , IZ_G        
+body_els                ,       202.01,      -58.859,      -2.1813,    0.0006493,        12.42,       31.323,       22.064
+rod_body_els            ,      -152.47,      -6.0338,   -0.0012258,   5.6014E-05,   0.00027975,      0.29803,      0.29802
+rod_head_els            ,      -407.26,      -6.0379,   2.7373E-06,   5.6589E-05,   0.00028606,      0.30677,      0.30676
+block_els               ,      -60.248,      -61.484,       2.3905,   0.00019705,      0.30684,      0.16037,      0.26671
+neck_els                ,      -369.17,       -25.79,       2.1102,   0.00084969,       1.0056,       35.129,       35.109
+fretboard_els           ,      -258.47,       3.2465,       1.9653,   0.00020237,     0.098635,        4.575,       4.4778
+saddle_els              ,       250.32,       10.092,      -1.6445,   1.2983E-06,   0.00079558,   0.00079992,   9.6599E-06
+scratch_plate_els       ,       133.38,        0.635,      -90.218,   1.8429E-05,      0.01084,      0.08237,     0.071536
+saddle_plate_els        ,        257.8,         3.81,     0.078032,   2.9321E-05,     0.049384,     0.052337,    0.0032376
+strap_pegs              ,       155.63,      -69.423,      0.20048,   8.8647E-06,    0.0012713,      0.78783,      0.78891
+top_bridge_els          ,      -518.01,        4.276,       1.9691,   2.6428E-06,    0.0012955,    0.0012824,   1.9824E-05
+head_pegs               ,      -612.66,       -49.67,       1.9777,   0.00038604,       1.1919,       1.5179,       0.4679
+ribs_els                ,       220.52,      -53.991,     -0.69264,   0.00012816,         1.43,       3.7297,       2.9204
+frets_els               ,      -196.37,        7.135,       1.9652,   6.4307E-05,     0.031125,       1.3204,       1.2893
+UNION_GROUP_MA          ,      -184.45,       -37.12,      0.14753,    0.0026501,       17.995,        313.4,       303.31
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 0000008f CALCULE LE 23/11/2025 A 10:22:42 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            ASSY - Total Strain Energy - Statics (TSE)
+            ==========================================
+NUME_ORDRE  , INST        , LIEU                    , ENTITE  , TOTALE      , POUR_CENT   
+           1,            0, 00000002                , TOUT    ,            0,          100
+           2,      0.00275, 00000002                , TOUT    ,   1.8314E+05,          100
+           3,       0.0055, 00000002                , TOUT    ,   4.1038E+06,          100
+           4,      0.00825, 00000002                , TOUT    ,   2.3207E+07,          100
+           5,        0.011, 00000002                , TOUT    ,   5.9501E+07,          100
+           6,      0.01375, 00000002                , TOUT    ,   8.6289E+07,          100
+           7,       0.0165, 00000002                , TOUT    ,   7.9252E+07,          100
+           8,      0.01925, 00000002                , TOUT    ,   5.1517E+07,          100
+           9,        0.022, 00000002                , TOUT    ,   2.8783E+07,          100
+          10,      0.02475, 00000002                , TOUT    ,   1.8744E+07,          100
+          11,       0.0275, 00000002                , TOUT    ,   1.5843E+07,          100
+          12,      0.03025, 00000002                , TOUT    ,   1.1244E+07,          100
+          13,        0.033, 00000002                , TOUT    ,   2.4245E+06,          100
+          14,      0.03575, 00000002                , TOUT    ,   1.0658E+06,          100
+          15,       0.0385, 00000002                , TOUT    ,   6.9977E+06,          100
+          16,      0.04125, 00000002                , TOUT    ,   4.2433E+06,          100
+          17,        0.044, 00000002                , TOUT    ,        34176,          100
+          18,      0.04675, 00000002                , TOUT    ,   4.6577E+06,          100
+          19,       0.0495, 00000002                , TOUT    ,   5.2719E+06,          100
+          20,      0.05225, 00000002                , TOUT    ,   3.4927E+05,          100
+          21,        0.055, 00000002                , TOUT    ,    2.355E+06,          100
+          22,      0.05775, 00000002                , TOUT    ,   5.2881E+06,          100
+          23,       0.0605, 00000002                , TOUT    ,    1.359E+06,          100
+          24,      0.06325, 00000002                , TOUT    ,    7.527E+05,          100
+          25,        0.066, 00000002                , TOUT    ,   4.3609E+06,          100
+          26,      0.06875, 00000002                , TOUT    ,   2.4775E+06,          100
+          27,       0.0715, 00000002                , TOUT    ,        46627,          100
+          28,      0.07425, 00000002                , TOUT    ,   2.9622E+06,          100
+          29,        0.077, 00000002                , TOUT    ,   3.1582E+06,          100
+          30,      0.07975, 00000002                , TOUT    ,   1.6928E+05,          100
+          31,       0.0825, 00000002                , TOUT    ,    1.549E+06,          100
+          32,      0.08525, 00000002                , TOUT    ,   3.2261E+06,          100
+          33,        0.088, 00000002                , TOUT    ,    7.593E+05,          100
+          34,      0.09075, 00000002                , TOUT    ,   5.2703E+05,          100
+          35,       0.0935, 00000002                , TOUT    ,   2.7111E+06,          100
+          36,      0.09625, 00000002                , TOUT    ,   1.4417E+06,          100
+          37,        0.099, 00000002                , TOUT    ,        49898,          100
+          38,      0.10175, 00000002                , TOUT    ,   1.8788E+06,          100
+          39,       0.1045, 00000002                , TOUT    ,   1.8883E+06,          100
+          40,      0.10725, 00000002                , TOUT    ,        80915,          100
+          41,         0.11, 00000002                , TOUT    ,   1.0139E+06,          100
+          42,      0.11275, 00000002                , TOUT    ,   1.9639E+06,          100
+          43,       0.1155, 00000002                , TOUT    ,   4.2276E+05,          100
+          44,      0.11825, 00000002                , TOUT    ,   3.6592E+05,          100
+          45,        0.121, 00000002                , TOUT    ,   1.6819E+06,          100
+          46,      0.12375, 00000002                , TOUT    ,   8.3669E+05,          100
+          47,       0.1265, 00000002                , TOUT    ,        46237,          100
+          48,      0.12925, 00000002                , TOUT    ,   1.1883E+06,          100
+          49,        0.132, 00000002                , TOUT    ,   1.1272E+06,          100
+          50,      0.13475, 00000002                , TOUT    ,        38549,          100
+          51,       0.1375, 00000002                , TOUT    ,   6.6045E+05,          100
+          52,      0.14025, 00000002                , TOUT    ,   1.1933E+06,          100
+          53,        0.143, 00000002                , TOUT    ,   2.3431E+05,          100
+          54,      0.14575, 00000002                , TOUT    ,   2.5161E+05,          100
+          55,       0.1485, 00000002                , TOUT    ,   1.0415E+06,          100
+          56,      0.15125, 00000002                , TOUT    ,   4.8475E+05,          100
+          57,        0.154, 00000002                , TOUT    ,        39159,          100
+          58,      0.15675, 00000002                , TOUT    ,   7.4939E+05,          100
+          59,       0.1595, 00000002                , TOUT    ,   6.7186E+05,          100
+          60,      0.16225, 00000002                , TOUT    ,        18663,          100
+          61,        0.165, 00000002                , TOUT    ,    4.283E+05,          100
+          62,      0.16775, 00000002                , TOUT    ,   7.2408E+05,          100
+          63,       0.1705, 00000002                , TOUT    ,   1.2925E+05,          100
+          64,      0.17325, 00000002                , TOUT    ,   1.7123E+05,          100
+          65,        0.176, 00000002                , TOUT    ,   6.4374E+05,          100
+          66,      0.17875, 00000002                , TOUT    ,   2.8069E+05,          100
+          67,       0.1815, 00000002                , TOUT    ,        31346,          100
+          68,      0.18425, 00000002                , TOUT    ,   4.7127E+05,          100
+          69,        0.187, 00000002                , TOUT    ,   3.9983E+05,          100
+          70,      0.18975, 00000002                , TOUT    ,       9337.1,          100
+          71,       0.1925, 00000002                , TOUT    ,   2.7659E+05,          100
+          72,      0.19525, 00000002                , TOUT    ,   4.3896E+05,          100
+          73,        0.198, 00000002                , TOUT    ,        71008,          100
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 00000090 CALCULE LE 23/11/2025 A 10:26:58 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            Total Strain Energy - Statics (TSE - ALL)
+            =========================================
+NUME_ORDRE  , INST        , LIEU                    , ENTITE  , TOTALE      , POUR_CENT   
+           1,            0, body_els                , GROUP_MA,            0,            0
+           1,            0, rod_body_els            , GROUP_MA,            0,            0
+           1,            0, rod_head_els            , GROUP_MA,            0,            0
+           1,            0, block_els               , GROUP_MA,            0,            0
+           1,            0, neck_els                , GROUP_MA,            0,            0
+           1,            0, fretboard_els           , GROUP_MA,            0,            0
+           1,            0, saddle_els              , GROUP_MA,            0,            0
+           1,            0, scratch_plate_els       , GROUP_MA,            0,            0
+           1,            0, saddle_plate_els        , GROUP_MA,            0,            0
+           1,            0, strap_pegs              , GROUP_MA,            0,            0
+           1,            0, top_bridge_els          , GROUP_MA,            0,            0
+           1,            0, head_pegs               , GROUP_MA,            0,            0
+           1,            0, ribs_els                , GROUP_MA,            0,            0
+           1,            0, frets_els               , GROUP_MA,            0,            0
+           2,      0.00275, body_els                , GROUP_MA,        92683,       53.191
+           2,      0.00275, rod_body_els            , GROUP_MA,       1871.2,       1.0739
+           2,      0.00275, rod_head_els            , GROUP_MA,       1077.4,      0.61831
+           2,      0.00275, block_els               , GROUP_MA,       2647.6,       1.5195
+           2,      0.00275, neck_els                , GROUP_MA,        35173,       20.186
+           2,      0.00275, fretboard_els           , GROUP_MA,        16517,       9.4792
+           2,      0.00275, saddle_els              , GROUP_MA,   0.00046625,   2.6758E-07
+           2,      0.00275, scratch_plate_els       , GROUP_MA,       17.904,     0.010275
+           2,      0.00275, saddle_plate_els        , GROUP_MA,      0.20271,   0.00011634
+           2,      0.00275, strap_pegs              , GROUP_MA,        23265,       13.352
+           2,      0.00275, top_bridge_els          , GROUP_MA,       16.907,    0.0097028
+           2,      0.00275, head_pegs               , GROUP_MA,       179.42,      0.10297
+           2,      0.00275, ribs_els                , GROUP_MA,       246.49,      0.14146
+           2,      0.00275, frets_els               , GROUP_MA,       551.24,      0.31636
+           3,       0.0055, body_els                , GROUP_MA,   2.3814E+06,       61.137
+           3,       0.0055, rod_body_els            , GROUP_MA,        17614,       0.4522
+           3,       0.0055, rod_head_els            , GROUP_MA,        10572,      0.27141
+           3,       0.0055, block_els               , GROUP_MA,        56004,       1.4378
+           3,       0.0055, neck_els                , GROUP_MA,   5.5665E+05,       14.291
+           3,       0.0055, fretboard_els           , GROUP_MA,   2.4692E+05,       6.3392
+           3,       0.0055, saddle_els              , GROUP_MA,    0.0058793,   1.5094E-07
+           3,       0.0055, scratch_plate_els       , GROUP_MA,       381.49,    0.0097939
+           3,       0.0055, saddle_plate_els        , GROUP_MA,       7.1321,    0.0001831
+           3,       0.0055, strap_pegs              , GROUP_MA,   6.1113E+05,        15.69
+           3,       0.0055, top_bridge_els          , GROUP_MA,       142.29,    0.0036531
+           3,       0.0055, head_pegs               , GROUP_MA,       1568.4,     0.040264
+           3,       0.0055, ribs_els                , GROUP_MA,       5453.4,      0.14001
+           3,       0.0055, frets_els               , GROUP_MA,       7303.7,      0.18751
+           4,      0.00825, body_els                , GROUP_MA,   1.4052E+07,       63.815
+           4,      0.00825, rod_body_els            , GROUP_MA,        17087,     0.077597
+           4,      0.00825, rod_head_els            , GROUP_MA,       8437.1,     0.038316
+           4,      0.00825, block_els               , GROUP_MA,   3.1025E+05,       1.4089
+           4,      0.00825, neck_els                , GROUP_MA,   2.7558E+06,       12.515
+           4,      0.00825, fretboard_els           , GROUP_MA,   1.1727E+06,       5.3256
+           4,      0.00825, saddle_els              , GROUP_MA,      0.11997,   5.4482E-07
+           4,      0.00825, scratch_plate_els       , GROUP_MA,       2248.3,      0.01021
+           4,      0.00825, saddle_plate_els        , GROUP_MA,       74.106,   0.00033654
+           4,      0.00825, strap_pegs              , GROUP_MA,   3.6327E+06,       16.497
+           4,      0.00825, top_bridge_els          , GROUP_MA,       293.59,    0.0013333
+           4,      0.00825, head_pegs               , GROUP_MA,       3225.8,      0.01465
+           4,      0.00825, ribs_els                , GROUP_MA,        32657,      0.14831
+           4,      0.00825, frets_els               , GROUP_MA,        32360,      0.14696
+           5,        0.011, body_els                , GROUP_MA,   3.5653E+07,       63.178
+           5,        0.011, rod_body_els            , GROUP_MA,        18071,     0.032023
+           5,        0.011, rod_head_els            , GROUP_MA,        24597,     0.043587
+           5,        0.011, block_els               , GROUP_MA,   8.4196E+05,        1.492
+           5,        0.011, neck_els                , GROUP_MA,   7.4035E+06,       13.119
+           5,        0.011, fretboard_els           , GROUP_MA,   3.1206E+06,       5.5298
+           5,        0.011, saddle_els              , GROUP_MA,      0.43111,   7.6395E-07
+           5,        0.011, scratch_plate_els       , GROUP_MA,       5935.2,     0.010517
+           5,        0.011, saddle_plate_els        , GROUP_MA,       229.08,   0.00040593
+           5,        0.011, strap_pegs              , GROUP_MA,   9.1845E+06,       16.275
+           5,        0.011, top_bridge_els          , GROUP_MA,       567.96,    0.0010065
+           5,        0.011, head_pegs               , GROUP_MA,       5580.9,    0.0098897
+           5,        0.011, ribs_els                , GROUP_MA,        88580,      0.15697
+           5,        0.011, frets_els               , GROUP_MA,        85299,      0.15115
+           6,      0.01375, body_els                , GROUP_MA,   5.0799E+07,       62.107
+           6,      0.01375, rod_body_els            , GROUP_MA,        54056,      0.06609
+           6,      0.01375, rod_head_els            , GROUP_MA,        78824,     0.096371
+           6,      0.01375, block_els               , GROUP_MA,   1.2968E+06,       1.5855
+           6,      0.01375, neck_els                , GROUP_MA,   1.1444E+07,       13.991
+           6,      0.01375, fretboard_els           , GROUP_MA,   4.8209E+06,       5.8941
+           6,      0.01375, saddle_els              , GROUP_MA,      0.68892,   8.4228E-07
+           6,      0.01375, scratch_plate_els       , GROUP_MA,       8688.7,     0.010623
+           6,      0.01375, saddle_plate_els        , GROUP_MA,       348.43,     0.000426
+           6,      0.01375, strap_pegs              , GROUP_MA,   1.3016E+07,       15.913
+           6,      0.01375, top_bridge_els          , GROUP_MA,       860.85,    0.0010525
+           6,      0.01375, head_pegs               , GROUP_MA,       7986.3,    0.0097642
+           6,      0.01375, ribs_els                , GROUP_MA,   1.3358E+05,      0.16332
+           6,      0.01375, frets_els               , GROUP_MA,    1.316E+05,      0.16089
+           7,       0.0165, body_els                , GROUP_MA,   4.6597E+07,       62.035
+           7,       0.0165, rod_body_els            , GROUP_MA,        27043,     0.036003
+           7,       0.0165, rod_head_els            , GROUP_MA,        37061,      0.04934
+           7,       0.0165, block_els               , GROUP_MA,   1.1968E+06,       1.5933
+           7,       0.0165, neck_els                , GROUP_MA,   1.0598E+07,        14.11
+           7,       0.0165, fretboard_els           , GROUP_MA,   4.4622E+06,       5.9406
+           7,       0.0165, saddle_els              , GROUP_MA,       0.6694,   8.9118E-07
+           7,       0.0165, scratch_plate_els       , GROUP_MA,       7933.4,     0.010562
+           7,       0.0165, saddle_plate_els        , GROUP_MA,       330.76,   0.00044035
+           7,       0.0165, strap_pegs              , GROUP_MA,   1.1934E+07,       15.888
+           7,       0.0165, top_bridge_els          , GROUP_MA,       729.89,    0.0009717
+           7,       0.0165, head_pegs               , GROUP_MA,       7158.7,    0.0095304
+           7,       0.0165, ribs_els                , GROUP_MA,   1.2358E+05,      0.16452
+           7,       0.0165, frets_els               , GROUP_MA,   1.2171E+05,      0.16204
+           8,      0.01925, body_els                , GROUP_MA,   3.0621E+07,       62.694
+           8,      0.01925, rod_body_els            , GROUP_MA,        19828,     0.040597
+           8,      0.01925, rod_head_els            , GROUP_MA,       9750.6,     0.019964
+           8,      0.01925, block_els               , GROUP_MA,   7.4358E+05,       1.5224
+           8,      0.01925, neck_els                , GROUP_MA,   6.6116E+06,       13.537
+           8,      0.01925, fretboard_els           , GROUP_MA,   2.8027E+06,       5.7383
+           8,      0.01925, saddle_els              , GROUP_MA,        0.327,   6.6951E-07
+           8,      0.01925, scratch_plate_els       , GROUP_MA,       4961.2,     0.010158
+           8,      0.01925, saddle_plate_els        , GROUP_MA,        183.8,   0.00037632
+           8,      0.01925, strap_pegs              , GROUP_MA,   7.8675E+06,       16.108
+           8,      0.01925, top_bridge_els          , GROUP_MA,       601.14,    0.0012308
+           8,      0.01925, head_pegs               , GROUP_MA,       6416.9,     0.013138
+           8,      0.01925, ribs_els                , GROUP_MA,        76904,      0.15746
+           8,      0.01925, frets_els               , GROUP_MA,        76791,      0.15722
+           9,        0.022, body_els                , GROUP_MA,   1.7404E+07,       63.727
+           9,        0.022, rod_body_els            , GROUP_MA,        19306,     0.070691
+           9,        0.022, rod_head_els            , GROUP_MA,       8762.9,     0.032086
+           9,        0.022, block_els               , GROUP_MA,   3.8103E+05,       1.3952
+           9,        0.022, neck_els                , GROUP_MA,   3.4341E+06,       12.574
+           9,        0.022, fretboard_els           , GROUP_MA,   1.4764E+06,       5.4061
+           9,        0.022, saddle_els              , GROUP_MA,      0.10513,   3.8494E-07
+           9,        0.022, scratch_plate_els       , GROUP_MA,       2632.8,    0.0096401
+           9,        0.022, saddle_plate_els        , GROUP_MA,       79.099,   0.00028963
+           9,        0.022, strap_pegs              , GROUP_MA,   4.4977E+06,       16.469
+           9,        0.022, top_bridge_els          , GROUP_MA,       491.33,     0.001799
+           9,        0.022, head_pegs               , GROUP_MA,       5217.1,     0.019103
+           9,        0.022, ribs_els                , GROUP_MA,        39537,      0.14477
+           9,        0.022, frets_els               , GROUP_MA,        41230,      0.15097
+          10,      0.02475, body_els                , GROUP_MA,   1.1454E+07,        64.38
+          10,      0.02475, rod_body_els            , GROUP_MA,         5206,     0.029263
+          10,      0.02475, rod_head_els            , GROUP_MA,       3576.6,     0.020104
+          10,      0.02475, block_els               , GROUP_MA,   2.4112E+05,       1.3553
+          10,      0.02475, neck_els                , GROUP_MA,   2.1443E+06,       12.053
+          10,      0.02475, fretboard_els           , GROUP_MA,   9.1865E+05,       5.1637
+          10,      0.02475, saddle_els              , GROUP_MA,     0.075458,   4.2415E-07
+          10,      0.02475, scratch_plate_els       , GROUP_MA,       1727.3,    0.0097089
+          10,      0.02475, saddle_plate_els        , GROUP_MA,       53.839,   0.00030263
+          10,      0.02475, strap_pegs              , GROUP_MA,   2.9683E+06,       16.684
+          10,      0.02475, top_bridge_els          , GROUP_MA,       287.38,    0.0016153
+          10,      0.02475, head_pegs               , GROUP_MA,       2926.9,     0.016452
+          10,      0.02475, ribs_els                , GROUP_MA,        25447,      0.14303
+          10,      0.02475, frets_els               , GROUP_MA,        25543,      0.14358
+          11,       0.0275, body_els                , GROUP_MA,   9.3798E+06,       62.458
+          11,       0.0275, rod_body_els            , GROUP_MA,       4207.8,     0.028019
+          11,       0.0275, rod_head_els            , GROUP_MA,       5162.1,     0.034373
+          11,       0.0275, block_els               , GROUP_MA,   2.3265E+05,       1.5491
+          11,       0.0275, neck_els                , GROUP_MA,   2.0634E+06,       13.739
+          11,       0.0275, fretboard_els           , GROUP_MA,   8.7397E+05,       5.8195
+          11,       0.0275, saddle_els              , GROUP_MA,      0.10424,   6.9413E-07
+          11,       0.0275, scratch_plate_els       , GROUP_MA,       1561.9,       0.0104
+          11,       0.0275, saddle_plate_els        , GROUP_MA,       57.573,   0.00038336
+          11,       0.0275, strap_pegs              , GROUP_MA,   2.4071E+06,       16.028
+          11,       0.0275, top_bridge_els          , GROUP_MA,       188.53,    0.0012554
+          11,       0.0275, head_pegs               , GROUP_MA,       1887.2,     0.012566
+          11,       0.0275, ribs_els                , GROUP_MA,        23938,       0.1594
+          11,       0.0275, frets_els               , GROUP_MA,        23924,       0.1593
+          12,      0.03025, body_els                , GROUP_MA,   6.4411E+06,       60.474
+          12,      0.03025, rod_body_els            , GROUP_MA,       4206.3,     0.039493
+          12,      0.03025, rod_head_els            , GROUP_MA,       5308.1,     0.049837
+          12,      0.03025, block_els               , GROUP_MA,   1.8385E+05,       1.7262
+          12,      0.03025, neck_els                , GROUP_MA,   1.6484E+06,       15.476
+          12,      0.03025, fretboard_els           , GROUP_MA,   6.9084E+05,       6.4862
+          12,      0.03025, saddle_els              , GROUP_MA,      0.13395,   1.2576E-06
+          12,      0.03025, scratch_plate_els       , GROUP_MA,       1191.5,     0.011187
+          12,      0.03025, saddle_plate_els        , GROUP_MA,       59.244,   0.00055623
+          12,      0.03025, strap_pegs              , GROUP_MA,   1.6375E+06,       15.375
+          12,      0.03025, top_bridge_els          , GROUP_MA,       74.595,   0.00070036
+          12,      0.03025, head_pegs               , GROUP_MA,       733.45,    0.0068862
+          12,      0.03025, ribs_els                , GROUP_MA,        18806,      0.17656
+          12,      0.03025, frets_els               , GROUP_MA,        18845,      0.17693
+          13,        0.033, body_els                , GROUP_MA,   1.3498E+06,       58.679
+          13,        0.033, rod_body_els            , GROUP_MA,       8738.7,      0.37989
+          13,        0.033, rod_head_els            , GROUP_MA,       8957.4,       0.3894
+          13,        0.033, block_els               , GROUP_MA,        40501,       1.7607
+          13,        0.033, neck_els                , GROUP_MA,   3.8161E+05,       16.589
+          13,        0.033, fretboard_els           , GROUP_MA,   1.5882E+05,       6.9044
+          13,        0.033, saddle_els              , GROUP_MA,     0.053237,   2.3144E-06
+          13,        0.033, scratch_plate_els       , GROUP_MA,       279.04,      0.01213
+          13,        0.033, saddle_plate_els        , GROUP_MA,       20.455,   0.00088923
+          13,        0.033, strap_pegs              , GROUP_MA,   3.4272E+05,       14.899
+          13,        0.033, top_bridge_els          , GROUP_MA,       6.4428,   0.00028009
+          13,        0.033, head_pegs               , GROUP_MA,        25.07,    0.0010898
+          13,        0.033, ribs_els                , GROUP_MA,       4315.1,      0.18759
+          13,        0.033, frets_els               , GROUP_MA,       4525.1,      0.19672
+          14,      0.03575, body_els                , GROUP_MA,   6.2526E+05,       61.831
+          14,      0.03575, rod_body_els            , GROUP_MA,       2099.6,      0.20763
+          14,      0.03575, rod_head_els            , GROUP_MA,       1810.8,      0.17907
+          14,      0.03575, block_els               , GROUP_MA,        15587,       1.5413
+          14,      0.03575, neck_els                , GROUP_MA,   1.4264E+05,       14.105
+          14,      0.03575, fretboard_els           , GROUP_MA,        59535,       5.8873
+          14,      0.03575, saddle_els              , GROUP_MA,     0.023252,   2.2994E-06
+          14,      0.03575, scratch_plate_els       , GROUP_MA,        110.3,     0.010907
+          14,      0.03575, saddle_plate_els        , GROUP_MA,       7.0354,   0.00069572
+          14,      0.03575, strap_pegs              , GROUP_MA,   1.6079E+05,         15.9
+          14,      0.03575, top_bridge_els          , GROUP_MA,       1.6159,   0.00015979
+          14,      0.03575, head_pegs               , GROUP_MA,       24.446,    0.0024174
+          14,      0.03575, ribs_els                , GROUP_MA,       1734.6,      0.17153
+          14,      0.03575, frets_els               , GROUP_MA,       1648.1,      0.16298
+          15,       0.0385, body_els                , GROUP_MA,   3.9389E+06,       59.321
+          15,       0.0385, rod_body_els            , GROUP_MA,        28136,      0.42374
+          15,       0.0385, rod_head_els            , GROUP_MA,        29018,      0.43702
+          15,       0.0385, block_els               , GROUP_MA,   1.1379E+05,       1.7137
+          15,       0.0385, neck_els                , GROUP_MA,   1.0596E+06,       15.958
+          15,       0.0385, fretboard_els           , GROUP_MA,   4.4107E+05,       6.6427
+          15,       0.0385, saddle_els              , GROUP_MA,      0.13944,      2.1E-06
+          15,       0.0385, scratch_plate_els       , GROUP_MA,       767.88,     0.011565
+          15,       0.0385, saddle_plate_els        , GROUP_MA,        56.15,   0.00084563
+          15,       0.0385, strap_pegs              , GROUP_MA,   1.0038E+06,       15.118
+          15,       0.0385, top_bridge_els          , GROUP_MA,       19.234,   0.00028967
+          15,       0.0385, head_pegs               , GROUP_MA,       72.762,    0.0010958
+          15,       0.0385, ribs_els                , GROUP_MA,        12212,      0.18392
+          15,       0.0385, frets_els               , GROUP_MA,        12501,      0.18827
+          16,      0.04125, body_els                , GROUP_MA,   2.2636E+06,       56.244
+          16,      0.04125, rod_body_els            , GROUP_MA,        60557,       1.5046
+          16,      0.04125, rod_head_els            , GROUP_MA,        65487,       1.6271
+          16,      0.04125, block_els               , GROUP_MA,        77441,       1.9242
+          16,      0.04125, neck_els                , GROUP_MA,   6.8695E+05,       17.069
+          16,      0.04125, fretboard_els           , GROUP_MA,   2.8623E+05,       7.1118
+          16,      0.04125, saddle_els              , GROUP_MA,     0.067404,   1.6748E-06
+          16,      0.04125, scratch_plate_els       , GROUP_MA,       439.46,     0.010919
+          16,      0.04125, saddle_plate_els        , GROUP_MA,       29.757,   0.00073936
+          16,      0.04125, strap_pegs              , GROUP_MA,   5.6823E+05,       14.119
+          16,      0.04125, top_bridge_els          , GROUP_MA,        31.54,   0.00078367
+          16,      0.04125, head_pegs               , GROUP_MA,       94.291,    0.0023428
+          16,      0.04125, ribs_els                , GROUP_MA,       7573.3,      0.18817
+          16,      0.04125, frets_els               , GROUP_MA,       7956.7,       0.1977
+          17,        0.044, body_els                , GROUP_MA,        21289,       65.491
+          17,        0.044, rod_body_els            , GROUP_MA,       158.48,      0.48755
+          17,        0.044, rod_head_els            , GROUP_MA,        138.1,      0.42485
+          17,        0.044, block_els               , GROUP_MA,       376.59,       1.1585
+          17,        0.044, neck_els                , GROUP_MA,       3559.1,       10.949
+          17,        0.044, fretboard_els           , GROUP_MA,       1618.9,       4.9802
+          17,        0.044, saddle_els              , GROUP_MA,    0.0044515,   1.3694E-05
+          17,        0.044, scratch_plate_els       , GROUP_MA,        6.944,     0.021362
+          17,        0.044, saddle_plate_els        , GROUP_MA,      0.43441,    0.0013364
+          17,        0.044, strap_pegs              , GROUP_MA,       5244.3,       16.133
+          17,        0.044, top_bridge_els          , GROUP_MA,      0.16231,   0.00049931
+          17,        0.044, head_pegs               , GROUP_MA,       2.1606,    0.0066466
+          17,        0.044, ribs_els                , GROUP_MA,       61.722,      0.18988
+          17,        0.044, frets_els               , GROUP_MA,       50.676,       0.1559
+          18,      0.04675, body_els                , GROUP_MA,   2.5156E+06,       56.927
+          18,      0.04675, rod_body_els            , GROUP_MA,        60724,       1.3742
+          18,      0.04675, rod_head_els            , GROUP_MA,        65172,       1.4748
+          18,      0.04675, block_els               , GROUP_MA,        82775,       1.8732
+          18,      0.04675, neck_els                , GROUP_MA,   7.3678E+05,       16.673
+          18,      0.04675, fretboard_els           , GROUP_MA,   3.0631E+05,       6.9315
+          18,      0.04675, saddle_els              , GROUP_MA,     0.084641,   1.9154E-06
+          18,      0.04675, scratch_plate_els       , GROUP_MA,       529.82,      0.01199
+          18,      0.04675, saddle_plate_els        , GROUP_MA,        32.12,   0.00072686
+          18,      0.04675, strap_pegs              , GROUP_MA,   6.3423E+05,       14.352
+          18,      0.04675, top_bridge_els          , GROUP_MA,        30.51,   0.00069043
+          18,      0.04675, head_pegs               , GROUP_MA,       87.705,    0.0019847
+          18,      0.04675, ribs_els                , GROUP_MA,       8187.9,      0.18529
+          18,      0.04675, frets_els               , GROUP_MA,       8548.6,      0.19345
+          19,       0.0495, body_els                , GROUP_MA,   2.8995E+06,       57.959
+          19,       0.0495, rod_body_els            , GROUP_MA,        35387,      0.70737
+          19,       0.0495, rod_head_els            , GROUP_MA,        36485,      0.72932
+          19,       0.0495, block_els               , GROUP_MA,        89805,       1.7952
+          19,       0.0495, neck_els                , GROUP_MA,   8.3796E+05,        16.75
+          19,       0.0495, fretboard_els           , GROUP_MA,   3.4871E+05,       6.9706
+          19,       0.0495, saddle_els              , GROUP_MA,      0.11285,   2.2558E-06
+          19,       0.0495, scratch_plate_els       , GROUP_MA,       583.57,     0.011665
+          19,       0.0495, saddle_plate_els        , GROUP_MA,       44.031,   0.00088017
+          19,       0.0495, strap_pegs              , GROUP_MA,   7.3477E+05,       14.688
+          19,       0.0495, top_bridge_els          , GROUP_MA,       17.865,   0.00035712
+          19,       0.0495, head_pegs               , GROUP_MA,       54.146,    0.0010824
+          19,       0.0495, ribs_els                , GROUP_MA,       9398.8,      0.18788
+          19,       0.0495, frets_els               , GROUP_MA,       9924.5,      0.19839
+          20,      0.05225, body_els                , GROUP_MA,   1.9517E+05,       58.956
+          20,      0.05225, rod_body_els            , GROUP_MA,       2941.7,      0.88858
+          20,      0.05225, rod_head_els            , GROUP_MA,       2625.6,       0.7931
+          20,      0.05225, block_els               , GROUP_MA,       5689.4,       1.7186
+          20,      0.05225, neck_els                , GROUP_MA,        52236,       15.779
+          20,      0.05225, fretboard_els           , GROUP_MA,        22109,       6.6784
+          20,      0.05225, saddle_els              , GROUP_MA,     0.019365,   5.8497E-06
+          20,      0.05225, scratch_plate_els       , GROUP_MA,       27.144,    0.0081993
+          20,      0.05225, saddle_plate_els        , GROUP_MA,       3.3359,    0.0010077
+          20,      0.05225, strap_pegs              , GROUP_MA,        48997,         14.8
+          20,      0.05225, top_bridge_els          , GROUP_MA,      0.95657,   0.00028895
+          20,      0.05225, head_pegs               , GROUP_MA,        16.56,    0.0050022
+          20,      0.05225, ribs_els                , GROUP_MA,       621.68,      0.18779
+          20,      0.05225, frets_els               , GROUP_MA,        610.7,      0.18447
+          21,        0.055, body_els                , GROUP_MA,   1.2793E+06,       57.267
+          21,        0.055, rod_body_els            , GROUP_MA,        17932,      0.80274
+          21,        0.055, rod_head_els            , GROUP_MA,        18860,      0.84428
+          21,        0.055, block_els               , GROUP_MA,        41479,       1.8568
+          21,        0.055, neck_els                , GROUP_MA,   3.8432E+05,       17.204
+          21,        0.055, fretboard_els           , GROUP_MA,   1.6011E+05,       7.1674
+          21,        0.055, saddle_els              , GROUP_MA,     0.047676,   2.1342E-06
+          21,        0.055, scratch_plate_els       , GROUP_MA,       303.89,     0.013604
+          21,        0.055, saddle_plate_els        , GROUP_MA,       19.754,    0.0008843
+          21,        0.055, strap_pegs              , GROUP_MA,   3.2272E+05,       14.447
+          21,        0.055, top_bridge_els          , GROUP_MA,       9.4859,   0.00042464
+          21,        0.055, head_pegs               , GROUP_MA,       28.436,    0.0012729
+          21,        0.055, ribs_els                , GROUP_MA,       4278.5,      0.19153
+          21,        0.055, frets_els               , GROUP_MA,       4553.3,      0.20383
+          22,      0.05775, body_els                , GROUP_MA,   2.9556E+06,       58.982
+          22,      0.05775, rod_body_els            , GROUP_MA,       6205.8,      0.12384
+          22,      0.05775, rod_head_els            , GROUP_MA,       7043.3,      0.14056
+          22,      0.05775, block_els               , GROUP_MA,        90557,       1.8072
+          22,      0.05775, neck_els                , GROUP_MA,   8.3528E+05,       16.669
+          22,      0.05775, fretboard_els           , GROUP_MA,   3.4824E+05,       6.9495
+          22,      0.05775, saddle_els              , GROUP_MA,     0.093364,   1.8632E-06
+          22,      0.05775, scratch_plate_els       , GROUP_MA,       619.17,     0.012356
+          22,      0.05775, saddle_plate_els        , GROUP_MA,       39.591,   0.00079007
+          22,      0.05775, strap_pegs              , GROUP_MA,   7.4816E+05,        14.93
+          22,      0.05775, top_bridge_els          , GROUP_MA,       16.436,   0.00032799
+          22,      0.05775, head_pegs               , GROUP_MA,       118.87,    0.0023723
+          22,      0.05775, ribs_els                , GROUP_MA,       9421.6,      0.18802
+          22,      0.05775, frets_els               , GROUP_MA,       9696.9,      0.19351
+          23,       0.0605, body_els                , GROUP_MA,    7.834E+05,       60.703
+          23,       0.0605, rod_body_els            , GROUP_MA,       3218.4,      0.24938
+          23,       0.0605, rod_head_els            , GROUP_MA,       3159.6,      0.24483
+          23,       0.0605, block_els               , GROUP_MA,        20598,        1.596
+          23,       0.0605, neck_els                , GROUP_MA,   1.9433E+05,       15.058
+          23,       0.0605, fretboard_els           , GROUP_MA,        80734,       6.2558
+          23,       0.0605, saddle_els              , GROUP_MA,     0.034714,   2.6899E-06
+          23,       0.0605, scratch_plate_els       , GROUP_MA,       146.28,     0.011335
+          23,       0.0605, saddle_plate_els        , GROUP_MA,       10.735,   0.00083179
+          23,       0.0605, strap_pegs              , GROUP_MA,   2.0032E+05,       15.522
+          23,       0.0605, top_bridge_els          , GROUP_MA,       2.9236,   0.00022654
+          23,       0.0605, head_pegs               , GROUP_MA,       12.797,   0.00099158
+          23,       0.0605, ribs_els                , GROUP_MA,       2307.3,      0.17879
+          23,       0.0605, frets_els               , GROUP_MA,       2313.6,      0.17927
+          24,      0.06325, body_els                , GROUP_MA,   4.1586E+05,       58.269
+          24,      0.06325, rod_body_els            , GROUP_MA,       719.76,      0.10085
+          24,      0.06325, rod_head_els            , GROUP_MA,       583.89,     0.081813
+          24,      0.06325, block_els               , GROUP_MA,        12930,       1.8117
+          24,      0.06325, neck_els                , GROUP_MA,   1.2405E+05,       17.381
+          24,      0.06325, fretboard_els           , GROUP_MA,        51833,       7.2627
+          24,      0.06325, saddle_els              , GROUP_MA,     0.030591,   4.2863E-06
+          24,      0.06325, scratch_plate_els       , GROUP_MA,       100.25,     0.014047
+          24,      0.06325, saddle_plate_els        , GROUP_MA,        7.183,    0.0010065
+          24,      0.06325, strap_pegs              , GROUP_MA,   1.0473E+05,       14.675
+          24,      0.06325, top_bridge_els          , GROUP_MA,       1.0386,   0.00014552
+          24,      0.06325, head_pegs               , GROUP_MA,       9.9196,    0.0013899
+          24,      0.06325, ribs_els                , GROUP_MA,       1396.4,      0.19566
+          24,      0.06325, frets_els               , GROUP_MA,       1465.8,      0.20538
+          25,        0.066, body_els                , GROUP_MA,   2.4588E+06,       59.428
+          25,        0.066, rod_body_els            , GROUP_MA,        14151,      0.34203
+          25,        0.066, rod_head_els            , GROUP_MA,        14715,      0.35566
+          25,        0.066, block_els               , GROUP_MA,        71039,        1.717
+          25,        0.066, neck_els                , GROUP_MA,   6.6123E+05,       15.982
+          25,        0.066, fretboard_els           , GROUP_MA,   2.7506E+05,       6.6482
+          25,        0.066, saddle_els              , GROUP_MA,     0.087208,   2.1078E-06
+          25,        0.066, scratch_plate_els       , GROUP_MA,       519.12,     0.012547
+          25,        0.066, saddle_plate_els        , GROUP_MA,       34.086,   0.00082385
+          25,        0.066, strap_pegs              , GROUP_MA,   6.2641E+05,        15.14
+          25,        0.066, top_bridge_els          , GROUP_MA,       11.636,   0.00028125
+          25,        0.066, head_pegs               , GROUP_MA,       48.789,    0.0011792
+          25,        0.066, ribs_els                , GROUP_MA,       7602.2,      0.18374
+          25,        0.066, frets_els               , GROUP_MA,       7796.9,      0.18845
+          26,      0.06875, body_els                , GROUP_MA,    1.369E+06,       58.222
+          26,      0.06875, rod_body_els            , GROUP_MA,        33585,       1.4283
+          26,      0.06875, rod_head_els            , GROUP_MA,        36333,       1.5452
+          26,      0.06875, block_els               , GROUP_MA,        41671,       1.7722
+          26,      0.06875, neck_els                , GROUP_MA,     3.64E+05,        15.48
+          26,      0.06875, fretboard_els           , GROUP_MA,   1.5135E+05,       6.4367
+          26,      0.06875, saddle_els              , GROUP_MA,     0.039837,   1.6942E-06
+          26,      0.06875, scratch_plate_els       , GROUP_MA,       272.54,     0.011591
+          26,      0.06875, saddle_plate_els        , GROUP_MA,       15.734,   0.00066912
+          26,      0.06875, strap_pegs              , GROUP_MA,   3.4666E+05,       14.743
+          26,      0.06875, top_bridge_els          , GROUP_MA,       19.253,   0.00081881
+          26,      0.06875, head_pegs               , GROUP_MA,       63.426,    0.0026974
+          26,      0.06875, ribs_els                , GROUP_MA,         4173,      0.17747
+          26,      0.06875, frets_els               , GROUP_MA,       4215.5,      0.17928
+          27,       0.0715, body_els                , GROUP_MA,        25365,       57.331
+          27,       0.0715, rod_body_els            , GROUP_MA,       419.39,      0.94791
+          27,       0.0715, rod_head_els            , GROUP_MA,       337.96,      0.76388
+          27,       0.0715, block_els               , GROUP_MA,       826.14,       1.8673
+          27,       0.0715, neck_els                , GROUP_MA,       8102.2,       18.313
+          27,       0.0715, fretboard_els           , GROUP_MA,       3531.3,       7.9816
+          27,       0.0715, saddle_els              , GROUP_MA,    0.0049906,    1.128E-05
+          27,       0.0715, scratch_plate_els       , GROUP_MA,       5.3127,     0.012008
+          27,       0.0715, saddle_plate_els        , GROUP_MA,      0.57565,    0.0013011
+          27,       0.0715, strap_pegs              , GROUP_MA,         5439,       12.293
+          27,       0.0715, top_bridge_els          , GROUP_MA,      0.47308,    0.0010693
+          27,       0.0715, head_pegs               , GROUP_MA,       5.7264,     0.012943
+          27,       0.0715, ribs_els                , GROUP_MA,       108.05,      0.24422
+          27,       0.0715, frets_els               , GROUP_MA,       102.02,      0.23058
+          28,      0.07425, body_els                , GROUP_MA,   1.6426E+06,       58.415
+          28,      0.07425, rod_body_els            , GROUP_MA,        35582,       1.2654
+          28,      0.07425, rod_head_els            , GROUP_MA,        37758,       1.3428
+          28,      0.07425, block_els               , GROUP_MA,        49322,       1.7541
+          28,      0.07425, neck_els                , GROUP_MA,   4.3712E+05,       15.546
+          28,      0.07425, fretboard_els           , GROUP_MA,   1.8153E+05,        6.456
+          28,      0.07425, saddle_els              , GROUP_MA,     0.047334,   1.6834E-06
+          28,      0.07425, scratch_plate_els       , GROUP_MA,        324.3,     0.011533
+          28,      0.07425, saddle_plate_els        , GROUP_MA,       19.447,    0.0006916
+          28,      0.07425, strap_pegs              , GROUP_MA,   4.1748E+05,       14.847
+          28,      0.07425, top_bridge_els          , GROUP_MA,       17.027,   0.00060555
+          28,      0.07425, head_pegs               , GROUP_MA,       46.757,    0.0016629
+          28,      0.07425, ribs_els                , GROUP_MA,         5011,      0.17821
+          28,      0.07425, frets_els               , GROUP_MA,       5074.1,      0.18046
+          29,        0.077, body_els                , GROUP_MA,   1.7767E+06,       59.248
+          29,        0.077, rod_body_els            , GROUP_MA,        25249,      0.84196
+          29,        0.077, rod_head_els            , GROUP_MA,        25965,      0.86586
+          29,        0.077, block_els               , GROUP_MA,        50624,       1.6882
+          29,        0.077, neck_els                , GROUP_MA,   4.6351E+05,       15.457
+          29,        0.077, fretboard_els           , GROUP_MA,   1.9234E+05,       6.4141
+          29,        0.077, saddle_els              , GROUP_MA,     0.065662,   2.1896E-06
+          29,        0.077, scratch_plate_els       , GROUP_MA,       341.81,     0.011398
+          29,        0.077, saddle_plate_els        , GROUP_MA,       23.347,   0.00077854
+          29,        0.077, strap_pegs              , GROUP_MA,   4.5312E+05,        15.11
+          29,        0.077, top_bridge_els          , GROUP_MA,       11.369,   0.00037913
+          29,        0.077, head_pegs               , GROUP_MA,       30.751,    0.0010255
+          29,        0.077, ribs_els                , GROUP_MA,       5365.6,      0.17893
+          29,        0.077, frets_els               , GROUP_MA,       5463.6,      0.18219
+          30,      0.07975, body_els                , GROUP_MA,        93099,       57.987
+          30,      0.07975, rod_body_els            , GROUP_MA,       1471.7,      0.91663
+          30,      0.07975, rod_head_els            , GROUP_MA,       1246.4,      0.77634
+          30,      0.07975, block_els               , GROUP_MA,       2969.3,       1.8494
+          30,      0.07975, neck_els                , GROUP_MA,        27396,       17.064
+          30,      0.07975, fretboard_els           , GROUP_MA,        11486,        7.154
+          30,      0.07975, saddle_els              , GROUP_MA,     0.014515,   9.0407E-06
+          30,      0.07975, scratch_plate_els       , GROUP_MA,       15.355,    0.0095638
+          30,      0.07975, saddle_plate_els        , GROUP_MA,       2.0231,    0.0012601
+          30,      0.07975, strap_pegs              , GROUP_MA,        22206,       13.831
+          30,      0.07975, top_bridge_els          , GROUP_MA,      0.87166,   0.00054292
+          30,      0.07975, head_pegs               , GROUP_MA,       13.394,    0.0083422
+          30,      0.07975, ribs_els                , GROUP_MA,       329.32,      0.20512
+          30,      0.07975, frets_els               , GROUP_MA,       316.12,      0.19689
+          31,       0.0825, body_els                , GROUP_MA,   8.7179E+05,       59.295
+          31,       0.0825, rod_body_els            , GROUP_MA,        14294,       0.9722
+          31,       0.0825, rod_head_els            , GROUP_MA,        15193,       1.0333
+          31,       0.0825, block_els               , GROUP_MA,        25077,       1.7056
+          31,       0.0825, neck_els                , GROUP_MA,   2.2354E+05,       15.204
+          31,       0.0825, fretboard_els           , GROUP_MA,        92981,       6.3241
+          31,       0.0825, saddle_els              , GROUP_MA,     0.024543,   1.6693E-06
+          31,       0.0825, scratch_plate_els       , GROUP_MA,       168.96,     0.011492
+          31,       0.0825, saddle_plate_els        , GROUP_MA,       10.172,   0.00069185
+          31,       0.0825, strap_pegs              , GROUP_MA,   2.2196E+05,       15.096
+          31,       0.0825, top_bridge_els          , GROUP_MA,       7.7249,   0.00052541
+          31,       0.0825, head_pegs               , GROUP_MA,       24.405,    0.0016599
+          31,       0.0825, ribs_els                , GROUP_MA,       2612.2,      0.17767
+          31,       0.0825, frets_els               , GROUP_MA,         2599,      0.17677
+          32,      0.08525, body_els                , GROUP_MA,    1.821E+06,       59.552
+          32,      0.08525, rod_body_els            , GROUP_MA,       4888.9,      0.15988
+          32,      0.08525, rod_head_els            , GROUP_MA,       5475.6,      0.17907
+          32,      0.08525, block_els               , GROUP_MA,        53694,        1.756
+          32,      0.08525, neck_els                , GROUP_MA,   4.9295E+05,       16.121
+          32,      0.08525, fretboard_els           , GROUP_MA,    2.056E+05,       6.7239
+          32,      0.08525, saddle_els              , GROUP_MA,     0.059629,   1.9501E-06
+          32,      0.08525, scratch_plate_els       , GROUP_MA,        338.8,      0.01108
+          32,      0.08525, saddle_plate_els        , GROUP_MA,       24.114,   0.00078859
+          32,      0.08525, strap_pegs              , GROUP_MA,   4.6241E+05,       15.122
+          32,      0.08525, top_bridge_els          , GROUP_MA,       9.7666,    0.0003194
+          32,      0.08525, head_pegs               , GROUP_MA,       65.537,    0.0021433
+          32,      0.08525, ribs_els                , GROUP_MA,       5657.6,      0.18502
+          32,      0.08525, frets_els               , GROUP_MA,       5715.2,      0.18691
+          33,        0.088, body_els                , GROUP_MA,   4.2302E+05,       58.709
+          33,        0.088, rod_body_els            , GROUP_MA,       981.88,      0.13627
+          33,        0.088, rod_head_els            , GROUP_MA,        929.9,      0.12905
+          33,        0.088, block_els               , GROUP_MA,        12571,       1.7447
+          33,        0.088, neck_els                , GROUP_MA,   1.2253E+05,       17.005
+          33,        0.088, fretboard_els           , GROUP_MA,        51299,       7.1194
+          33,        0.088, saddle_els              , GROUP_MA,     0.022809,   3.1656E-06
+          33,        0.088, scratch_plate_els       , GROUP_MA,       72.182,     0.010018
+          33,        0.088, saddle_plate_els        , GROUP_MA,       7.2389,    0.0010046
+          33,        0.088, strap_pegs              , GROUP_MA,   1.0625E+05,       14.745
+          33,        0.088, top_bridge_els          , GROUP_MA,       1.7054,   0.00023668
+          33,        0.088, head_pegs               , GROUP_MA,       8.8088,    0.0012225
+          33,        0.088, ribs_els                , GROUP_MA,       1396.5,      0.19382
+          33,        0.088, frets_els               , GROUP_MA,       1478.9,      0.20525
+          34,      0.09075, body_els                , GROUP_MA,   3.0791E+05,       61.514
+          34,      0.09075, rod_body_els            , GROUP_MA,       142.36,     0.028441
+          34,      0.09075, rod_head_els            , GROUP_MA,       101.72,     0.020322
+          34,      0.09075, block_els               , GROUP_MA,       7764.7,       1.5512
+          34,      0.09075, neck_els                , GROUP_MA,        73631,        14.71
+          34,      0.09075, fretboard_els           , GROUP_MA,        30666,       6.1264
+          34,      0.09075, saddle_els              , GROUP_MA,     0.015144,   3.0255E-06
+          34,      0.09075, scratch_plate_els       , GROUP_MA,       70.219,     0.014028
+          34,      0.09075, saddle_plate_els        , GROUP_MA,       4.2582,    0.0008507
+          34,      0.09075, strap_pegs              , GROUP_MA,        78477,       15.678
+          34,      0.09075, top_bridge_els          , GROUP_MA,      0.67721,   0.00013529
+          34,      0.09075, head_pegs               , GROUP_MA,       5.0905,     0.001017
+          34,      0.09075, ribs_els                , GROUP_MA,       905.95,      0.18099
+          34,      0.09075, frets_els               , GROUP_MA,       874.06,      0.17462
+          35,       0.0935, body_els                , GROUP_MA,   1.5164E+06,       58.984
+          35,       0.0935, rod_body_els            , GROUP_MA,       7148.5,      0.27805
+          35,       0.0935, rod_head_els            , GROUP_MA,       7582.7,      0.29494
+          35,       0.0935, block_els               , GROUP_MA,        45474,       1.7688
+          35,       0.0935, neck_els                , GROUP_MA,     4.23E+05,       16.453
+          35,       0.0935, fretboard_els           , GROUP_MA,   1.7614E+05,       6.8512
+          35,       0.0935, saddle_els              , GROUP_MA,     0.057696,   2.2442E-06
+          35,       0.0935, scratch_plate_els       , GROUP_MA,       304.67,     0.011851
+          35,       0.0935, saddle_plate_els        , GROUP_MA,       21.341,   0.00083012
+          35,       0.0935, strap_pegs              , GROUP_MA,   3.8501E+05,       14.976
+          35,       0.0935, top_bridge_els          , GROUP_MA,       7.2792,   0.00028314
+          35,       0.0935, head_pegs               , GROUP_MA,       34.924,    0.0013584
+          35,       0.0935, ribs_els                , GROUP_MA,       4800.2,      0.18671
+          35,       0.0935, frets_els               , GROUP_MA,       4955.9,      0.19277
+          36,      0.09625, body_els                , GROUP_MA,   7.7428E+05,       56.636
+          36,      0.09625, rod_body_els            , GROUP_MA,        17271,       1.2633
+          36,      0.09625, rod_head_els            , GROUP_MA,        18824,       1.3769
+          36,      0.09625, block_els               , GROUP_MA,        26241,       1.9195
+          36,      0.09625, neck_els                , GROUP_MA,   2.3398E+05,       17.115
+          36,      0.09625, fretboard_els           , GROUP_MA,        97601,       7.1392
+          36,      0.09625, saddle_els              , GROUP_MA,     0.031395,   2.2965E-06
+          36,      0.09625, scratch_plate_els       , GROUP_MA,       138.61,     0.010139
+          36,      0.09625, saddle_plate_els        , GROUP_MA,       11.046,   0.00080795
+          36,      0.09625, strap_pegs              , GROUP_MA,    1.934E+05,       14.147
+          36,      0.09625, top_bridge_els          , GROUP_MA,       10.164,    0.0007435
+          36,      0.09625, head_pegs               , GROUP_MA,       34.439,    0.0025191
+          36,      0.09625, ribs_els                , GROUP_MA,       2613.3,      0.19116
+          36,      0.09625, frets_els               , GROUP_MA,       2709.2,      0.19817
+          37,        0.099, body_els                , GROUP_MA,        28517,       60.136
+          37,        0.099, rod_body_els            , GROUP_MA,       436.88,       0.9213
+          37,        0.099, rod_head_els            , GROUP_MA,       346.57,      0.73084
+          37,        0.099, block_els               , GROUP_MA,       784.75,       1.6549
+          37,        0.099, neck_els                , GROUP_MA,       7608.6,       16.045
+          37,        0.099, fretboard_els           , GROUP_MA,       3438.8,       7.2517
+          37,        0.099, saddle_els              , GROUP_MA,   0.00055388,    1.168E-06
+          37,        0.099, scratch_plate_els       , GROUP_MA,       12.064,      0.02544
+          37,        0.099, saddle_plate_els        , GROUP_MA,       0.3067,   0.00064678
+          37,        0.099, strap_pegs              , GROUP_MA,       6048.8,       12.756
+          37,        0.099, top_bridge_els          , GROUP_MA,      0.52543,     0.001108
+          37,        0.099, head_pegs               , GROUP_MA,       7.1917,     0.015166
+          37,        0.099, ribs_els                , GROUP_MA,       114.99,       0.2425
+          37,        0.099, frets_els               , GROUP_MA,       104.19,      0.21972
+          38,      0.10175, body_els                , GROUP_MA,   1.0197E+06,       57.199
+          38,      0.10175, rod_body_els            , GROUP_MA,        19753,        1.108
+          38,      0.10175, rod_head_els            , GROUP_MA,        20814,       1.1675
+          38,      0.10175, block_els               , GROUP_MA,        32928,        1.847
+          38,      0.10175, neck_els                , GROUP_MA,   3.0006E+05,       16.831
+          38,      0.10175, fretboard_els           , GROUP_MA,    1.248E+05,       7.0003
+          38,      0.10175, saddle_els              , GROUP_MA,     0.035111,   1.9695E-06
+          38,      0.10175, scratch_plate_els       , GROUP_MA,       231.78,     0.013001
+          38,      0.10175, saddle_plate_els        , GROUP_MA,       14.645,   0.00082149
+          38,      0.10175, strap_pegs              , GROUP_MA,   2.5753E+05,       14.446
+          38,      0.10175, top_bridge_els          , GROUP_MA,       9.1593,   0.00051377
+          38,      0.10175, head_pegs               , GROUP_MA,       23.918,    0.0013416
+          38,      0.10175, ribs_els                , GROUP_MA,       3346.5,      0.18771
+          38,      0.10175, frets_els               , GROUP_MA,         3532,      0.19812
+          39,       0.1045, body_els                , GROUP_MA,   1.0389E+06,       57.968
+          39,       0.1045, rod_body_els            , GROUP_MA,        16593,      0.92586
+          39,       0.1045, rod_head_els            , GROUP_MA,        17234,      0.96162
+          39,       0.1045, block_els               , GROUP_MA,        32054,       1.7885
+          39,       0.1045, neck_els                , GROUP_MA,   2.9507E+05,       16.464
+          39,       0.1045, fretboard_els           , GROUP_MA,   1.2258E+05,       6.8393
+          39,       0.1045, saddle_els              , GROUP_MA,     0.042063,    2.347E-06
+          39,       0.1045, scratch_plate_els       , GROUP_MA,       206.89,     0.011544
+          39,       0.1045, saddle_plate_els        , GROUP_MA,       14.797,    0.0008256
+          39,       0.1045, strap_pegs              , GROUP_MA,   2.6274E+05,        14.66
+          39,       0.1045, top_bridge_els          , GROUP_MA,       7.5691,   0.00042233
+          39,       0.1045, head_pegs               , GROUP_MA,       20.096,    0.0011213
+          39,       0.1045, ribs_els                , GROUP_MA,       3321.2,      0.18531
+          39,       0.1045, frets_els               , GROUP_MA,       3482.1,      0.19429
+          40,      0.10725, body_els                , GROUP_MA,        48471,        62.95
+          40,      0.10725, rod_body_els            , GROUP_MA,       597.66,      0.77619
+          40,      0.10725, rod_head_els            , GROUP_MA,        486.4,       0.6317
+          40,      0.10725, block_els               , GROUP_MA,         1178,       1.5298
+          40,      0.10725, neck_els                , GROUP_MA,        10583,       13.745
+          40,      0.10725, fretboard_els           , GROUP_MA,       4472.7,       5.8088
+          40,      0.10725, saddle_els              , GROUP_MA,    0.0065967,   8.5672E-06
+          40,      0.10725, scratch_plate_els       , GROUP_MA,       4.0733,      0.00529
+          40,      0.10725, saddle_plate_els        , GROUP_MA,      0.78368,    0.0010178
+          40,      0.10725, strap_pegs              , GROUP_MA,        10918,       14.179
+          40,      0.10725, top_bridge_els          , GROUP_MA,      0.67185,   0.00087255
+          40,      0.10725, head_pegs               , GROUP_MA,        9.591,     0.012456
+          40,      0.10725, ribs_els                , GROUP_MA,       155.47,      0.20191
+          40,      0.10725, frets_els               , GROUP_MA,        121.9,      0.15831
+          41,         0.11, body_els                , GROUP_MA,   5.4794E+05,       56.982
+          41,         0.11, rod_body_els            , GROUP_MA,        10066,       1.0468
+          41,         0.11, rod_head_els            , GROUP_MA,        10889,       1.1324
+          41,         0.11, block_els               , GROUP_MA,        18227,       1.8955
+          41,         0.11, neck_els                , GROUP_MA,   1.6447E+05,       17.103
+          41,         0.11, fretboard_els           , GROUP_MA,        68504,       7.1239
+          41,         0.11, saddle_els              , GROUP_MA,     0.021075,   2.1917E-06
+          41,         0.11, scratch_plate_els       , GROUP_MA,       130.23,     0.013543
+          41,         0.11, saddle_plate_els        , GROUP_MA,       7.3776,   0.00076722
+          41,         0.11, strap_pegs              , GROUP_MA,    1.376E+05,       14.309
+          41,         0.11, top_bridge_els          , GROUP_MA,       5.8983,   0.00061339
+          41,         0.11, head_pegs               , GROUP_MA,       19.774,    0.0020564
+          41,         0.11, ribs_els                , GROUP_MA,       1830.7,      0.19039
+          41,         0.11, frets_els               , GROUP_MA,       1918.6,      0.19952
+          42,      0.11275, body_els                , GROUP_MA,   1.1066E+06,       59.428
+          42,      0.11275, rod_body_els            , GROUP_MA,       3811.6,       0.2047
+          42,      0.11275, rod_head_els            , GROUP_MA,       4165.1,      0.22369
+          42,      0.11275, block_els               , GROUP_MA,        32629,       1.7524
+          42,      0.11275, neck_els                , GROUP_MA,   3.0127E+05,        16.18
+          42,      0.11275, fretboard_els           , GROUP_MA,   1.2546E+05,        6.738
+          42,      0.11275, saddle_els              , GROUP_MA,     0.037427,     2.01E-06
+          42,      0.11275, scratch_plate_els       , GROUP_MA,       226.44,     0.012161
+          42,      0.11275, saddle_plate_els        , GROUP_MA,       15.218,   0.00081729
+          42,      0.11275, strap_pegs              , GROUP_MA,   2.8086E+05,       15.084
+          42,      0.11275, top_bridge_els          , GROUP_MA,       5.7135,   0.00030685
+          42,      0.11275, head_pegs               , GROUP_MA,       33.428,    0.0017953
+          42,      0.11275, ribs_els                , GROUP_MA,         3454,       0.1855
+          42,      0.11275, frets_els               , GROUP_MA,       3518.9,      0.18899
+          43,       0.1155, body_els                , GROUP_MA,   2.4847E+05,        61.84
+          43,       0.1155, rod_body_els            , GROUP_MA,       318.19,     0.079191
+          43,       0.1155, rod_head_els            , GROUP_MA,       282.88,     0.070405
+          43,       0.1155, block_els               , GROUP_MA,       6069.9,       1.5107
+          43,       0.1155, neck_els                , GROUP_MA,        58386,       14.531
+          43,       0.1155, fretboard_els           , GROUP_MA,        24294,       6.0463
+          43,       0.1155, saddle_els              , GROUP_MA,    0.0088328,   2.1983E-06
+          43,       0.1155, scratch_plate_els       , GROUP_MA,       42.846,     0.010664
+          43,       0.1155, saddle_plate_els        , GROUP_MA,       3.4088,   0.00084839
+          43,       0.1155, strap_pegs              , GROUP_MA,        62487,       15.552
+          43,       0.1155, top_bridge_els          , GROUP_MA,      0.85038,   0.00021165
+          43,       0.1155, head_pegs               , GROUP_MA,       4.4051,    0.0010964
+          43,       0.1155, ribs_els                , GROUP_MA,       728.19,      0.18124
+          43,       0.1155, frets_els               , GROUP_MA,        705.7,      0.17564
+          44,      0.11825, body_els                , GROUP_MA,    2.074E+05,       59.697
+          44,      0.11825, rod_body_els            , GROUP_MA,       143.06,     0.041176
+          44,      0.11825, rod_head_els            , GROUP_MA,       115.27,     0.033178
+          44,      0.11825, block_els               , GROUP_MA,       5822.5,       1.6759
+          44,      0.11825, neck_els                , GROUP_MA,        56678,       16.313
+          44,      0.11825, fretboard_els           , GROUP_MA,        23690,       6.8186
+          44,      0.11825, saddle_els              , GROUP_MA,    0.0094465,    2.719E-06
+          44,      0.11825, scratch_plate_els       , GROUP_MA,       46.517,     0.013389
+          44,      0.11825, saddle_plate_els        , GROUP_MA,       3.4267,    0.0009863
+          44,      0.11825, strap_pegs              , GROUP_MA,        52174,       15.017
+          44,      0.11825, top_bridge_els          , GROUP_MA,      0.71327,    0.0002053
+          44,      0.11825, head_pegs               , GROUP_MA,       4.1578,    0.0011967
+          44,      0.11825, ribs_els                , GROUP_MA,       667.61,      0.19216
+          44,      0.11825, frets_els               , GROUP_MA,       681.19,      0.19606
+          45,        0.121, body_els                , GROUP_MA,   9.5518E+05,       59.883
+          45,        0.121, rod_body_els            , GROUP_MA,       3845.5,      0.24109
+          45,        0.121, rod_head_els            , GROUP_MA,       4155.2,       0.2605
+          45,        0.121, block_els               , GROUP_MA,        27314,       1.7124
+          45,        0.121, neck_els                , GROUP_MA,   2.5083E+05,       15.725
+          45,        0.121, fretboard_els           , GROUP_MA,   1.0436E+05,       6.5429
+          45,        0.121, saddle_els              , GROUP_MA,     0.032617,   2.0448E-06
+          45,        0.121, scratch_plate_els       , GROUP_MA,       185.43,     0.011625
+          45,        0.121, saddle_plate_els        , GROUP_MA,       12.057,    0.0007559
+          45,        0.121, strap_pegs              , GROUP_MA,   2.4335E+05,       15.256
+          45,        0.121, top_bridge_els          , GROUP_MA,       4.7878,   0.00030016
+          45,        0.121, head_pegs               , GROUP_MA,       26.301,    0.0016489
+          45,        0.121, ribs_els                , GROUP_MA,       2897.6,      0.18166
+          45,        0.121, frets_els               , GROUP_MA,       2918.4,      0.18297
+          46,      0.12375, body_els                , GROUP_MA,   4.6672E+05,       58.771
+          46,      0.12375, rod_body_els            , GROUP_MA,       9118.4,       1.1482
+          46,      0.12375, rod_head_els            , GROUP_MA,       9848.6,       1.2402
+          46,      0.12375, block_els               , GROUP_MA,        13948,       1.7564
+          46,      0.12375, neck_els                , GROUP_MA,   1.2315E+05,       15.507
+          46,      0.12375, fretboard_els           , GROUP_MA,        51147,       6.4406
+          46,      0.12375, saddle_els              , GROUP_MA,     0.014433,   1.8174E-06
+          46,      0.12375, scratch_plate_els       , GROUP_MA,       82.018,     0.010328
+          46,      0.12375, saddle_plate_els        , GROUP_MA,       5.6407,   0.00071029
+          46,      0.12375, strap_pegs              , GROUP_MA,   1.1724E+05,       14.763
+          46,      0.12375, top_bridge_els          , GROUP_MA,       5.4082,   0.00068101
+          46,      0.12375, head_pegs               , GROUP_MA,       18.441,    0.0023221
+          46,      0.12375, ribs_els                , GROUP_MA,       1435.1,      0.18071
+          46,      0.12375, frets_els               , GROUP_MA,       1423.2,      0.17922
+          47,       0.1265, body_els                , GROUP_MA,        27565,       62.573
+          47,       0.1265, rod_body_els            , GROUP_MA,       344.11,      0.78111
+          47,       0.1265, rod_head_els            , GROUP_MA,       272.41,      0.61837
+          47,       0.1265, block_els               , GROUP_MA,       684.11,       1.5529
+          47,       0.1265, neck_els                , GROUP_MA,       6429.6,       14.595
+          47,       0.1265, fretboard_els           , GROUP_MA,       2754.5,       6.2527
+          47,       0.1265, saddle_els              , GROUP_MA,    0.0013326,    3.025E-06
+          47,       0.1265, scratch_plate_els       , GROUP_MA,       6.0208,     0.013667
+          47,       0.1265, saddle_plate_els        , GROUP_MA,      0.28144,   0.00063886
+          47,       0.1265, strap_pegs              , GROUP_MA,       5813.1,       13.196
+          47,       0.1265, top_bridge_els          , GROUP_MA,      0.52129,    0.0011833
+          47,       0.1265, head_pegs               , GROUP_MA,       6.5291,     0.014821
+          47,       0.1265, ribs_els                , GROUP_MA,       98.906,      0.22451
+          47,       0.1265, frets_els               , GROUP_MA,       77.575,      0.17609
+          48,      0.12925, body_els                , GROUP_MA,    6.663E+05,       59.058
+          48,      0.12925, rod_body_els            , GROUP_MA,        11256,      0.99765
+          48,      0.12925, rod_head_els            , GROUP_MA,        11694,       1.0365
+          48,      0.12925, block_els               , GROUP_MA,        19176,       1.6997
+          48,      0.12925, neck_els                , GROUP_MA,    1.735E+05,       15.379
+          48,      0.12925, fretboard_els           , GROUP_MA,        72118,       6.3922
+          48,      0.12925, saddle_els              , GROUP_MA,     0.021452,   1.9014E-06
+          48,      0.12925, scratch_plate_els       , GROUP_MA,       127.03,      0.01126
+          48,      0.12925, saddle_plate_els        , GROUP_MA,        8.661,   0.00076767
+          48,      0.12925, strap_pegs              , GROUP_MA,   1.6996E+05,       15.065
+          48,      0.12925, top_bridge_els          , GROUP_MA,       5.0129,   0.00044432
+          48,      0.12925, head_pegs               , GROUP_MA,       12.928,    0.0011459
+          48,      0.12925, ribs_els                , GROUP_MA,       2015.9,      0.17868
+          48,      0.12925, frets_els               , GROUP_MA,       2036.9,      0.18054
+          49,        0.132, body_els                , GROUP_MA,   6.2631E+05,       58.539
+          49,        0.132, rod_body_els            , GROUP_MA,        10832,       1.0124
+          49,        0.132, rod_head_els            , GROUP_MA,        11350,       1.0608
+          49,        0.132, block_els               , GROUP_MA,        18734,        1.751
+          49,        0.132, neck_els                , GROUP_MA,   1.6968E+05,       15.859
+          49,        0.132, fretboard_els           , GROUP_MA,        70583,       6.5972
+          49,        0.132, saddle_els              , GROUP_MA,     0.019739,   1.8449E-06
+          49,        0.132, scratch_plate_els       , GROUP_MA,       107.77,     0.010073
+          49,        0.132, saddle_plate_els        , GROUP_MA,       8.1755,   0.00076414
+          49,        0.132, strap_pegs              , GROUP_MA,   1.5834E+05,         14.8
+          49,        0.132, top_bridge_els          , GROUP_MA,       4.9796,   0.00046542
+          49,        0.132, head_pegs               , GROUP_MA,       13.265,    0.0012399
+          49,        0.132, ribs_els                , GROUP_MA,       1949.8,      0.18224
+          49,        0.132, frets_els               , GROUP_MA,       1988.7,      0.18588
+          50,      0.13475, body_els                , GROUP_MA,        22409,       60.973
+          50,      0.13475, rod_body_els            , GROUP_MA,       251.01,      0.68299
+          50,      0.13475, rod_head_els            , GROUP_MA,       192.23,      0.52306
+          50,      0.13475, block_els               , GROUP_MA,       672.74,       1.8305
+          50,      0.13475, neck_els                , GROUP_MA,       6265.5,       17.048
+          50,      0.13475, fretboard_els           , GROUP_MA,       2684.7,       7.3049
+          50,      0.13475, saddle_els              , GROUP_MA,     0.001338,   3.6407E-06
+          50,      0.13475, scratch_plate_els       , GROUP_MA,       1.3624,    0.0037071
+          50,      0.13475, saddle_plate_els        , GROUP_MA,      0.37585,    0.0010227
+          50,      0.13475, strap_pegs              , GROUP_MA,       4098.3,       11.151
+          50,      0.13475, top_bridge_els          , GROUP_MA,      0.29812,   0.00081118
+          50,      0.13475, head_pegs               , GROUP_MA,       4.3817,     0.011922
+          50,      0.13475, ribs_els                , GROUP_MA,       98.745,      0.26868
+          50,      0.13475, frets_els               , GROUP_MA,       73.543,      0.20011
+          51,       0.1375, body_els                , GROUP_MA,   3.6647E+05,       58.477
+          51,       0.1375, rod_body_els            , GROUP_MA,       7152.7,       1.1414
+          51,       0.1375, rod_head_els            , GROUP_MA,         7770,       1.2399
+          51,       0.1375, block_els               , GROUP_MA,        11153,       1.7797
+          51,       0.1375, neck_els                , GROUP_MA,        98199,        15.67
+          51,       0.1375, fretboard_els           , GROUP_MA,        40845,       6.5177
+          51,       0.1375, saddle_els              , GROUP_MA,     0.012093,   1.9297E-06
+          51,       0.1375, scratch_plate_els       , GROUP_MA,        77.31,     0.012336
+          51,       0.1375, saddle_plate_els        , GROUP_MA,        4.059,    0.0006477
+          51,       0.1375, strap_pegs              , GROUP_MA,        92731,       14.797
+          51,       0.1375, top_bridge_els          , GROUP_MA,       4.4626,    0.0007121
+          51,       0.1375, head_pegs               , GROUP_MA,       16.121,    0.0025724
+          51,       0.1375, ribs_els                , GROUP_MA,       1128.3,      0.18004
+          51,       0.1375, frets_els               , GROUP_MA,       1132.3,      0.18069
+          52,      0.14025, body_els                , GROUP_MA,   6.6878E+05,       59.106
+          52,      0.14025, rod_body_els            , GROUP_MA,       2927.4,      0.25872
+          52,      0.14025, rod_head_els            , GROUP_MA,       3137.7,      0.27731
+          52,      0.14025, block_els               , GROUP_MA,        19996,       1.7672
+          52,      0.14025, neck_els                , GROUP_MA,   1.8551E+05,       16.396
+          52,      0.14025, fretboard_els           , GROUP_MA,        77316,       6.8331
+          52,      0.14025, saddle_els              , GROUP_MA,     0.023257,   2.0555E-06
+          52,      0.14025, scratch_plate_els       , GROUP_MA,       122.88,      0.01086
+          52,      0.14025, saddle_plate_els        , GROUP_MA,       9.5571,   0.00084465
+          52,      0.14025, strap_pegs              , GROUP_MA,   1.6937E+05,       14.969
+          52,      0.14025, top_bridge_els          , GROUP_MA,       3.2458,   0.00028686
+          52,      0.14025, head_pegs               , GROUP_MA,        16.55,    0.0014627
+          52,      0.14025, ribs_els                , GROUP_MA,       2120.7,      0.18742
+          52,      0.14025, frets_els               , GROUP_MA,       2169.6,      0.19174
+          53,        0.143, body_els                , GROUP_MA,   1.3221E+05,       59.438
+          53,        0.143, rod_body_els            , GROUP_MA,       85.306,     0.038351
+          53,        0.143, rod_head_els            , GROUP_MA,       70.785,     0.031823
+          53,        0.143, block_els               , GROUP_MA,       3832.1,       1.7228
+          53,        0.143, neck_els                , GROUP_MA,        37448,       16.836
+          53,        0.143, fretboard_els           , GROUP_MA,        15794,       7.1007
+          53,        0.143, saddle_els              , GROUP_MA,    0.0066013,   2.9678E-06
+          53,        0.143, scratch_plate_els       , GROUP_MA,       17.806,    0.0080052
+          53,        0.143, saddle_plate_els        , GROUP_MA,       2.4156,     0.001086
+          53,        0.143, strap_pegs              , GROUP_MA,        32058,       14.412
+          53,        0.143, top_bridge_els          , GROUP_MA,      0.42455,   0.00019086
+          53,        0.143, head_pegs               , GROUP_MA,       2.5649,    0.0011531
+          53,        0.143, ribs_els                , GROUP_MA,       456.52,      0.20524
+          53,        0.143, frets_els               , GROUP_MA,       454.64,      0.20439
+          54,      0.14575, body_els                , GROUP_MA,   1.4417E+05,        60.32
+          54,      0.14575, rod_body_els            , GROUP_MA,       251.85,      0.10537
+          54,      0.14575, rod_head_els            , GROUP_MA,        225.5,     0.094348
+          54,      0.14575, block_els               , GROUP_MA,       3854.2,       1.6126
+          54,      0.14575, neck_els                , GROUP_MA,        37496,       15.688
+          54,      0.14575, fretboard_els           , GROUP_MA,        15731,       6.5818
+          54,      0.14575, saddle_els              , GROUP_MA,    0.0061431,   2.5702E-06
+          54,      0.14575, scratch_plate_els       , GROUP_MA,       38.835,     0.016248
+          54,      0.14575, saddle_plate_els        , GROUP_MA,       2.2666,   0.00094832
+          54,      0.14575, strap_pegs              , GROUP_MA,        36319,       15.196
+          54,      0.14575, top_bridge_els          , GROUP_MA,      0.51332,   0.00021477
+          54,      0.14575, head_pegs               , GROUP_MA,       2.7217,    0.0011388
+          54,      0.14575, ribs_els                , GROUP_MA,       454.81,      0.19029
+          54,      0.14575, frets_els               , GROUP_MA,       460.89,      0.19283
+          55,       0.1485, body_els                , GROUP_MA,   5.7914E+05,       58.671
+          55,       0.1485, rod_body_els            , GROUP_MA,       2044.3,       0.2071
+          55,       0.1485, rod_head_els            , GROUP_MA,       2268.1,      0.22977
+          55,       0.1485, block_els               , GROUP_MA,        17953,       1.8187
+          55,       0.1485, neck_els                , GROUP_MA,   1.6611E+05,       16.828
+          55,       0.1485, fretboard_els           , GROUP_MA,        69214,       7.0119
+          55,       0.1485, saddle_els              , GROUP_MA,     0.019785,   2.0043E-06
+          55,       0.1485, scratch_plate_els       , GROUP_MA,       120.39,     0.012197
+          55,       0.1485, saddle_plate_els        , GROUP_MA,       7.9695,   0.00080737
+          55,       0.1485, strap_pegs              , GROUP_MA,   1.4642E+05,       14.833
+          55,       0.1485, top_bridge_els          , GROUP_MA,        3.241,   0.00032833
+          55,       0.1485, head_pegs               , GROUP_MA,       19.471,    0.0019725
+          55,       0.1485, ribs_els                , GROUP_MA,         1865,      0.18894
+          55,       0.1485, frets_els               , GROUP_MA,       1935.5,      0.19609
+          56,      0.15125, body_els                , GROUP_MA,   2.6638E+05,       57.909
+          56,      0.15125, rod_body_els            , GROUP_MA,       4494.5,      0.97708
+          56,      0.15125, rod_head_els            , GROUP_MA,       4830.2,       1.0501
+          56,      0.15125, block_els               , GROUP_MA,       8450.8,       1.8371
+          56,      0.15125, neck_els                , GROUP_MA,        76339,       16.596
+          56,      0.15125, fretboard_els           , GROUP_MA,        31738,       6.8996
+          56,      0.15125, saddle_els              , GROUP_MA,    0.0081018,   1.7613E-06
+          56,      0.15125, scratch_plate_els       , GROUP_MA,       45.007,    0.0097843
+          56,      0.15125, saddle_plate_els        , GROUP_MA,       3.6221,   0.00078743
+          56,      0.15125, strap_pegs              , GROUP_MA,        65941,       14.335
+          56,      0.15125, top_bridge_els          , GROUP_MA,       2.5493,    0.0005542
+          56,      0.15125, head_pegs               , GROUP_MA,       8.2664,    0.0017971
+          56,      0.15125, ribs_els                , GROUP_MA,       877.23,       0.1907
+          56,      0.15125, frets_els               , GROUP_MA,       887.23,      0.19288
+          57,        0.154, body_els                , GROUP_MA,        22626,       60.672
+          57,        0.154, rod_body_els            , GROUP_MA,       242.47,      0.65018
+          57,        0.154, rod_head_els            , GROUP_MA,       190.35,      0.51044
+          57,        0.154, block_els               , GROUP_MA,       659.89,       1.7695
+          57,        0.154, neck_els                , GROUP_MA,       6111.5,       16.388
+          57,        0.154, fretboard_els           , GROUP_MA,       2613.2,       7.0073
+          57,        0.154, saddle_els              , GROUP_MA,    0.0034661,   9.2944E-06
+          57,        0.154, scratch_plate_els       , GROUP_MA,       8.2212,     0.022045
+          57,        0.154, saddle_plate_els        , GROUP_MA,      0.38481,    0.0010319
+          57,        0.154, strap_pegs              , GROUP_MA,         4669,        12.52
+          57,        0.154, top_bridge_els          , GROUP_MA,      0.24494,   0.00065682
+          57,        0.154, head_pegs               , GROUP_MA,       3.6982,    0.0099168
+          57,        0.154, ribs_els                , GROUP_MA,       94.199,       0.2526
+          57,        0.154, frets_els               , GROUP_MA,       73.005,      0.19576
+          58,      0.15675, body_els                , GROUP_MA,   4.1088E+05,       57.772
+          58,      0.15675, rod_body_els            , GROUP_MA,       6048.9,      0.85051
+          58,      0.15675, rod_head_els            , GROUP_MA,       6249.1,      0.87866
+          58,      0.15675, block_els               , GROUP_MA,        12788,       1.7981
+          58,      0.15675, neck_els                , GROUP_MA,   1.1882E+05,       16.707
+          58,      0.15675, fretboard_els           , GROUP_MA,        49437,       6.9512
+          58,      0.15675, saddle_els              , GROUP_MA,     0.015379,   2.1624E-06
+          58,      0.15675, scratch_plate_els       , GROUP_MA,        92.74,      0.01304
+          58,      0.15675, saddle_plate_els        , GROUP_MA,       6.1807,   0.00086904
+          58,      0.15675, strap_pegs              , GROUP_MA,   1.0413E+05,       14.641
+          58,      0.15675, top_bridge_els          , GROUP_MA,       2.8357,   0.00039871
+          58,      0.15675, head_pegs               , GROUP_MA,       7.7843,    0.0010945
+          58,      0.15675, ribs_els                , GROUP_MA,       1332.7,      0.18739
+          58,      0.15675, frets_els               , GROUP_MA,       1413.3,      0.19872
+          59,       0.1595, body_els                , GROUP_MA,   3.7122E+05,       58.213
+          59,       0.1595, rod_body_els            , GROUP_MA,       6760.3,       1.0601
+          59,       0.1595, rod_head_els            , GROUP_MA,       7167.7,        1.124
+          59,       0.1595, block_els               , GROUP_MA,        11377,        1.784
+          59,       0.1595, neck_els                , GROUP_MA,   1.0282E+05,       16.123
+          59,       0.1595, fretboard_els           , GROUP_MA,        42706,        6.697
+          59,       0.1595, saddle_els              , GROUP_MA,     0.011477,   1.7997E-06
+          59,       0.1595, scratch_plate_els       , GROUP_MA,       70.584,     0.011069
+          59,       0.1595, saddle_plate_els        , GROUP_MA,       4.9466,   0.00077571
+          59,       0.1595, strap_pegs              , GROUP_MA,        93175,       14.611
+          59,       0.1595, top_bridge_els          , GROUP_MA,       3.4475,   0.00054062
+          59,       0.1595, head_pegs               , GROUP_MA,       9.8623,    0.0015466
+          59,       0.1595, ribs_els                , GROUP_MA,       1176.1,      0.18444
+          59,       0.1595, frets_els               , GROUP_MA,       1204.7,      0.18891
+          60,      0.16225, body_els                , GROUP_MA,        13001,       72.312
+          60,      0.16225, rod_body_els            , GROUP_MA,       60.704,      0.33764
+          60,      0.16225, rod_head_els            , GROUP_MA,       45.893,      0.25526
+          60,      0.16225, block_els               , GROUP_MA,       181.67,       1.0105
+          60,      0.16225, neck_els                , GROUP_MA,       1809.9,       10.067
+          60,      0.16225, fretboard_els           , GROUP_MA,       769.34,       4.2791
+          60,      0.16225, saddle_els              , GROUP_MA,   0.00015538,   8.6421E-07
+          60,      0.16225, scratch_plate_els       , GROUP_MA,      0.45831,    0.0025491
+          60,      0.16225, saddle_plate_els        , GROUP_MA,      0.12825,   0.00071332
+          60,      0.16225, strap_pegs              , GROUP_MA,       2037.3,       11.332
+          60,      0.16225, top_bridge_els          , GROUP_MA,      0.21234,    0.0011811
+          60,      0.16225, head_pegs               , GROUP_MA,       2.1577,     0.012001
+          60,      0.16225, ribs_els                , GROUP_MA,       47.168,      0.26235
+          60,      0.16225, frets_els               , GROUP_MA,       23.148,      0.12875
+          61,        0.165, body_els                , GROUP_MA,   2.3255E+05,        57.25
+          61,        0.165, rod_body_els            , GROUP_MA,         4708,        1.159
+          61,        0.165, rod_head_els            , GROUP_MA,       5148.4,       1.2675
+          61,        0.165, block_els               , GROUP_MA,       7637.2,       1.8802
+          61,        0.165, neck_els                , GROUP_MA,        67843,       16.702
+          61,        0.165, fretboard_els           , GROUP_MA,        28256,       6.9563
+          61,        0.165, saddle_els              , GROUP_MA,    0.0074625,   1.8371E-06
+          61,        0.165, scratch_plate_els       , GROUP_MA,       50.248,      0.01237
+          61,        0.165, saddle_plate_els        , GROUP_MA,       2.8386,   0.00069882
+          61,        0.165, strap_pegs              , GROUP_MA,        58448,       14.389
+          61,        0.165, top_bridge_els          , GROUP_MA,       3.0076,   0.00074043
+          61,        0.165, head_pegs               , GROUP_MA,       11.006,    0.0027096
+          61,        0.165, ribs_els                , GROUP_MA,       760.57,      0.18724
+          61,        0.165, frets_els               , GROUP_MA,       783.05,      0.19278
+          62,      0.16775, body_els                , GROUP_MA,   4.1119E+05,       59.849
+          62,      0.16775, rod_body_els            , GROUP_MA,       2262.8,      0.32935
+          62,      0.16775, rod_head_els            , GROUP_MA,         2368,      0.34466
+          62,      0.16775, block_els               , GROUP_MA,        11642,       1.6945
+          62,      0.16775, neck_els                , GROUP_MA,   1.0778E+05,       15.687
+          62,      0.16775, fretboard_els           , GROUP_MA,        44797,       6.5202
+          62,      0.16775, saddle_els              , GROUP_MA,     0.013381,   1.9476E-06
+          62,      0.16775, scratch_plate_els       , GROUP_MA,       76.102,     0.011077
+          62,      0.16775, saddle_plate_els        , GROUP_MA,       5.5098,   0.00080195
+          62,      0.16775, strap_pegs              , GROUP_MA,   1.0439E+05,       15.195
+          62,      0.16775, top_bridge_els          , GROUP_MA,       1.9344,   0.00028156
+          62,      0.16775, head_pegs               , GROUP_MA,        8.445,    0.0012292
+          62,      0.16775, ribs_els                , GROUP_MA,       1255.4,      0.18272
+          62,      0.16775, frets_els               , GROUP_MA,       1264.4,      0.18403
+          63,       0.1705, body_els                , GROUP_MA,        77310,       62.881
+          63,       0.1705, rod_body_els            , GROUP_MA,       28.577,     0.023244
+          63,       0.1705, rod_head_els            , GROUP_MA,       21.919,     0.017828
+          63,       0.1705, block_els               , GROUP_MA,       1848.6,       1.5036
+          63,       0.1705, neck_els                , GROUP_MA,        17519,       14.249
+          63,       0.1705, fretboard_els           , GROUP_MA,       7273.2,       5.9157
+          63,       0.1705, saddle_els              , GROUP_MA,    0.0046662,   3.7953E-06
+          63,       0.1705, scratch_plate_els       , GROUP_MA,        10.61,    0.0086295
+          63,       0.1705, saddle_plate_els        , GROUP_MA,       1.2383,    0.0010072
+          63,       0.1705, strap_pegs              , GROUP_MA,        18484,       15.034
+          63,       0.1705, top_bridge_els          , GROUP_MA,      0.23809,   0.00019366
+          63,       0.1705, head_pegs               , GROUP_MA,       1.5799,     0.001285
+          63,       0.1705, ribs_els                , GROUP_MA,       240.39,      0.19553
+          63,       0.1705, frets_els               , GROUP_MA,       207.54,      0.16881
+          64,      0.17325, body_els                , GROUP_MA,        98178,       60.363
+          64,      0.17325, rod_body_els            , GROUP_MA,       332.42,      0.20438
+          64,      0.17325, rod_head_els            , GROUP_MA,       321.04,      0.19739
+          64,      0.17325, block_els               , GROUP_MA,       2631.4,       1.6179
+          64,      0.17325, neck_els                , GROUP_MA,        25283,       15.545
+          64,      0.17325, fretboard_els           , GROUP_MA,        10572,       6.4999
+          64,      0.17325, saddle_els              , GROUP_MA,    0.0040176,   2.4702E-06
+          64,      0.17325, scratch_plate_els       , GROUP_MA,       20.787,     0.012781
+          64,      0.17325, saddle_plate_els        , GROUP_MA,       1.4765,   0.00090778
+          64,      0.17325, strap_pegs              , GROUP_MA,        24694,       15.183
+          64,      0.17325, top_bridge_els          , GROUP_MA,      0.40144,   0.00024682
+          64,      0.17325, head_pegs               , GROUP_MA,       1.9059,    0.0011718
+          64,      0.17325, ribs_els                , GROUP_MA,       304.98,      0.18751
+          64,      0.17325, frets_els               , GROUP_MA,       304.83,      0.18742
+          65,        0.176, body_els                , GROUP_MA,   3.6579E+05,       59.943
+          65,        0.176, rod_body_els            , GROUP_MA,       1213.6,      0.19888
+          65,        0.176, rod_head_els            , GROUP_MA,       1368.4,      0.22424
+          65,        0.176, block_els               , GROUP_MA,        10538,       1.7269
+          65,        0.176, neck_els                , GROUP_MA,        96008,       15.733
+          65,        0.176, fretboard_els           , GROUP_MA,        40061,       6.5649
+          65,        0.176, saddle_els              , GROUP_MA,     0.010799,   1.7697E-06
+          65,        0.176, scratch_plate_els       , GROUP_MA,       64.127,     0.010509
+          65,        0.176, saddle_plate_els        , GROUP_MA,       4.5095,   0.00073899
+          65,        0.176, strap_pegs              , GROUP_MA,        92941,        15.23
+          65,        0.176, top_bridge_els          , GROUP_MA,        2.188,   0.00035855
+          65,        0.176, head_pegs               , GROUP_MA,       14.337,    0.0023494
+          65,        0.176, ribs_els                , GROUP_MA,       1112.3,      0.18228
+          65,        0.176, frets_els               , GROUP_MA,       1111.2,       0.1821
+          66,      0.17875, body_els                , GROUP_MA,   1.5846E+05,       59.449
+          66,      0.17875, rod_body_els            , GROUP_MA,         2246,      0.84262
+          66,      0.17875, rod_head_els            , GROUP_MA,         2373,       0.8903
+          66,      0.17875, block_els               , GROUP_MA,       4581.8,        1.719
+          66,      0.17875, neck_els                , GROUP_MA,        41500,        15.57
+          66,      0.17875, fretboard_els           , GROUP_MA,        17282,       6.4837
+          66,      0.17875, saddle_els              , GROUP_MA,    0.0045588,   1.7103E-06
+          66,      0.17875, scratch_plate_els       , GROUP_MA,       22.629,    0.0084898
+          66,      0.17875, saddle_plate_els        , GROUP_MA,       2.0303,   0.00076171
+          66,      0.17875, strap_pegs              , GROUP_MA,        39090,       14.665
+          66,      0.17875, top_bridge_els          , GROUP_MA,       1.1847,   0.00044448
+          66,      0.17875, head_pegs               , GROUP_MA,       3.6586,    0.0013726
+          66,      0.17875, ribs_els                , GROUP_MA,       500.77,      0.18787
+          66,      0.17875, frets_els               , GROUP_MA,       485.36,      0.18209
+          67,       0.1815, body_els                , GROUP_MA,        19503,       65.203
+          67,       0.1815, rod_body_els            , GROUP_MA,        122.1,      0.40821
+          67,       0.1815, rod_head_els            , GROUP_MA,       98.945,      0.33079
+          67,       0.1815, block_els               , GROUP_MA,       426.21,       1.4249
+          67,       0.1815, neck_els                , GROUP_MA,         3817,       12.761
+          67,       0.1815, fretboard_els           , GROUP_MA,         1602,       5.3557
+          67,       0.1815, saddle_els              , GROUP_MA,    0.0017494,   5.8485E-06
+          67,       0.1815, scratch_plate_els       , GROUP_MA,       5.4766,     0.018309
+          67,       0.1815, saddle_plate_els        , GROUP_MA,      0.23822,   0.00079642
+          67,       0.1815, strap_pegs              , GROUP_MA,       4224.2,       14.122
+          67,       0.1815, top_bridge_els          , GROUP_MA,      0.14042,   0.00046945
+          67,       0.1815, head_pegs               , GROUP_MA,        2.061,    0.0068902
+          67,       0.1815, ribs_els                , GROUP_MA,        66.14,      0.22112
+          67,       0.1815, frets_els               , GROUP_MA,       43.876,      0.14668
+          68,      0.18425, body_els                , GROUP_MA,   2.6525E+05,       59.283
+          68,      0.18425, rod_body_els            , GROUP_MA,       3352.5,      0.74929
+          68,      0.18425, rod_head_els            , GROUP_MA,       3436.8,      0.76812
+          68,      0.18425, block_els               , GROUP_MA,       7552.7,        1.688
+          68,      0.18425, neck_els                , GROUP_MA,        69537,       15.542
+          68,      0.18425, fretboard_els           , GROUP_MA,        28896,       6.4583
+          68,      0.18425, saddle_els              , GROUP_MA,    0.0093776,   2.0959E-06
+          68,      0.18425, scratch_plate_els       , GROUP_MA,       50.871,      0.01137
+          68,      0.18425, saddle_plate_els        , GROUP_MA,       3.5657,   0.00079694
+          68,      0.18425, strap_pegs              , GROUP_MA,        67716,       15.135
+          68,      0.18425, top_bridge_els          , GROUP_MA,       1.5887,   0.00035507
+          68,      0.18425, head_pegs               , GROUP_MA,       4.5631,    0.0010198
+          68,      0.18425, ribs_els                , GROUP_MA,       805.16,      0.17995
+          68,      0.18425, frets_els               , GROUP_MA,       821.11,      0.18352
+          69,        0.187, body_els                , GROUP_MA,      2.2E+05,       57.992
+          69,        0.187, rod_body_els            , GROUP_MA,       4101.6,       1.0812
+          69,        0.187, rod_head_els            , GROUP_MA,       4407.7,       1.1618
+          69,        0.187, block_els               , GROUP_MA,       6901.2,       1.8191
+          69,        0.187, neck_els                , GROUP_MA,        61910,       16.319
+          69,        0.187, fretboard_els           , GROUP_MA,        25828,       6.8082
+          69,        0.187, saddle_els              , GROUP_MA,    0.0086304,   2.2749E-06
+          69,        0.187, scratch_plate_els       , GROUP_MA,       34.423,    0.0090738
+          69,        0.187, saddle_plate_els        , GROUP_MA,       3.0682,   0.00080876
+          69,        0.187, strap_pegs              , GROUP_MA,        54732,       14.427
+          69,        0.187, top_bridge_els          , GROUP_MA,       2.2428,   0.00059119
+          69,        0.187, head_pegs               , GROUP_MA,       7.1131,     0.001875
+          69,        0.187, ribs_els                , GROUP_MA,       716.91,      0.18897
+          69,        0.187, frets_els               , GROUP_MA,        721.1,      0.19008
+          70,      0.18975, body_els                , GROUP_MA,       6540.3,       72.557
+          70,      0.18975, rod_body_els            , GROUP_MA,       16.828,      0.18669
+          70,      0.18975, rod_head_els            , GROUP_MA,       11.909,      0.13212
+          70,      0.18975, block_els               , GROUP_MA,       104.14,       1.1553
+          70,      0.18975, neck_els                , GROUP_MA,       1113.5,       12.353
+          70,      0.18975, fretboard_els           , GROUP_MA,       560.84,       6.2219
+          70,      0.18975, saddle_els              , GROUP_MA,   0.00034165,   3.7902E-06
+          70,      0.18975, scratch_plate_els       , GROUP_MA,      0.48231,    0.0053506
+          70,      0.18975, saddle_plate_els        , GROUP_MA,       0.1212,    0.0013446
+          70,      0.18975, strap_pegs              , GROUP_MA,       610.26,       6.7701
+          70,      0.18975, top_bridge_els          , GROUP_MA,     0.023497,   0.00026067
+          70,      0.18975, head_pegs               , GROUP_MA,         0.35,    0.0038829
+          70,      0.18975, ribs_els                , GROUP_MA,        37.04,      0.41092
+          70,      0.18975, frets_els               , GROUP_MA,       18.225,      0.20218
+          71,       0.1925, body_els                , GROUP_MA,   1.5153E+05,       57.753
+          71,       0.1925, rod_body_els            , GROUP_MA,       3084.4,       1.1756
+          71,       0.1925, rod_head_els            , GROUP_MA,       3358.5,       1.2801
+          71,       0.1925, block_els               , GROUP_MA,       4803.3,       1.8307
+          71,       0.1925, neck_els                , GROUP_MA,        42588,       16.232
+          71,       0.1925, fretboard_els           , GROUP_MA,        17747,        6.764
+          71,       0.1925, saddle_els              , GROUP_MA,    0.0041622,   1.5864E-06
+          71,       0.1925, scratch_plate_els       , GROUP_MA,         35.2,     0.013416
+          71,       0.1925, saddle_plate_els        , GROUP_MA,       1.7844,   0.00068009
+          71,       0.1925, strap_pegs              , GROUP_MA,        38240,       14.575
+          71,       0.1925, top_bridge_els          , GROUP_MA,       1.9405,    0.0007396
+          71,       0.1925, head_pegs               , GROUP_MA,       6.9694,    0.0026563
+          71,       0.1925, ribs_els                , GROUP_MA,       482.42,      0.18387
+          71,       0.1925, frets_els               , GROUP_MA,       495.26,      0.18876
+          72,      0.19525, body_els                , GROUP_MA,     2.45E+05,       58.824
+          72,      0.19525, rod_body_els            , GROUP_MA,       1637.4,      0.39314
+          72,      0.19525, rod_head_els            , GROUP_MA,       1696.6,      0.40734
+          72,      0.19525, block_els               , GROUP_MA,       7340.1,       1.7624
+          72,      0.19525, neck_els                , GROUP_MA,        68839,       16.528
+          72,      0.19525, fretboard_els           , GROUP_MA,        28637,       6.8758
+          72,      0.19525, saddle_els              , GROUP_MA,    0.0093019,   2.2334E-06
+          72,      0.19525, scratch_plate_els       , GROUP_MA,        45.54,     0.010934
+          72,      0.19525, saddle_plate_els        , GROUP_MA,       3.6253,   0.00087043
+          72,      0.19525, strap_pegs              , GROUP_MA,        61693,       14.812
+          72,      0.19525, top_bridge_els          , GROUP_MA,       1.2106,   0.00029066
+          72,      0.19525, head_pegs               , GROUP_MA,       4.7207,    0.0011334
+          72,      0.19525, ribs_els                , GROUP_MA,       786.45,      0.18882
+          72,      0.19525, frets_els               , GROUP_MA,       813.17,      0.19524
+          73,        0.198, body_els                , GROUP_MA,        41467,       61.419
+          73,        0.198, rod_body_els            , GROUP_MA,       17.807,     0.026375
+          73,        0.198, rod_head_els            , GROUP_MA,       11.445,     0.016952
+          73,        0.198, block_els               , GROUP_MA,       1136.2,       1.6829
+          73,        0.198, neck_els                , GROUP_MA,        10729,       15.891
+          73,        0.198, fretboard_els           , GROUP_MA,       4493.1,       6.6548
+          73,        0.198, saddle_els              , GROUP_MA,    0.0033788,   5.0044E-06
+          73,        0.198, scratch_plate_els       , GROUP_MA,       4.4278,    0.0065581
+          73,        0.198, saddle_plate_els        , GROUP_MA,      0.78244,    0.0011589
+          73,        0.198, strap_pegs              , GROUP_MA,       9379.9,       13.893
+          73,        0.198, top_bridge_els          , GROUP_MA,      0.11806,   0.00017486
+          73,        0.198, head_pegs               , GROUP_MA,       1.1416,    0.0016909
+          73,        0.198, ribs_els                , GROUP_MA,       148.61,      0.22012
+          73,        0.198, frets_els               , GROUP_MA,       125.76,      0.18626
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 00000091 CALCULE LE 23/11/2025 A 10:26:58 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            ALL nodes, Total Sum of Reactions: Forces & Moments
+            ===================================================
+NUME_ORDRE  , NOM_CHAM        , RESULT_X    , RESULT_Y    , RESULT_Z    , MOMENT_X    , MOMENT_Y    , MOMENT_Z    
+           1, REAC_NODA       ,            0,            0,            0,            0,            0,            0
+           2, REAC_NODA       ,       69.167,      -390.19,       -23131,  -1.5469E+06,  -1.0042E+07,       -34702
+           3, REAC_NODA       ,      -16.916,      -649.97,       -27578,  -1.4823E+06,  -1.1869E+07,      -464.51
+           4, REAC_NODA       ,      -176.25,       -271.6,        -9400,        59915,   -4.929E+06,   1.3445E+05
+           5, REAC_NODA       ,      -211.94,       194.41,        16318,   1.5185E+06,   6.0099E+06,   2.4741E+05
+           6, REAC_NODA       ,       9.7117,       261.08,        28158,   1.7981E+06,   1.1873E+07,   2.1276E+05
+           7, REAC_NODA       ,       358.78,       296.18,        16637,    1.037E+06,   6.8831E+06,        96015
+           8, REAC_NODA       ,       468.55,       145.35,      -8327.1,       -85246,  -4.0527E+06,       -43319
+           9, REAC_NODA       ,       144.75,       -136.5,       -24990,  -7.8558E+05,  -1.1694E+07,   -1.747E+05
+          10, REAC_NODA       ,      -399.76,      -20.723,       -19822,  -6.3119E+05,  -9.7771E+06,  -1.5879E+05
+          11, REAC_NODA       ,      -693.07,       145.19,       1116.2,   1.7162E+05,    3.515E+05,       -16862
+          12, REAC_NODA       ,      -386.14,        131.8,        20158,   1.0204E+06,   9.1991E+06,        98197
+          13, REAC_NODA       ,       330.69,       200.01,        22009,   1.1694E+06,   9.5326E+06,   1.7344E+05
+          14, REAC_NODA       ,       904.47,      -390.12,       -17431,  -1.1947E+06,  -7.6502E+06,   1.1143E+05
+          15, REAC_NODA       ,       639.16,        -1039,       -41841,  -2.3092E+06,  -1.8061E+07,       659.95
+          16, REAC_NODA       ,      -295.03,      -682.84,       -31015,  -1.4466E+06,  -1.3818E+07,        53664
+          17, REAC_NODA       ,      -1067.1,      -60.083,       4965.3,   3.4671E+05,   2.1664E+06,   1.5214E+05
+          18, REAC_NODA       ,      -877.35,       280.77,        35503,    1.734E+06,   1.5646E+07,   1.0979E+05
+          19, REAC_NODA       ,       198.56,       716.31,        35285,   1.8112E+06,   1.5305E+07,        43942
+          20, REAC_NODA       ,       1191.1,       534.06,         5926,   4.4929E+05,   2.8482E+06,  -1.0091E+05
+          21, REAC_NODA       ,       1157.1,      -90.425,       -26053,  -1.2932E+06,  -1.1478E+07,  -3.2271E+05
+          22, REAC_NODA       ,       23.856,      -156.95,       -35060,  -1.9688E+06,  -1.5722E+07,  -3.1571E+05
+          23, REAC_NODA       ,      -1258.6,      -124.18,       -15957,  -9.7684E+05,  -6.6864E+06,  -1.1997E+05
+          24, REAC_NODA       ,      -1494.7,      -93.597,        15145,   8.4713E+05,   6.8153E+06,        89637
+          25, REAC_NODA       ,      -399.46,       218.66,        32811,   1.8429E+06,   1.4214E+07,   3.1474E+05
+          26, REAC_NODA       ,       1128.5,       69.292,        23098,   1.2416E+06,    1.006E+07,   3.3384E+05
+          27, REAC_NODA       ,       1775.4,      -355.64,      -4930.1,  -2.6762E+05,   -2.369E+06,   1.2564E+05
+          28, REAC_NODA       ,       904.99,       -392.4,       -27908,  -1.4903E+06,  -1.2043E+07,       -23901
+          29, REAC_NODA       ,      -794.05,      -350.69,       -26922,  -1.4954E+06,  -1.1457E+07,  -1.3817E+05
+          30, REAC_NODA       ,      -1861.6,      -29.522,      -3901.5,  -2.6385E+05,  -2.0103E+06,  -1.9296E+05
+          31, REAC_NODA       ,      -1367.7,       588.55,        20625,   1.1508E+06,   8.9064E+06,       -71728
+          32, REAC_NODA       ,       311.18,       662.49,        27282,   1.5661E+06,   1.2107E+07,      -6766.8
+          33, REAC_NODA       ,       1763.3,       322.24,        12056,   6.4134E+05,   5.2296E+06,       -49165
+          34, REAC_NODA       ,       1713.1,      -18.043,       -12354,  -7.8397E+05,  -5.3053E+06,       -43725
+          35, REAC_NODA       ,       183.88,      -440.02,       -25887,   -1.411E+06,  -1.1377E+07,       -51523
+          36, REAC_NODA       ,      -1526.7,      -532.41,       -17879,  -8.4692E+05,  -7.9901E+06,       4136.8
+          37, REAC_NODA       ,      -1958.1,      -229.29,       4466.7,   2.7075E+05,   2.1439E+06,   1.6895E+05
+          38, REAC_NODA       ,      -700.18,       9.7653,        22478,   1.1072E+06,   9.8261E+06,   2.1919E+05
+          39, REAC_NODA       ,       1197.4,       192.43,        20998,   1.0809E+06,   9.0895E+06,   1.5255E+05
+          40, REAC_NODA       ,       2102.2,       215.29,       2234.8,   2.1171E+05,   1.1215E+06,        39740
+          41, REAC_NODA       ,       1226.6,       -18.61,       -16926,  -8.3056E+05,  -7.5323E+06,  -1.5693E+05
+          42, REAC_NODA       ,       -713.6,      -103.03,       -21310,  -1.2183E+06,  -9.3928E+06,   -2.667E+05
+          43, REAC_NODA       ,      -2083.6,       51.985,      -8539.4,  -5.5916E+05,  -3.5579E+06,  -1.9562E+05
+          44, REAC_NODA       ,      -1702.2,       219.26,        10428,    5.955E+05,   4.5231E+06,       -64374
+          45, REAC_NODA       ,       115.32,       284.96,        20099,   1.1652E+06,   8.7899E+06,        85524
+          46, REAC_NODA       ,       1833.8,       127.69,        13302,     7.19E+05,   5.7891E+06,   1.6911E+05
+          47, REAC_NODA       ,       2012.7,      -179.06,      -3983.2,   -2.591E+05,  -1.8851E+06,   1.1788E+05
+          48, REAC_NODA       ,       503.99,      -419.44,       -17569,  -9.6195E+05,   -7.494E+06,        46755
+          49, REAC_NODA       ,      -1415.1,      -436.42,       -16080,  -8.5145E+05,  -6.9436E+06,        11065
+          50, REAC_NODA       ,      -2123.1,      -165.87,      -1448.2,       -76419,  -8.3889E+05,      -3210.4
+          51, REAC_NODA       ,      -1036.5,       188.18,        13417,   7.1852E+05,   5.8858E+06,        14970
+          52, REAC_NODA       ,       914.23,       403.49,        16714,   9.2289E+05,   7.3544E+06,       8335.3
+          53, REAC_NODA       ,       2078.7,       379.02,       6420.5,   3.5014E+05,   2.8297E+06,       -54974
+          54, REAC_NODA       ,       1475.2,       97.391,      -8571.6,  -4.9882E+05,    -3.67E+06,  -1.2495E+05
+          55, REAC_NODA       ,      -378.06,      -130.49,       -15924,  -8.6261E+05,  -7.1154E+06,  -1.4578E+05
+          56, REAC_NODA       ,      -1906.4,      -151.87,       -10201,  -5.0983E+05,  -4.4932E+06,       -77009
+          57, REAC_NODA       ,      -1820.8,      -140.56,       3637.4,   2.0298E+05,   1.7542E+06,        50552
+          58, REAC_NODA       ,      -202.32,      -27.109,        14095,   7.1582E+05,   6.1036E+06,   1.6092E+05
+          59, REAC_NODA       ,         1581,       73.006,        12370,   6.4674E+05,   5.3855E+06,    1.919E+05
+          60, REAC_NODA       ,       2031.6,      -62.749,       587.83,        83073,   2.9137E+05,    1.114E+05
+          61, REAC_NODA       ,       781.23,      -155.12,       -10876,  -5.4423E+05,  -4.8386E+06,       -14696
+          62, REAC_NODA       ,      -1103.6,       -127.6,       -12930,  -7.4527E+05,  -5.5879E+06,  -1.0533E+05
+          63, REAC_NODA       ,      -2040.8,      -52.962,      -4485.8,  -2.9938E+05,  -1.9252E+06,  -1.3856E+05
+          64, REAC_NODA       ,      -1267.2,       227.85,       7038.3,   4.0693E+05,   3.0054E+06,       -87293
+          65, REAC_NODA       ,       545.05,       381.04,        12313,   7.2051E+05,   5.4415E+06,      -8118.5
+          66, REAC_NODA       ,       1863.6,       190.03,       7632.1,   4.1006E+05,    3.296E+06,        12582
+          67, REAC_NODA       ,       1594.8,       7.9231,      -3078.8,   -2.108E+05,  -1.3951E+06,        13366
+          68, REAC_NODA       ,       1.7823,       -199.7,       -11015,  -6.0691E+05,   -4.694E+06,        11323
+          69, REAC_NODA       ,      -1557.6,      -369.32,      -9528.5,  -4.8266E+05,  -4.1975E+06,       8387.4
+          70, REAC_NODA       ,      -1782.4,      -197.24,      -309.53,      -5473.4,   -2.084E+05,        60434
+          71, REAC_NODA       ,      -504.56,        7.347,       8675.8,   4.4791E+05,   3.8311E+06,   1.0248E+05
+          72, REAC_NODA       ,         1176,       101.24,        10177,   5.4554E+05,    4.434E+06,        70485
+          73, REAC_NODA       ,         1844,       207.78,       3306.3,   1.8998E+05,   1.5023E+06,        14664
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 00000093 CALCULE LE 23/11/2025 A 10:30:29 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            Displacements (mm) & Rotations (rad) @ load node(s)
+            ===================================================
+NOEUD   , NUME_ORDRE  , DX          , DY          , DZ          , DRX         , DRY         , DRZ         
+N273224 ,            1,            0,            0,            0,            0,            0,            0
+N273226 ,            1,            0,            0,            0,            0,            0,            0
+N273216 ,            1,            0,            0,            0,            0,            0,            0
+N273218 ,            1,            0,            0,            0,            0,            0,            0
+N273224 ,            2,     0.079482,      -0.1924,      -8.1271,      -0.2831,    -0.065465,    0.0011973
+N273226 ,            2,     0.079123,     -0.19241,       -8.127,     -0.28299,    -0.063898,    0.0011661
+N273216 ,            2,      0.13272,      -0.7457,      -42.166,     -0.35709,    -0.072149,  -7.8033E-05
+N273218 ,            2,     0.036733,      0.10145,      -17.458,     -0.23235,    -0.009934,   -0.0014947
+N273224 ,            3,      0.31962,      -1.6821,      -71.626,      -1.3248,     -0.27477,    0.0038079
+N273226 ,            3,      0.31832,      -1.6822,      -71.626,      -1.3245,     -0.26965,    0.0037112
+N273216 ,            3,      0.56017,      -3.3962,      -204.23,      -1.5188,     -0.32642,   -0.0013619
+N273218 ,            3,   0.00017654,      0.27085,      -90.002,      -1.2012,    -0.049873,    0.0023561
+N273224 ,            4,      0.52752,      -6.0276,      -254.52,      -3.0512,     -0.60015,    0.0063755
+N273226 ,            4,      0.52558,      -6.0276,      -254.52,       -3.051,     -0.59478,    0.0062882
+N273216 ,            4,       1.0681,      -7.9735,      -487.11,      -3.2626,     -0.75522,   -0.0036334
+N273218 ,            4,     -0.38392,     0.076734,      -219.85,      -2.9406,     -0.12069,     0.018433
+N273224 ,            5,      0.32244,      -12.341,      -510.11,      -4.7688,     -0.95989,     0.010433
+N273226 ,            5,      0.32076,      -12.341,      -510.11,      -4.7686,     -0.95996,     0.010468
+N273216 ,            5,       1.1363,      -13.519,      -783.32,      -4.9861,      -1.2303,   -0.0019854
+N273218 ,            5,      -1.1754,      -0.2515,      -349.05,       -4.676,     -0.19277,     0.032592
+N273224 ,            6,     -0.43588,      -16.576,      -659.13,      -5.6634,      -1.1839,     0.016881
+N273226 ,            6,      -0.4373,      -16.576,      -659.13,      -5.6632,      -1.1878,     0.016991
+N273216 ,            6,      0.42215,       -18.35,      -948.16,      -5.9069,      -1.5202,    0.0073415
+N273218 ,            6,      -2.2117,    -0.054697,      -414.69,      -5.5615,     -0.23091,     0.037473
+N273224 ,            7,      -1.2923,      -16.018,      -592.61,       -5.414,      -1.1375,     0.024178
+N273226 ,            7,      -1.2943,      -16.018,      -592.61,      -5.4138,      -1.1379,     0.024186
+N273216 ,            7,     -0.70471,      -21.051,      -909.41,      -5.6369,      -1.4625,     0.022326
+N273218 ,            7,      -2.9567,     0.044162,      -397.01,      -5.3259,     -0.22121,      0.03635
+N273224 ,            8,      -1.4119,      -12.727,      -412.69,      -4.4583,     -0.91725,     0.030674
+N273226 ,            8,      -1.4144,      -12.727,      -412.69,      -4.4581,     -0.91204,     0.030521
+N273216 ,            8,      -1.2431,      -21.544,      -731.17,       -4.728,      -1.1627,     0.037271
+N273218 ,            8,      -2.6439,     -0.12254,      -322.78,      -4.3244,     -0.17892,      0.02609
+N273224 ,            9,     -0.42637,      -10.366,      -289.12,        -3.44,     -0.67701,     0.032012
+N273226 ,            9,     -0.42844,      -10.366,      -289.12,      -3.4397,     -0.67155,     0.031842
+N273216 ,            9,     -0.56557,      -19.944,      -542.18,      -3.7385,     -0.84042,     0.044034
+N273218 ,            9,      -1.2642,      0.21276,      -244.65,      -3.2696,     -0.13433,     0.017442
+N273224 ,           10,       1.0334,       -9.404,      -259.79,       -2.778,     -0.53364,     0.026379
+N273226 ,           10,       1.0322,       -9.404,      -259.79,      -2.7778,     -0.53148,     0.026307
+N273216 ,           10,      0.87058,       -16.57,      -436.24,      -2.9943,     -0.66675,     0.038057
+N273218 ,           10,      0.31888,      0.25123,      -198.95,      -2.6579,     -0.10876,     0.016507
+N273224 ,           11,       1.7214,      -7.9088,      -255.03,       -2.461,     -0.51018,      0.01673
+N273226 ,           11,       1.7204,      -7.9088,      -255.03,      -2.4609,     -0.50953,     0.016711
+N273216 ,           11,       1.7882,      -12.015,      -406.01,      -2.6028,     -0.64819,     0.022425
+N273218 ,           11,       0.9901,     -0.13485,      -178.44,      -2.3911,    -0.099097,     0.015109
+N273224 ,           12,      0.84992,      -5.1955,       -223.1,      -1.9741,     -0.43714,    0.0050991
+N273226 ,           12,      0.84913,      -5.1955,       -223.1,      -1.9741,     -0.43731,    0.0050892
+N273216 ,           12,       1.1668,       -6.251,      -344.43,      -2.0156,     -0.56954,    0.0028513
+N273218 ,           12,      0.15171,     0.046806,      -146.64,      -1.9718,    -0.082577,     0.014899
+N273224 ,           13,     -0.99701,      -1.8119,      -133.35,     -0.85262,       -0.189,   -0.0056027
+N273226 ,           13,     -0.99692,      -1.8119,      -133.35,     -0.85275,     -0.19172,   -0.0055523
+N273216 ,           13,     -0.61832,      0.47672,      -157.62,     -0.79845,     -0.26013,    -0.014039
+N273218 ,           13,      -1.3671,    -0.066023,      -67.042,     -0.90442,    -0.037824,    0.0096199
+N273224 ,           14,      -2.1317,       2.4232,       43.912,       0.6014,      0.12369,    -0.011764
+N273226 ,           14,      -2.1311,       2.4232,       43.912,      0.60142,      0.12165,    -0.011675
+N273216 ,           14,      -1.8757,       6.5838,       104.21,      0.59002,      0.16591,    -0.022887
+N273218 ,           14,      -1.9025,     -0.25797,       46.127,      0.62004,     0.025485,   -0.0076293
+N273224 ,           15,      -1.2628,       6.7168,       231.12,       1.4661,      0.31776,    -0.014123
+N273226 ,           15,       -1.263,       6.7167,       231.12,       1.4663,      0.32274,    -0.014144
+N273216 ,           15,      -1.1323,       9.9746,       267.31,       1.3825,      0.43621,     -0.02555
+N273218 ,           15,     -0.70247,      0.40263,       114.86,        1.548,     0.064474,    -0.016852
+N273224 ,           16,        1.091,       7.3055,       231.58,       1.1251,      0.26412,    -0.014273
+N273226 ,           16,         1.09,       7.3053,       231.58,       1.1253,      0.27251,    -0.014408
+N273216 ,           16,       1.2611,       9.2617,       208.89,       1.0939,      0.35454,    -0.025401
+N273218 ,           16,       1.4366,      0.23707,       86.019,       1.1603,     0.049285,    -0.009285
+N273224 ,           17,       2.8146,       2.0324,      -5.6582,     -0.11243,    -0.020048,    -0.011055
+N273226 ,           17,       2.8144,       2.0324,      -5.6582,     -0.11242,    -0.019533,     -0.01108
+N273216 ,           17,       3.1481,       4.7287,       -17.65,     -0.11623,     -0.02594,    -0.020567
+N273218 ,           17,       2.6804,       -0.362,       -8.362,     -0.11164,   -0.0044582,     0.001099
+N273224 ,           18,       2.0747,       -4.632,      -237.63,      -1.1851,     -0.27228,   -0.0041844
+N273226 ,           18,       2.0756,      -4.6318,      -237.63,      -1.1852,     -0.28063,   -0.0040057
+N273216 ,           18,       2.4478,      -1.1787,      -218.48,      -1.1467,     -0.36688,    -0.009303
+N273218 ,           18,       1.5427,      0.14434,       -90.98,      -1.2264,    -0.051822,     0.012048
+N273224 ,           19,       -0.775,       -6.246,      -219.01,      -1.2478,     -0.27938,    0.0058785
+N273226 ,           19,     -0.77454,      -6.2459,      -219.01,       -1.248,     -0.28533,    0.0060349
+N273216 ,           19,     -0.66572,      -5.7919,         -232,      -1.1672,     -0.38458,    0.0082469
+N273218 ,           19,      -1.2628,    -0.061316,      -98.093,      -1.3235,    -0.055499,     0.014282
+N273224 ,           20,      -3.2706,      -2.6574,      -12.185,     -0.33628,    -0.076234,     0.015888
+N273226 ,           20,      -3.2712,      -2.6575,      -12.185,     -0.33627,    -0.073999,     0.015816
+N273216 ,           20,      -3.6387,      -7.6785,      -59.873,     -0.33718,     -0.10038,     0.027885
+N273218 ,           20,      -3.2487,     -0.49805,      -25.351,     -0.34195,    -0.014325,   0.00099583
+N273224 ,           21,      -3.0224,      0.95766,       150.07,      0.83168,      0.19118,     0.019301
+N273226 ,           21,      -3.0227,      0.95759,       150.07,       0.8318,      0.19548,     0.019109
+N273216 ,           21,      -3.7806,      -6.5296,       155.48,      0.78605,      0.26115,     0.038489
+N273218 ,           21,      -2.5338,      0.38067,       64.906,      0.87579,     0.036889,   -0.0090966
+N273224 ,           22,     0.042511,       1.7049,       170.63,       1.2897,      0.29344,      0.01465
+N273226 ,           22,     0.042786,       1.7049,       170.63,       1.2898,      0.29512,     0.014541
+N273216 ,           22,     -0.71702,      -3.6794,       235.39,       1.2546,      0.39411,     0.033072
+N273218 ,           22,      0.61828,      0.33338,       98.949,       1.3341,     0.056064,    -0.011659
+N273224 ,           23,       3.3742,      0.96345,       93.931,       0.6522,       0.1345,    0.0048144
+N273226 ,           23,       3.3742,      0.96343,       93.931,      0.65229,      0.13602,    0.0047986
+N273216 ,           23,       3.0403,     -0.73759,          117,      0.60982,      0.18623,      0.01404
+N273218 ,           23,       3.6131,     -0.19032,       51.441,      0.69288,     0.028639,   -0.0075712
+N273224 ,           24,       3.9414,     0.045495,      -42.157,     -0.47189,     -0.10939,   -0.0066166
+N273226 ,           24,        3.941,     0.045461,      -42.157,     -0.47194,     -0.10816,   -0.0066126
+N273216 ,           24,       4.2083,       1.7916,      -88.308,      -0.4457,     -0.14932,      -0.0115
+N273218 ,           24,       3.6187,      0.31229,      -36.978,     -0.49917,    -0.020905,    0.0071606
+N273224 ,           25,       1.0314,      -1.1855,      -176.53,      -1.1618,     -0.25255,    -0.014377
+N273226 ,           25,       1.0315,      -1.1854,      -176.53,      -1.1619,     -0.25597,     -0.01431
+N273216 ,           25,        1.732,       3.7276,      -211.38,      -1.1011,     -0.34554,     -0.03142
+N273218 ,           25,      0.46423,     -0.16789,      -90.729,      -1.2226,    -0.050951,     0.013213
+N273224 ,           26,      -2.9909,      -1.5062,      -175.49,     -0.88745,     -0.19519,    -0.015931
+N273226 ,           26,      -2.9902,      -1.5061,      -175.49,     -0.88755,     -0.20145,    -0.015756
+N273216 ,           26,      -2.2601,       5.1113,      -158.74,     -0.87324,     -0.26079,    -0.036314
+N273218 ,           26,      -3.3238,     -0.58826,      -67.434,      -0.9077,    -0.038145,     0.005675
+N273224 ,           27,      -4.6348,      0.96811,       3.6301,       0.1136,     0.029828,    -0.011933
+N273226 ,           27,      -4.6346,      0.96812,       3.6301,       0.1136,     0.029012,    -0.011802
+N273216 ,           27,       -4.237,       5.6976,       21.077,      0.11904,     0.038155,    -0.026961
+N273218 ,           27,      -4.5665,      0.26508,       8.2865,      0.11169,    0.0047575,    -0.001564
+N273224 ,           28,      -2.3082,       4.4382,       186.25,       0.9612,      0.20968,   -0.0045207
+N273226 ,           28,      -2.3089,       4.4381,       186.25,      0.96132,      0.21603,   -0.0045985
+N273216 ,           28,      -2.3426,       4.5483,       173.35,      0.92842,      0.28359,   -0.0089907
+N273218 ,           28,      -1.9109,     0.052031,       74.021,       0.9964,     0.041685,    -0.010281
+N273224 ,           29,       2.1396,       4.3307,       175.91,      0.98678,      0.20986,    0.0020291
+N273226 ,           29,       2.1391,       4.3306,       175.91,      0.98692,      0.21501,    0.0018474
+N273216 ,           29,        1.827,       1.4604,       178.53,      0.93114,       0.2884,    0.0085847
+N273218 ,           29,        2.519,     -0.13102,       77.231,       1.0403,     0.043294,    -0.011162
+N273224 ,           30,       4.9198,     -0.24091,       8.0478,      0.22943,     0.056007,    0.0066098
+N273226 ,           30,       4.9201,     -0.24088,       8.0477,      0.22942,     0.054441,    0.0065538
+N273216 ,           30,       4.5873,      -2.7389,       41.686,      0.23512,     0.072627,     0.018154
+N273218 ,           30,       4.9273,      0.54094,       16.972,      0.22948,    0.0097997,    0.0011456
+N273224 ,           31,       3.5616,      -4.7893,      -127.32,     -0.70101,     -0.15027,     0.010367
+N273226 ,           31,       3.5619,      -4.7893,      -127.32,     -0.70109,     -0.15422,     0.010455
+N273216 ,           31,       3.3565,      -6.4751,      -125.34,     -0.67767,      -0.2033,     0.021167
+N273218 ,           31,       3.2688,    -0.092746,      -54.017,      -0.7267,    -0.030262,     0.008301
+N273224 ,           32,     -0.91967,      -5.2866,      -137.55,      -1.0134,      -0.2253,     0.011796
+N273226 ,           32,     -0.91982,      -5.2866,      -137.55,      -1.0135,     -0.22698,     0.011855
+N273216 ,           32,      -1.0473,      -7.6677,      -183.29,     -0.98414,     -0.30326,      0.02033
+N273218 ,           32,      -1.2368,     -0.44144,      -77.885,      -1.0496,    -0.043934,    0.0089665
+N273224 ,           33,      -4.7512,      -2.5039,      -64.315,     -0.46849,      -0.1045,     0.010189
+N273226 ,           33,      -4.7513,      -2.5039,      -64.315,     -0.46856,     -0.10516,     0.010143
+N273216 ,           33,       -4.901,        -5.57,      -87.863,     -0.42967,     -0.14546,     0.015589
+N273218 ,           33,      -4.8277,      0.21856,      -37.315,      -0.5042,     -0.02111,    0.0051044
+N273224 ,           34,      -4.5991,      0.61966,       42.015,      0.40912,     0.083962,    0.0052769
+N273226 ,           34,      -4.5989,      0.61968,       42.015,      0.40916,       0.0835,    0.0052249
+N273216 ,           34,      -4.7902,      -1.2626,       72.754,      0.38577,      0.11567,    0.0080909
+N273218 ,           34,      -4.3098,      -0.1242,       32.191,      0.43303,      0.01776,   -0.0067394
+N273224 ,           35,     -0.49873,       2.8544,       135.02,      0.91275,      0.20339,   -0.0027451
+N273226 ,           35,     -0.49873,       2.8544,       135.02,      0.91286,      0.20572,   -0.0027452
+N273216 ,           35,     -0.62542,       3.3476,        167.4,      0.86884,      0.27712,   -0.0029003
+N273218 ,           35,     -0.11897,    -0.081292,       71.043,      0.95788,     0.040089,    -0.010441
+N273224 ,           36,       4.1286,       3.8602,       129.77,      0.65757,      0.15474,    -0.010165
+N273226 ,           36,       4.1281,       3.8601,       129.77,      0.65764,      0.15918,    -0.010181
+N273216 ,           36,       4.2461,       6.1142,       121.99,      0.64089,      0.20735,    -0.016177
+N273218 ,           36,        4.244,      0.47932,       50.183,      0.67726,     0.028809,   -0.0035639
+N273224 ,           37,       5.3258,       2.5933,      -3.8602,     -0.12205,    -0.029542,    -0.014289
+N273226 ,           37,       5.3256,       2.5933,      -3.8602,     -0.12204,    -0.028715,    -0.014312
+N273216 ,           37,       5.7397,       6.1237,      -21.402,     -0.13077,    -0.037245,    -0.025325
+N273218 ,           37,       5.1158,     -0.11129,      -8.7748,     -0.11775,   -0.0049427,    0.0019159
+N273224 ,           38,       1.9842,     -0.55204,      -143.48,     -0.74628,     -0.17008,    -0.013446
+N273226 ,           38,       1.9846,     -0.55196,      -143.48,     -0.74639,     -0.17474,    -0.013373
+N273216 ,           38,       2.5346,        4.057,      -138.54,     -0.70952,     -0.23166,    -0.026298
+N273218 ,           38,       1.5834,     -0.23236,      -58.003,     -0.78225,    -0.032945,     0.007819
+N273224 ,           39,      -3.1137,      -2.5779,      -138.42,     -0.75014,     -0.16705,   -0.0062222
+N273226 ,           39,      -3.1133,      -2.5778,      -138.42,     -0.75026,     -0.17125,    -0.006073
+N273216 ,           39,      -2.7025,       1.0566,      -138.58,     -0.70676,     -0.22907,    -0.017133
+N273218 ,           39,      -3.4004,      0.12272,      -58.671,     -0.79137,    -0.033224,    0.0077375
+N273224 ,           40,      -5.6424,      -1.4445,      -6.3296,     -0.16482,    -0.036467,    0.0031331
+N273226 ,           40,      -5.6426,      -1.4445,      -6.3296,      -0.1648,    -0.035478,    0.0031941
+N273216 ,           40,      -5.6236,      -1.5147,      -27.944,     -0.17439,    -0.046297,   0.00098713
+N273218 ,           40,      -5.5648,     -0.32108,      -11.925,     -0.16066,   -0.0067753,   -0.0014193
+N273224 ,           41,      -3.4086,      0.98424,       104.32,      0.55097,      0.12845,    0.0097066
+N273226 ,           41,      -3.4089,      0.98417,       104.32,      0.55104,      0.13178,     0.009599
+N273216 ,           41,      -3.8065,      -2.9616,       102.25,      0.53274,      0.17303,     0.018723
+N273218 ,           41,      -3.0723,    -0.076873,       42.335,      0.57078,     0.024136,   -0.0064301
+N273224 ,           42,       1.7598,       1.4479,       110.52,      0.78652,      0.17436,     0.012216
+N273226 ,           42,       1.7599,       1.4479,       110.52,       0.7866,      0.17595,     0.012062
+N273216 ,           42,       1.1844,      -3.6701,       142.71,      0.75862,      0.23571,     0.027595
+N273218 ,           42,       2.0873,      0.44764,       60.706,      0.81827,      0.03425,   -0.0065338
+N273224 ,           43,       5.4883,     -0.39126,       45.502,      0.36357,     0.073147,    0.0098699
+N273226 ,           43,       5.4884,     -0.39126,       45.502,      0.36362,     0.073428,    0.0098192
+N273216 ,           43,       5.0287,      -3.8149,       64.643,      0.33892,      0.10164,     0.025324
+N273218 ,           43,       5.5819,     0.038226,       28.749,      0.38738,     0.015972,   -0.0029071
+N273224 ,           44,       4.5917,      -2.1183,      -38.847,     -0.32857,    -0.071521,    0.0050641
+N273226 ,           44,       4.5915,      -2.1183,      -38.847,     -0.32861,    -0.071482,    0.0050947
+N273216 ,           44,       4.4434,      -3.2788,      -60.726,     -0.30314,    -0.099422,     0.013117
+N273218 ,           44,       4.3824,    -0.011954,      -26.157,     -0.35261,     -0.01459,    0.0056711
+N273224 ,           45,     -0.18785,      -2.2369,      -104.67,     -0.73184,     -0.15915,    0.0005321
+N273226 ,           45,     -0.18788,      -2.2368,      -104.67,     -0.73192,     -0.16083,   0.00056051
+N273216 ,           45,    -0.023187,      -1.8466,      -131.77,     -0.70514,     -0.21553,   -0.0019349
+N273218 ,           45,     -0.48007,     0.075028,      -56.557,     -0.76176,    -0.031765,    0.0079311
+N273224 ,           46,      -4.8245,      -1.1015,      -97.018,      -0.5139,     -0.11298,   -0.0041302
+N273226 ,           46,      -4.8241,      -1.1015,      -97.018,     -0.51396,      -0.1162,   -0.0040891
+N273216 ,           46,      -4.5272,      0.74363,      -92.249,     -0.50255,     -0.15153,    -0.012798
+N273218 ,           46,      -4.9375,     -0.32951,      -39.212,     -0.52822,    -0.022212,    0.0025767
+N273224 ,           47,      -5.3961,      0.86788,       4.4181,      0.11932,     0.027749,    -0.007351
+N273226 ,           47,      -5.3959,      0.86789,       4.4181,      0.11931,     0.027008,   -0.0072858
+N273216 ,           47,      -5.1325,        3.666,       20.573,       0.1274,      0.03505,    -0.018146
+N273218 ,           47,      -5.2812,      -0.1299,       8.6119,      0.11539,    0.0047991,   -0.0026502
+N273224 ,           48,      -1.4189,       3.0783,       111.83,      0.60703,      0.12956,   -0.0084844
+N273226 ,           48,      -1.4193,       3.0783,       111.83,      0.60711,      0.13306,   -0.0084654
+N273216 ,           48,      -1.2552,       5.4537,        109.5,      0.57708,      0.17719,    -0.017419
+N273218 ,           48,      -1.1932,      0.20406,       47.285,      0.63661,     0.026492,   -0.0068151
+N273224 ,           49,       3.7348,       3.8052,       109.19,      0.58666,      0.12846,   -0.0086562
+N273226 ,           49,       3.7345,       3.8051,       109.19,      0.58674,      0.13189,   -0.0087148
+N273216 ,           49,       3.8163,       5.1929,        106.9,      0.55861,      0.17521,    -0.012482
+N273218 ,           49,       3.8597,     0.015319,       45.584,      0.61445,     0.025751,   -0.0052721
+N273224 ,           50,       5.7301,       1.7323,       4.1758,     0.099107,     0.027147,   -0.0057957
+N273226 ,           50,       5.7303,       1.7323,       4.1758,     0.099101,     0.026508,   -0.0058483
+N273216 ,           50,       5.8081,       2.6245,       18.774,      0.10414,     0.034656,   -0.0067574
+N273218 ,           50,       5.6264,     0.096786,       7.1426,     0.097114,    0.0043023,    0.0015402
+N273224 ,           51,       2.9024,      -1.7737,      -86.143,     -0.45732,     -0.10126,   4.0111E-05
+N273226 ,           51,       2.9027,      -1.7736,      -86.143,     -0.45737,      -0.1041,   8.4436E-05
+N273216 ,           51,       2.9767,      -1.1626,      -82.175,     -0.44867,     -0.13552,    0.0006036
+N273218 ,           51,        2.667,      0.12305,      -34.851,     -0.46889,    -0.019658,    0.0054248
+N273224 ,           52,      -2.3582,      -3.5868,      -88.719,     -0.60701,     -0.13535,    0.0061017
+N273226 ,           52,      -2.3583,      -3.5868,      -88.719,     -0.60708,     -0.13682,    0.0061868
+N273216 ,           52,      -2.3892,      -4.2044,      -111.11,     -0.57989,     -0.18401,    0.0093559
+N273218 ,           52,      -2.5265,     -0.22812,      -47.124,     -0.63557,    -0.026635,    0.0053282
+N273224 ,           53,      -5.6068,      -2.4847,      -30.919,     -0.25814,    -0.058327,     0.010859
+N273226 ,           53,      -5.6069,      -2.4847,      -30.919,     -0.25818,    -0.058306,     0.010854
+N273216 ,           53,      -5.8084,      -5.3028,      -48.456,     -0.23841,    -0.080766,     0.016459
+N273218 ,           53,      -5.5569,     -0.15955,      -20.463,     -0.27684,    -0.011641,    0.0012261
+N273224 ,           54,      -4.1225,      -0.3128,       35.785,      0.27447,     0.057801,      0.01112
+N273226 ,           54,      -4.1224,     -0.31279,       35.785,      0.27451,     0.058079,     0.011033
+N273216 ,           54,      -4.4728,      -4.1798,       50.034,      0.25335,      0.08055,     0.019668
+N273218 ,           54,       -3.874,     0.099778,       21.854,       0.2943,      0.01212,   -0.0045864
+N273224 ,           55,      0.81643,      0.96126,       80.528,      0.56777,      0.12955,    0.0063055
+N273226 ,           55,      0.81647,      0.96125,       80.528,      0.56783,      0.13071,    0.0062414
+N273216 ,           55,      0.46378,      -1.6298,        104.3,      0.54804,      0.17479,     0.015572
+N273218 ,           55,       1.0613,     0.048707,       43.763,      0.59027,     0.024833,   -0.0053618
+N273224 ,           56,       5.0443,       1.1839,       71.019,      0.38112,     0.087364,  -9.9672E-06
+N273226 ,           56,       5.0441,       1.1838,       71.019,      0.38117,     0.089582,  -2.3212E-05
+N273216 ,           56,       4.9024,      0.82567,       70.359,      0.36711,      0.11802,    0.0041559
+N273218 ,           56,       5.0964,      0.11478,       29.336,      0.39598,     0.016774,   -0.0018982
+N273224 ,           57,        5.004,      0.80684,      -4.6679,     -0.10441,    -0.026525,   -0.0061087
+N273226 ,           57,       5.0038,      0.80683,      -4.6679,     -0.10441,    -0.025893,   -0.0061028
+N273216 ,           57,       5.1604,       2.4133,      -19.169,     -0.10851,    -0.034119,   -0.0089107
+N273218 ,           57,       4.8331,      0.16712,      -7.6702,     -0.10315,    -0.004363,    0.0024913
+N273224 ,           58,      0.76192,     0.022622,      -85.602,     -0.47051,     -0.10527,   -0.0094839
+N273226 ,           58,      0.76214,     0.022663,      -85.602,     -0.47058,     -0.10778,   -0.0094535
+N273216 ,           58,       1.1423,       3.0156,      -87.336,     -0.44123,     -0.14471,    -0.018823
+N273218 ,           58,      0.50811,     -0.12447,      -36.925,     -0.49804,    -0.020883,    0.0052592
+N273224 ,           59,      -4.0754,     -0.58415,       -85.13,     -0.45219,     -0.10068,   -0.0082537
+N273226 ,           59,      -4.0751,      -0.5841,       -85.13,     -0.45225,     -0.10342,   -0.0081747
+N273216 ,           59,      -3.6539,       2.8078,      -82.615,     -0.43388,     -0.13656,    -0.021359
+N273218 ,           59,      -4.2109,     -0.21003,      -34.934,     -0.47108,    -0.019829,     0.002909
+N273224 ,           60,       -5.455,    -0.073315,      -3.7512,    -0.070589,    -0.014525,   -0.0050719
+N273226 ,           60,      -5.4551,    -0.073321,      -3.7512,    -0.070582,    -0.014212,   -0.0049872
+N273216 ,           60,      -5.2119,       2.3187,      -11.459,    -0.075736,    -0.018225,    -0.014628
+N273218 ,           60,      -5.3951,    -0.038537,      -5.0411,    -0.067928,   -0.0028732,   -0.0014087
+N273224 ,           61,      -2.2566,       1.3544,       69.486,      0.36219,     0.083788,   -0.0013196
+N273226 ,           61,      -2.2569,       1.3544,       69.486,      0.36223,     0.086094,   -0.0013273
+N273216 ,           61,      -2.2763,       1.5121,       66.473,      0.35458,      0.11207,   -0.0032075
+N273218 ,           61,       -2.076,    -0.051407,       27.602,      0.37188,     0.015716,    -0.004073
+N273224 ,           62,        2.792,       1.8619,       71.596,      0.47581,      0.10259,    0.0023562
+N273226 ,           62,       2.7919,       1.8619,       71.596,      0.47587,      0.10395,    0.0022588
+N273216 ,           62,       2.5858,     0.057866,       86.057,      0.45277,      0.14009,     0.007647
+N273218 ,           62,       2.9416,     0.083763,       37.056,      0.49942,     0.020824,   -0.0042644
+N273224 ,           63,       5.4336,      0.30708,       22.014,       0.1999,     0.041309,    0.0044944
+N273226 ,           63,       5.4337,      0.30708,       22.014,      0.19992,      0.04122,    0.0044282
+N273216 ,           63,       5.1712,      -1.8015,       35.463,      0.19019,     0.056534,     0.014344
+N273218 ,           63,       5.4236,      0.26851,       15.589,      0.21029,    0.0087353,  -9.0039E-05
+N273224 ,           64,       3.5003,      -1.9343,      -32.091,     -0.22682,    -0.047771,    0.0062754
+N273226 ,           64,       3.5002,      -1.9343,      -32.091,     -0.22685,    -0.048221,    0.0062912
+N273216 ,           64,       3.3085,      -3.5226,      -41.282,     -0.21007,    -0.066441,     0.014725
+N273218 ,           64,       3.3652,   -0.0050471,      -18.016,     -0.24255,    -0.009993,    0.0040358
+N273224 ,           65,      -1.3213,      -2.7618,      -63.281,     -0.45622,     -0.10009,    0.0071224
+N273226 ,           65,      -1.3213,      -2.7618,      -63.281,     -0.45626,       -0.101,    0.0071568
+N273216 ,           65,       -1.411,      -4.1546,      -81.765,     -0.44536,     -0.13437,     0.011272
+N273218 ,           65,      -1.4375,     -0.15157,      -34.941,     -0.47064,    -0.019676,    0.0038597
+N273224 ,           66,      -4.9629,      -1.7388,      -52.352,     -0.29241,    -0.064029,    0.0051472
+N273226 ,           66,      -4.9627,      -1.7388,      -52.352,     -0.29245,    -0.065577,    0.0051498
+N273216 ,           66,      -5.0049,      -2.9347,        -53.1,     -0.27988,    -0.087042,    0.0063837
+N273218 ,           66,      -4.9599,    -0.015862,      -22.632,     -0.30526,    -0.012829,    0.0015415
+N273224 ,           67,      -4.3936,     0.086427,       5.5575,     0.099173,     0.021239,    0.0015873
+N273226 ,           67,      -4.3935,     0.086436,       5.5575,      0.09917,     0.020778,    0.0015743
+N273216 ,           67,      -4.4092,     -0.36944,       16.932,      0.10187,     0.027573,   0.00014276
+N273218 ,           67,      -4.2608,     -0.11938,        7.383,     0.098848,    0.0040478,   -0.0024244
+N273224 ,           68,     -0.16754,       1.6304,       66.387,      0.38074,     0.081073,   -0.0030972
+N273226 ,           68,     -0.16769,       1.6304,       66.387,      0.38079,     0.082925,    -0.003097
+N273216 ,           68,     -0.14463,       2.3865,        69.01,      0.35842,      0.11156,   -0.0058259
+N273218 ,           68,     -0.02153,   -0.0091763,       29.854,      0.40212,     0.016718,   -0.0045453
+N273224 ,           69,       4.1148,       2.3238,       65.962,      0.34809,     0.078963,   -0.0076336
+N273226 ,           69,       4.1146,       2.3238,       65.962,      0.34813,     0.081101,   -0.0076354
+N273216 ,           69,       4.2113,       4.1027,       63.839,      0.33639,      0.10652,     -0.01078
+N273218 ,           69,       4.1302,      0.23259,       26.744,      0.36083,     0.015254,   -0.0016845
+N273224 ,           70,        4.889,       1.7665,       2.4486,     0.034652,     0.010198,   -0.0087271
+N273226 ,           70,       4.8891,       1.7665,       2.4486,     0.034653,     0.010038,   -0.0087416
+N273216 ,           70,        5.094,       3.8995,       7.0294,     0.034706,     0.013342,    -0.013956
+N273218 ,           70,       4.7678,     0.013317,       2.5617,     0.035198,    0.0016131,    0.0012952
+N273224 ,           71,       1.5698,     0.092682,      -56.049,     -0.29346,    -0.066417,   -0.0064333
+N273226 ,           71,         1.57,     0.092718,      -56.049,     -0.29349,    -0.068287,   -0.0064117
+N273216 ,           71,       1.8191,       2.1628,      -53.276,     -0.28772,    -0.088839,    -0.012505
+N273218 ,           71,       1.3973,    -0.068801,      -22.356,     -0.30102,    -0.012675,    0.0029743
+N273224 ,           72,      -3.0002,      -1.3786,      -57.054,     -0.36289,    -0.080747,   -0.0017815
+N273226 ,           72,      -3.0001,      -1.3785,      -57.054,     -0.36294,    -0.081933,    -0.001713
+N273216 ,           72,      -2.8326,    -0.049904,      -67.024,     -0.34132,     -0.11082,    -0.006299
+N273218 ,           72,      -3.1039,    0.0015597,      -28.436,     -0.38378,    -0.016097,    0.0032077
+N273224 ,           73,      -4.9804,      -1.3568,      -15.099,     -0.14248,    -0.032765,    0.0037997
+N273226 ,           73,      -4.9805,      -1.3568,      -15.099,     -0.14249,    -0.032612,    0.0038372
+N273216 ,           73,      -4.9911,      -1.8214,      -26.364,     -0.13644,    -0.044374,    0.0027675
+N273218 ,           73,      -4.9194,      -0.1999,      -11.027,     -0.14924,   -0.0063258,  -0.00043984
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 00000092 CALCULE LE 23/11/2025 A 10:30:28 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            Total Sum: Input Forces & Moments
+            =================================
+NUME_ORDRE  , NOM_CHAM        , RESULT_X    , RESULT_Y    , RESULT_Z    , MOMENT_X    , MOMENT_Y    , MOMENT_Z    
+           1, FORC_NODA       ,            0,            0,            0,            0,            0,            0
+           2, FORC_NODA       ,     -0.87158,       5.8614,      -129.73,      -1013.8,       -79909,      -3046.7
+           3, FORC_NODA       ,      -4.2725,       32.836,      -520.42,      -2531.5,  -3.2565E+05,      -9754.6
+           4, FORC_NODA       ,      -10.458,       81.648,      -1091.8,      -1931.3,   -6.935E+05,       -15471
+           5, FORC_NODA       ,      -17.634,       124.68,      -1720.5,      -5.7937,  -1.1001E+06,       -19708
+           6, FORC_NODA       ,      -22.715,       138.14,      -2120.5,       1687.5,  -1.3583E+06,       -18785
+           7, FORC_NODA       ,      -22.965,       119.46,      -2040.9,       2087.8,  -1.3076E+06,        -9766
+           8, FORC_NODA       ,      -18.576,       81.636,      -1663.4,      -654.74,  -1.0603E+06,      -468.14
+           9, FORC_NODA       ,       -12.62,       50.668,      -1240.1,      -3412.1,   -7.847E+05,       5591.2
+          10, FORC_NODA       ,      -8.4489,       40.615,      -969.74,      -2682.1,  -6.1451E+05,       6761.3
+          11, FORC_NODA       ,      -7.3712,       44.098,      -921.81,      -117.89,  -5.8824E+05,       707.29
+          12, FORC_NODA       ,       -7.444,       48.196,      -781.09,       2341.5,  -5.0308E+05,      -5516.6
+          13, FORC_NODA       ,      -5.1385,       34.345,      -323.35,       2508.3,  -2.1231E+05,      -8170.6
+          14, FORC_NODA       ,      0.10489,       1.2465,       218.82,      -983.28,   1.4175E+05,       -10710
+          15, FORC_NODA       ,       5.0236,      -18.527,       543.29,      -3926.6,   3.5621E+05,       -11185
+          16, FORC_NODA       ,       6.3551,      -6.7522,       455.03,      -2897.7,   2.9706E+05,       -10139
+          17, FORC_NODA       ,       2.9517,       20.286,      -36.096,      -72.766,       -23006,       -11114
+          18, FORC_NODA       ,      -3.0088,       39.218,      -467.79,       2939.1,  -3.0557E+05,      -7411.2
+          19, FORC_NODA       ,      -6.7062,       26.641,       -475.9,       3793.7,  -3.1273E+05,       2766.2
+          20, FORC_NODA       ,       -5.206,      -16.379,       -138.3,        660.4,       -89256,        13120
+          21, FORC_NODA       ,      0.35703,      -54.196,       327.59,        -2455,   2.1482E+05,        21360
+          22, FORC_NODA       ,       5.9492,      -60.377,       513.84,      -3056.9,   3.3453E+05,        20104
+          23, FORC_NODA       ,       6.8878,      -29.171,       228.48,      -1615.7,   1.5008E+05,       7552.2
+          24, FORC_NODA       ,       2.1996,       24.098,      -192.34,       1503.5,  -1.2567E+05,      -6466.4
+          25, FORC_NODA       ,       -4.064,       57.621,      -433.44,       2960.8,  -2.8384E+05,       -17811
+          26, FORC_NODA       ,      -7.2047,       50.786,      -335.57,       1568.5,  -2.1851E+05,       -21221
+          27, FORC_NODA       ,      -4.9555,       18.667,       55.582,      -267.68,        35575,       -13159
+          28, FORC_NODA       ,        1.452,       -18.53,       358.26,      -2083.6,   2.3403E+05,      -2703.5
+          29, FORC_NODA       ,       6.9159,      -33.819,       355.71,      -2437.7,   2.3345E+05,       5533.6
+          30, FORC_NODA       ,       6.7496,       -18.01,       102.73,      -426.45,        66164,        10507
+          31, FORC_NODA       ,       1.1825,       2.3951,      -257.22,       1449.8,  -1.6788E+05,       9442.8
+          32, FORC_NODA       ,      -5.4965,       8.7521,      -392.93,       2318.1,  -2.5591E+05,       8087.5
+          33, FORC_NODA       ,      -7.8458,       -1.059,      -178.51,       1637.2,  -1.1764E+05,       7954.4
+          34, FORC_NODA       ,      -3.5339,      -19.945,       145.03,      -954.83,        94831,       4530.7
+          35, FORC_NODA       ,       3.6525,      -22.541,       351.14,      -2447.7,   2.2969E+05,      -109.41
+          36, FORC_NODA       ,       7.7059,     -0.86748,       267.38,        -1681,   1.7448E+05,      -6466.6
+          37, FORC_NODA       ,       5.6608,       25.411,      -55.241,       76.396,       -35162,       -13763
+          38, FORC_NODA       ,      -1.0912,       41.394,      -290.72,       2062.4,  -1.9052E+05,       -14905
+          39, FORC_NODA       ,      -7.1573,       33.684,      -284.25,       2103.4,  -1.8664E+05,      -9762.7
+          40, FORC_NODA       ,      -7.2112,      0.88536,      -67.188,       80.418,       -42947,      -376.42
+          41, FORC_NODA       ,      -1.3677,      -31.121,       221.75,      -1426.9,   1.4479E+05,        10902
+          42, FORC_NODA       ,       5.5357,       -42.21,       302.76,      -1835.7,   1.9753E+05,        15939
+          43, FORC_NODA       ,       8.0401,       -29.41,       124.28,      -850.81,        81707,        13205
+          44, FORC_NODA       ,       3.8471,     -0.21988,      -122.94,       1062.5,       -80764,       6487.5
+          45, FORC_NODA       ,      -3.5215,       21.494,      -275.52,       1649.1,  -1.7975E+05,      -2286.2
+          46, FORC_NODA       ,      -7.7913,       21.629,       -194.2,       991.27,  -1.2662E+05,      -7871.1
+          47, FORC_NODA       ,      -5.7816,       9.9879,       51.745,      -99.089,        32896,      -8773.9
+          48, FORC_NODA       ,      0.89901,      -1.9066,       220.02,      -1445.1,   1.4416E+05,      -8029.6
+          49, FORC_NODA       ,       6.9812,      -4.2441,       218.79,      -1476.3,   1.4338E+05,      -5502.7
+          50, FORC_NODA       ,       7.1793,       5.3475,       50.314,      -242.71,        32374,      -2939.4
+          51, FORC_NODA       ,       1.3619,       12.733,      -174.68,       888.95,  -1.1369E+05,      -786.99
+          52, FORC_NODA       ,      -5.4577,       7.2029,      -234.03,       1596.9,  -1.5301E+05,       3694.5
+          53, FORC_NODA       ,      -7.7575,      -8.6638,      -100.44,       906.44,       -66103,       8217.8
+          54, FORC_NODA       ,      -3.5643,      -25.128,       98.559,      -778.62,        64801,        10372
+          55, FORC_NODA       ,       3.6205,      -27.586,        225.7,        -1441,   1.4722E+05,       9225.4
+          56, FORC_NODA       ,       7.6075,      -11.348,       150.21,      -981.54,        98249,       2893.1
+          57, FORC_NODA       ,        5.285,        11.93,        -49.1,       193.13,       -31454,      -5014.6
+          58, FORC_NODA       ,      -1.2714,       28.064,      -179.13,       1372.3,  -1.1769E+05,       -10298
+          59, FORC_NODA       ,      -6.7921,       27.911,      -172.17,       1081.7,  -1.1269E+05,       -11925
+          60, FORC_NODA       ,      -6.6562,       12.068,      -26.594,      -43.864,       -16973,      -7830.3
+          61, FORC_NODA       ,     -0.98151,      -7.5235,       145.06,      -840.01,        94480,      -725.75
+          62, FORC_NODA       ,       5.3684,      -18.113,       176.14,      -1154.1,   1.1529E+05,       4632.2
+          63, FORC_NODA       ,       7.1996,      -15.142,       71.246,      -424.09,        46640,         7756
+          64, FORC_NODA       ,       3.0878,      -4.6821,      -81.327,       662.86,       -53439,       7383.2
+          65, FORC_NODA       ,      -3.5269,       2.1524,      -174.48,       949.78,  -1.1353E+05,       4692.3
+          66, FORC_NODA       ,      -7.0731,      0.77268,      -109.39,       708.15,       -71636,       2874.3
+          67, FORC_NODA       ,      -4.6937,      -4.4533,       38.675,      -88.257,        24749,       390.56
+          68, FORC_NODA       ,       1.4753,      -5.5857,       137.51,      -975.73,        90258,      -2599.5
+          69, FORC_NODA       ,       6.3269,       1.6307,       135.65,      -861.48,        88668,      -4703.6
+          70, FORC_NODA       ,        5.882,       12.387,       18.539,      -158.13,        12074,      -7087.5
+          71, FORC_NODA       ,      0.53018,       18.304,      -114.74,        604.8,       -74716,      -7212.9
+          72, FORC_NODA       ,      -5.1899,       13.988,      -138.32,       1044.8,       -90783,      -3654.6
+          73, FORC_NODA       ,      -6.4671,     -0.47906,      -57.392,       408.98,       -37521,       1057.1
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 00000094 CALCULE LE 23/11/2025 A 10:30:29 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            Total Sum of Reactions on sets: Forces & Moments
+            ================================================
+NUME_ORDRE  , NOM_CHAM        , RESULT_X    , RESULT_Y    , RESULT_Z    , MOMENT_X    , MOMENT_Y    , MOMENT_Z    
+           1, REAC_NODA       ,            0,            0,            0,            0,            0,            0
+           2, REAC_NODA       ,      -63.653,       -140.1,       4560.1,   4.8088E+05,   2.6353E+06,        10948
+           3, REAC_NODA       ,      -271.52,      -182.09,        24921,   2.3961E+06,    1.228E+07,        86814
+           4, REAC_NODA       ,      -543.48,       397.15,        64749,   5.5696E+06,   2.9196E+07,    2.627E+05
+           5, REAC_NODA       ,      -676.27,       1057.8,   1.0857E+05,   8.3567E+06,   4.8304E+07,   4.1616E+05
+           6, REAC_NODA       ,      -519.83,       1255.3,   1.3334E+05,   9.5401E+06,   6.0001E+07,   4.1129E+05
+           7, REAC_NODA       ,      -184.09,       1331.1,   1.2738E+05,   9.1511E+06,   5.7593E+07,   3.0506E+05
+           8, REAC_NODA       ,      -32.794,       1144.3,        99304,   7.7994E+06,   4.5289E+07,   1.5694E+05
+           9, REAC_NODA       ,      -281.82,       749.91,        71120,   6.2696E+06,   3.2375E+07,      -2749.5
+          10, REAC_NODA       ,      -744.89,       703.61,        57939,   5.0996E+06,   2.5813E+07,       -29580
+          11, REAC_NODA       ,      -960.25,       684.09,        55858,   4.2298E+06,   2.5382E+07,        67410
+          12, REAC_NODA       ,      -562.78,       449.63,        49320,   3.1793E+06,   2.2566E+07,   1.3783E+05
+          13, REAC_NODA       ,       283.38,       270.01,        24406,   1.3055E+06,   1.0593E+07,   1.6757E+05
+          14, REAC_NODA       ,       893.52,      -327.85,       -14698,  -1.0737E+06,  -6.5122E+06,   1.0804E+05
+          15, REAC_NODA       ,       680.78,      -1031.4,       -41230,  -2.2862E+06,   -1.776E+07,      -5202.3
+          16, REAC_NODA       ,      -234.99,       -728.5,       -32998,  -1.5218E+06,  -1.4593E+07,        46083
+          17, REAC_NODA       ,      -1045.6,      -97.696,       2308.7,   2.2666E+05,   9.9175E+05,   1.5428E+05
+          18, REAC_NODA       ,       -920.9,       265.68,        34428,   1.6543E+06,    1.509E+07,    1.229E+05
+          19, REAC_NODA       ,       125.53,       716.12,        36433,    1.847E+06,   1.5761E+07,        61766
+          20, REAC_NODA       ,       1156.2,       545.24,       8171.9,   5.7701E+05,   3.8843E+06,       -81831
+          21, REAC_NODA       ,       1197.7,      -99.147,       -24430,  -1.1931E+06,  -1.0703E+07,  -3.1488E+05
+          22, REAC_NODA       ,       110.32,      -184.61,       -35249,  -1.9828E+06,  -1.5841E+07,  -3.2739E+05
+          23, REAC_NODA       ,      -1202.8,      -134.72,       -17881,  -1.0791E+06,  -7.5551E+06,  -1.4086E+05
+          24, REAC_NODA       ,      -1524.3,        -82.7,        13050,   7.4956E+05,   5.9451E+06,        68987
+          25, REAC_NODA       ,      -494.45,       253.16,        32405,    1.821E+06,   1.4031E+07,   3.0245E+05
+          26, REAC_NODA       ,       1047.5,       124.93,        24693,   1.3018E+06,   1.0698E+07,   3.3805E+05
+          27, REAC_NODA       ,       1780.5,      -324.38,      -2854.9,  -1.6837E+05,  -1.4756E+06,    1.379E+05
+          28, REAC_NODA       ,       997.22,       -410.5,       -27127,  -1.4257E+06,  -1.1651E+07,       -12972
+          29, REAC_NODA       ,      -690.95,       -398.5,       -27890,  -1.5281E+06,  -1.1824E+07,   -1.284E+05
+          30, REAC_NODA       ,      -1835.9,      -83.956,      -5659.1,  -3.7003E+05,  -2.8055E+06,  -1.8907E+05
+          31, REAC_NODA       ,      -1443.4,        560.3,        19421,    1.072E+06,   8.3203E+06,       -72075
+          32, REAC_NODA       ,       196.16,       676.26,        27482,   1.5841E+06,   1.2206E+07,        -4091
+          33, REAC_NODA       ,       1707.3,       351.01,        13553,   7.2873E+05,    5.901E+06,       -48878
+          34, REAC_NODA       ,       1765.8,       6.7762,       -10749,  -7.1034E+05,  -4.6209E+06,       -49637
+          35, REAC_NODA       ,       301.07,      -423.26,       -25582,  -1.4037E+06,  -1.1231E+07,       -61166
+          36, REAC_NODA       ,        -1445,       -532.6,       -19135,  -8.9756E+05,  -8.5077E+06,      -9643.9
+          37, REAC_NODA       ,      -1983.3,       -235.2,       2816.4,   1.9955E+05,   1.4276E+06,   1.5911E+05
+          38, REAC_NODA       ,      -813.29,       14.513,        21874,   1.0635E+06,   9.5246E+06,   2.2187E+05
+          39, REAC_NODA       ,       1092.4,       201.39,        21815,   1.1047E+06,    9.406E+06,   1.6386E+05
+          40, REAC_NODA       ,         2096,       216.59,         3653,   2.8859E+05,     1.77E+06,        55718
+          41, REAC_NODA       ,       1326.6,      -34.298,       -16017,  -7.6898E+05,  -7.0912E+06,  -1.4236E+05
+          42, REAC_NODA       ,      -590.36,      -135.58,       -21541,  -1.2278E+06,  -9.5101E+06,  -2.6337E+05
+          43, REAC_NODA       ,      -2041.6,       23.763,      -9735.7,  -6.2713E+05,  -4.0956E+06,  -2.0253E+05
+          44, REAC_NODA       ,      -1778.1,       215.81,         9217,   5.3367E+05,   4.0082E+06,       -75220
+          45, REAC_NODA       ,      -15.034,       306.86,        19909,   1.1577E+06,   8.7053E+06,        74841
+          46, REAC_NODA       ,       1758.3,       163.44,        14296,   7.6248E+05,   6.2015E+06,   1.6383E+05
+          47, REAC_NODA       ,         2055,      -146.01,      -2707.5,  -1.9911E+05,  -1.3452E+06,   1.1762E+05
+          48, REAC_NODA       ,          628,      -407.09,       -17126,  -9.2938E+05,  -7.2735E+06,        47201
+          49, REAC_NODA       ,      -1314.2,      -451.58,       -16745,  -8.7529E+05,  -7.1908E+06,        12413
+          50, REAC_NODA       ,      -2129.9,      -193.51,      -2559.7,  -1.3871E+05,  -1.3419E+06,      -203.96
+          51, REAC_NODA       ,        -1144,       168.04,        12731,   6.7305E+05,   5.5459E+06,        20025
+          52, REAC_NODA       ,       797.63,       395.98,        16924,   9.3476E+05,   7.4481E+06,        16263
+          53, REAC_NODA       ,       2051.7,       381.31,       7361.9,   4.0486E+05,   3.2538E+06,       -47168
+          54, REAC_NODA       ,       1560.3,       100.98,      -7640.7,   -4.537E+05,  -3.2599E+06,  -1.2216E+05
+          55, REAC_NODA       ,      -253.35,      -132.59,       -15790,  -8.6065E+05,  -7.0553E+06,  -1.5069E+05
+          56, REAC_NODA       ,        -1848,      -150.77,       -10992,  -5.4381E+05,  -4.8326E+06,       -88211
+          57, REAC_NODA       ,      -1877.8,      -132.11,       2628.2,   1.5932E+05,   1.3245E+06,        38572
+          58, REAC_NODA       ,      -326.57,      -15.944,        13761,   6.9241E+05,   5.9409E+06,    1.539E+05
+          59, REAC_NODA       ,         1494,       91.053,        12926,   6.6356E+05,   5.6005E+06,    1.931E+05
+          60, REAC_NODA       ,       2054.5,      -47.821,       1477.8,   1.2954E+05,   6.9404E+05,   1.1945E+05
+          61, REAC_NODA       ,       894.02,       -161.6,       -10364,  -5.0732E+05,  -4.5906E+06,        -5215
+          62, REAC_NODA       ,      -996.05,      -149.38,       -13140,  -7.5241E+05,  -5.6815E+06,       -98295
+          63, REAC_NODA       ,      -2027.7,      -79.483,      -5231.9,  -3.4342E+05,   -2.258E+06,  -1.3594E+05
+          64, REAC_NODA       ,      -1357.7,       207.73,       6342.6,   3.6877E+05,   2.6988E+06,       -89108
+          65, REAC_NODA       ,       428.23,       384.01,        12237,   7.1909E+05,   5.4089E+06,       -10618
+          66, REAC_NODA       ,       1818.4,        207.1,       8251.9,   4.4027E+05,   3.5601E+06,        10489
+          67, REAC_NODA       ,       1657.3,        24.44,      -2302.6,  -1.7461E+05,  -1.0693E+06,         9846
+          68, REAC_NODA       ,       117.07,      -182.89,       -10766,  -5.9131E+05,  -4.5696E+06,       7146.6
+          69, REAC_NODA       ,        -1487,       -363.6,      -9972.4,  -4.9933E+05,  -4.3656E+06,       3565.5
+          70, REAC_NODA       ,      -1814.8,      -204.58,      -1010.7,       -41711,  -5.2474E+05,        56332
+          71, REAC_NODA       ,      -611.08,       3.4567,       8283.3,   4.2186E+05,   3.6376E+06,    1.038E+05
+          72, REAC_NODA       ,       1086.2,       98.644,        10361,   5.5316E+05,   4.5103E+06,        76853
+          73, REAC_NODA       ,       1845.8,       203.18,       3899.4,   2.2368E+05,   1.7702E+06,        22966
+
