@@ -1,0 +1,44 @@
+##
+##    PrePoMax --> code_aster from "pmx2aster.py" V0.1.4 | [ 01-Oct-2025 ] 
+##    Made by Sound Spinning | soundspinning@hotmail.com
+##    Meant to be run from a terminal with `run_aster *.export` instead of with `as_run`
+##
+
+ #  "sub_forced_Z_R2_radar.inp" model HEADING:
+ # Hash: Dg9gbjcB, Date: 10/03/2025, Unit system: MM_TON_S_C
+ # ## sub_forced_R2_radar - SUBMODEL
+ # ## Modal Dynamics - shock 11ms half-sine wave
+ # ## Restart off forced Global results
+
+### RAM in MB - Since V16.7 the solver grabs 90% of this input
+P memory_limit 64000
+P ncpus 1
+### max solve time in seconds ==> 4e5s = 4.63days 
+P time_limit 400000.0
+
+## Input deck
+F comm sub_forced_Z_R2_radar.comm D  1
+
+## Input mesh - ASTER format
+F mesh sub_forced_Z_R2_radar.msh D  21
+
+## Output message file
+F mesg sub_forced_Z_R2_radar.msg R  6
+
+## Output text results file
+F data sub_forced_Z_R2_radar.dat R  8
+
+## MED results file#1
+F rmed sub_forced_Z_R2_radar.rmed R  80
+## MED results file#2
+## F rmed sub_forced_Z_R2_radar_points_springs.rmed R  81
+
+## Output FOLDER for global restart files, also useful for Sub-modelling
+## When reading the `base` in a restart run, change RC --> DC
+## R base sub_forced_Z_R2_radar RC 0
+
+## Output local temp FOLDER (if needed) for solver temp (.med) files
+## R repe TMP R  0
+
+## SUBMODEL read global results folder
+R base forced_Z_R2_radar DC 0

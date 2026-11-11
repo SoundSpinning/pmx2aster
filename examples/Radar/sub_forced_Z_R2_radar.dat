@@ -1,0 +1,60 @@
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 000002d9 CALCULE LE 04/10/2025 A 09:18:09 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            Total Mass / Inertia (ALL)
+            ==========================
+LIEU                       CDG_X        CDG_Y        CDG_Z        MASSE        IX_G         IY_G         IZ_G      
+sub_azi_house_els             -146.76       1659.4      -3.1416      0.13467       7009.6       6069.4       2309.2
+sub_frame_els                 -233.13       2415.7       193.87      0.10685         9641       7068.5        11335
+sub_base_els               -2.222E-05       776.83         -473      0.12107       8069.8       4080.3       8790.4
+UNION_GROUP_MA                -123.21       1587.6      -101.98      0.36259   2.0561E+05        47756   1.7919E+05
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 000002dc CALCULE LE 04/10/2025 A 09:18:19 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            ALL Total Sum of Reactions: Forces & Moments
+            ============================================
+NUME_ORDRE   NOM_CHAM             RESULT_X     RESULT_Y     RESULT_Z     MOMENT_X     MOMENT_Y     MOMENT_Z
+           1 REAC_NODA           -4.161E-11    -1.990E-11    2.692E-11    1.582E-07    1.189E-08    -5.496E-08
+           2 REAC_NODA           3.204E-11    3.275E-11    1.687E-11    2.755E-09    -1.637E-09    1.575E-08
+           3 REAC_NODA           -1.788E-11    2.340E-11    -4.173E-12    5.538E-09    8.254E-09    -1.002E-08
+           4 REAC_NODA           1.411E-11    -4.448E-11    -4.189E-11    4.208E-08    1.117E-10    3.374E-08
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 000002da CALCULE LE 04/10/2025 A 09:18:14 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            ASSY - Total Strain Energy - Statics (TSE)
+            ==========================================
+NUME_ORDRE     INST       LIEU                     ENTITE     TOTALE       POUR_CENT 
+           1            1 00000236                 TOUT           404.57          100
+           2            2 00000236                 TOUT            246.7          100
+           3            3 00000236                 TOUT           152.25          100
+           4            4 00000236                 TOUT           252.17          100
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 000002db CALCULE LE 04/10/2025 A 09:18:19 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            Total Strain Energy - Statics (TSE - ALL)
+            =========================================
+NUME_ORDRE     INST       LIEU                     ENTITE     TOTALE       POUR_CENT 
+           1            1 sub_azi_house_els        GROUP_MA       99.369       24.562
+           1            1 sub_frame_els            GROUP_MA       121.82        30.11
+           1            1 sub_base_els             GROUP_MA       183.38       45.328
+           2            2 sub_azi_house_els        GROUP_MA       38.613       15.652
+           2            2 sub_frame_els            GROUP_MA       138.04       55.955
+           2            2 sub_base_els             GROUP_MA       70.047       28.393
+           3            3 sub_azi_house_els        GROUP_MA       34.902       22.923
+           3            3 sub_frame_els            GROUP_MA       51.726       33.974
+           3            3 sub_base_els             GROUP_MA       65.626       43.103
+           4            4 sub_azi_house_els        GROUP_MA       54.167        21.48
+           4            4 sub_frame_els            GROUP_MA       100.14       39.713
+           4            4 sub_base_els             GROUP_MA       97.858       38.806
+

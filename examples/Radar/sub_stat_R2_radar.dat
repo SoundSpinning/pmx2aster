@@ -1,0 +1,85 @@
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 0000039e CALCULE LE 04/10/2025 A 09:18:20 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            Total Mass / Inertia (ALL)
+            ==========================
+LIEU                       CDG_X        CDG_Y        CDG_Z        MASSE        IX_G         IY_G         IZ_G      
+sub_azi_house_els             -146.76       1659.4      -3.1416      0.13467       7009.6       6069.4       2309.2
+sub_frame_els                 -233.13       2415.7       193.87      0.10685         9641       7068.5        11335
+sub_base_els               -2.222E-05       776.83         -473      0.12107       8069.8       4080.3       8790.4
+UNION_GROUP_MA                -123.21       1587.6      -101.98      0.36259   2.0561E+05        47756   1.7919E+05
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 000003a1 CALCULE LE 04/10/2025 A 09:18:44 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            ALL Total Sum of Reactions: Forces & Moments
+            ============================================
+NUME_ORDRE   NOM_CHAM             RESULT_X     RESULT_Y     RESULT_Z     MOMENT_X     MOMENT_Y     MOMENT_Z
+           1 REAC_NODA           -3.728E-12    -3.285E-12    -2.581E-11    -1.147E-08    -4.935E-09    -1.373E-08
+           2 REAC_NODA           1.584E-12    5.145E-12    -1.037E-11    5.840E-08    5.794E-09    -5.207E-10
+           3 REAC_NODA           5.391E-13    1.190E-12    9.228E-12    -2.412E-08    1.901E-09    -2.733E-09
+           4 REAC_NODA           -1.081E-10    6.287E-10    3.293E-10    -1.329E-06    -5.765E-08    4.647E-07
+           5 REAC_NODA           -4.065E-10    2.985E-10    -3.049E-10    6.556E-07    -6.052E-08    -1.189E-06
+           6 REAC_NODA           3.046E-11    6.949E-11    -6.105E-12    2.010E-08    7.424E-08    2.679E-07
+           7 REAC_NODA           -1.226E-12    -7.824E-13    -1.547E-12    3.504E-09    3.516E-09    1.068E-08
+           8 REAC_NODA           -4.457E-12    3.478E-12    -3.597E-12    -9.522E-09    5.189E-10    1.392E-08
+           9 REAC_NODA           -2.578E-12    -1.393E-12    9.909E-12    1.993E-08    6.189E-11    1.427E-08
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 0000039f CALCULE LE 04/10/2025 A 09:18:32 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            ASSY - Total Strain Energy - Statics (TSE)
+            ==========================================
+NUME_ORDRE     INST       LIEU                     ENTITE     TOTALE       POUR_CENT 
+           1            1 0000022b                 TOUT            53.12          100
+           2            2 0000022b                 TOUT           134.12          100
+           3            3 0000022b                 TOUT           54.616          100
+           4            4 0000022b                 TOUT        1.872E+05          100
+           5            5 0000022b                 TOUT            57765          100
+           6            6 0000022b                 TOUT            34477          100
+           7            7 0000022b                 TOUT           25.636          100
+           8            8 0000022b                 TOUT           43.323          100
+           9            9 0000022b                 TOUT           20.413          100
+
+
+--------------------------------------------------------------------------------
+ASTER 16.07.09 CONCEPT 000003a0 CALCULE LE 04/10/2025 A 09:18:44 DE TYPE        
+TABLE_SDASTER                                                                   
+
+            Total Strain Energy - Statics (TSE - ALL)
+            =========================================
+NUME_ORDRE     INST       LIEU                     ENTITE     TOTALE       POUR_CENT 
+           1            1 sub_azi_house_els        GROUP_MA       20.242       38.105
+           1            1 sub_frame_els            GROUP_MA       30.579       57.565
+           1            1 sub_base_els             GROUP_MA       2.2998       4.3295
+           2            2 sub_azi_house_els        GROUP_MA       0.6688      0.49864
+           2            2 sub_frame_els            GROUP_MA       133.41       99.471
+           2            2 sub_base_els             GROUP_MA     0.041078     0.030627
+           3            3 sub_azi_house_els        GROUP_MA      0.64935       1.1889
+           3            3 sub_frame_els            GROUP_MA       53.512       97.978
+           3            3 sub_base_els             GROUP_MA      0.45508      0.83323
+           4            4 sub_azi_house_els        GROUP_MA        846.2      0.45203
+           4            4 sub_frame_els            GROUP_MA   1.8625E+05       99.493
+           4            4 sub_base_els             GROUP_MA       103.05     0.055046
+           5            5 sub_azi_house_els        GROUP_MA        20212       34.989
+           5            5 sub_frame_els            GROUP_MA        36680       63.498
+           5            5 sub_base_els             GROUP_MA       873.66       1.5124
+           6            6 sub_azi_house_els        GROUP_MA       4298.2       12.467
+           6            6 sub_frame_els            GROUP_MA        29029       84.197
+           6            6 sub_base_els             GROUP_MA       1150.3       3.3364
+           7            7 sub_azi_house_els        GROUP_MA       19.001       74.119
+           7            7 sub_frame_els            GROUP_MA        5.099        19.89
+           7            7 sub_base_els             GROUP_MA        1.536       5.9915
+           8            8 sub_azi_house_els        GROUP_MA      0.32753      0.75602
+           8            8 sub_frame_els            GROUP_MA       42.979       99.205
+           8            8 sub_base_els             GROUP_MA     0.016779      0.03873
+           9            9 sub_azi_house_els        GROUP_MA       1.3776       6.7489
+           9            9 sub_frame_els            GROUP_MA        17.01        83.33
+           9            9 sub_base_els             GROUP_MA       2.0253       9.9215
+
