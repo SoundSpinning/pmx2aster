@@ -14,6 +14,8 @@ This started as a fairly crude python convertor to handle most things from PrePo
 
 There is no users' help doc except for the notes below and in `CHANGELOG.md`, and it often relies on hand edits in PrePoMax **'Keywords Editor'** or input deck (`*.inp`), for the translator to make sense on features / elements missing in PrePoMax UI, and to bypass some odd quirks specific to the `Calculix` (CCX) solver syntax.
 
+> [CHANGELOG](code/CHANGELOG.md)
+
 The main reason behind this work specific to `code_aster` (CA), is that the `CCX solver` (as far as my testing went in 2024) seems quite limited in terms of building complex FEA linear assemblies correctly, since it doesn't seem to handle suitably rotational degrees-of-freedom (**'DoF'**) at single nodes on springs and on reference nodes at couplings (mainly on soft/distributing ones), without over-constraining models up by **'rigid'** equations/MPCs/connections/Rigid Body, etc.
 
 *DISCLAIMER_1*: This translator covers LINEAR applications in code_aster (CA). My CA non-linear tests done to date, do not inspire a lot of confidence, specially for large displacements/rotations, so better leave them all out for now, and the syntax is even more cumbersome than the linear commands...
@@ -734,4 +736,6 @@ Three views in one animation.
 ![Radar Model](examples/assets/Radar_08.png)
 ![Radar Model](examples/assets/Radar_09.png)
 
+---
+> [CHANGELOG](code/CHANGELOG.md)
 ---
