@@ -58,7 +58,7 @@ This is the area where I see misconceptions in structural FEA. I see quite a lot
 
 The moment you apply a rigid condition onto a surface, or group of nodes, that area cannot expand/contract under thermal loads, nor deform correctly under torsional & bending moments, the latter happens in ALL real structural assemblies.
 
-> [!TIP]TIPS
+> [!TIP]
 >
 > - stick to SOFT couplings and understand them inside out. Avoid any rigid connections at all costs, unless you are testing/debugging a model up, to isolate sensitivity on different areas of the model.
 >
@@ -89,7 +89,7 @@ Furthermore, they allow to get sensible stresses across parts with different mat
 
 I see online claims that TIED pairs cannot predict contact separation. Technically correct, BUT they will tell you if they want to separate by simply plotting the contours of the stress in the normal direction to a surface (or `signed von Mises`), and show in the contours any tensile stress in a different colour from compressive ones. Very useful and fast! Then, you may have some evidence to support the idea of going into non-linear contacts or not. Deadlines & budgets are always looming, be practical and fast providing enough evidence on modelling methods.
 
-> [!NOTE]NOTE
+> [!NOTE]
 > Only with those FEA building blocks implemented properly in a solver, and understanding the implications of 'soft' couplings vs 'rigid' ones, plus how a true 6K spring element should work, you should be able to build pretty much any linear structural assembly, no matter how complex it may look from CAD.
 > \
 > The currency here is degrees-of-freedom (DoF), on loads, constraints and joints. Once that is understood correctly, the imagination is the limit on (most) linear assemblies.
@@ -122,7 +122,7 @@ Mass_1_RP_RP_load       ,        90.47,       2050.5,       312.76,         0.05
 UNION_GROUP_MA          ,       70.322,       1728.9,       141.91,      0.22031,        18904,       7849.3,        14537
 ```
 
-> [!TIP]TIP
+> [!TIP]
 > NOTE the parts' names in tables correspond to PrePoMax element set names per part: `part_name_els`, and when you assign sections in PrePoMax you need to use the previously created element set names, rather than selecting Parts.
 
 ##### 2.5.2 TABLE with Sum of reaction forces/moments from all constraints, and per LC
@@ -263,7 +263,7 @@ NUME_ORDRE  , INST        , LIEU                    , ENTITE  , TOTALE      , PO
 
 The same auto-table system goes for a modal analysis, you get the TSE breakdown per part and per mode, incredibly useful in dynamics!
 
-> [!TIP]TIP
+> [!TIP]
 > To convert the tables output in `*.dat` file into excel graphs, use `code/fea2excel.py`. This allows for super-fast visual sanity checks on the results. Specially useful for the TSE method breakdown when assemblies have many parts. It is magic, and instant to spot errors and/or start gauging based on TSEs what parts are candidates for light-weighting (low TSE %), and which ones need stiffness optimisation (high TSE %). Also, TSE on the assembly tells you which loadcase is the killer one in terms of stiffness and energy used to take the loads in.
 
 Example of useful TABLE graphs from `fea2excel.py` on an assembly:
@@ -279,7 +279,7 @@ That is actually the very reason I started writing this code, because after addi
 
 Easiest way is to copy one of the small assy models provided in the examples, which carries over the workflow in PrePoMax. Once you got your head around linear assemblies, in general; import your CAD assy in the Geometry tab. Then use the magic `Swap Parts` tool, that is a *stroke of genius*, that is. PrePoMax then should re-build pretty much the complete new assembly after meshing the new parts. You'll need to check on element and node sets and surfaces, plus any hand edits in the keywords editor.
 
-> [!TIP]TIPS
+> [!TIP]
 > When building FE models, be fussy about naming conventions on parts, node sets, element sets and surface names, if applicable. It's time consuming and boring, but it really pays off later on. They provide means of automating your specific workflows, and importantly, passing workflows onto colleagues, it's all about **team work**.
 >
 > Furthermore, having sensible names equal in the UI and the solver keeps the source of the truth linked up in debugging and post-processing, plus, again, provides solid methods for colleagues to pick your work up fast when you are not around.
@@ -494,7 +494,7 @@ This case covers multi-loadcase statics, modal & forced response (shock wave ACC
 > Forced response animation
 <!-- markdownlint-disable MD033 -->
 <p align="center">
-  <video src="examples/assets/X_forced_R2_shaft_bear.mp4" width="50%" controls></video>
+  <img src="examples/assets/X_forced_R2_shaft_bear.gif" alt="Forced response animation" width="50%" />
 </p>
 <!-- markdownlint-enable MD033 -->
 
@@ -528,14 +528,14 @@ In this folder there are a number of models as I was implementing the bolt pre-t
 > Forced response animation: shock wave in X
 <!-- markdownlint-disable MD033 -->
 <p align="center">
-  <video src="examples/assets/1_forced_X_R3_assy_8bolts.mp4" width="50%" controls></video>
+  <img src="examples/assets/1_forced_X_R3_assy_8bolts.gif" alt="Forced response animation" width="50%" />
 </p>
 <!-- markdownlint-enable MD033 -->
 
 > Forced response animation: shock wave in Z
 <!-- markdownlint-disable MD033 -->
 <p align="center">
-  <video src="examples/assets/1_forced_Z_R3_assy_8bolts.mp4" width="50%" controls></video>
+  <img src="examples/assets/1_forced_Z_R3_assy_8bolts.gif" alt="Forced response animation" width="50%" />
 </p>
 <!-- markdownlint-enable MD033 -->
 
